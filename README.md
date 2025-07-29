@@ -1,4 +1,4 @@
-# leaper-ai-mcp
+# leaper-mcp-proxy
 the mcp server can convert image to you want
 
 # usege
