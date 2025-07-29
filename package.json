@@ -1,0 +1,23 @@
+{
+  "name": "leaper-ai-mcp",
+  "version": "1.0.0",
+  "description": "the mcp server can convert image to you want",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "mcp",
+    "server",
+    "leaper",
+    "ai"
+  ],
+  "author": "zy445566",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.0",
+    "@types/node": "^18.19.99",
+    "mcp-proxy": "^5.4.0",
+    "typescript": "^5.8.3"
+  }
+}
