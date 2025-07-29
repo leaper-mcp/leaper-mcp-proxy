@@ -1,7 +1,7 @@
-# node-runtime-mcp
- the mcp server that run the code in Node.js container and obtain the result 
+# leaper-ai-mcp
+the mcp server can convert image to you want
 
 # usege
 ```sh
-npx node-runtime-mcp
+npm test
 ```
