@@ -1,6 +1,6 @@
 {
   "name": "leaper-ai-mcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "the mcp server can convert image to you want",
   "main": "dist/index.js",
   "scripts": {
