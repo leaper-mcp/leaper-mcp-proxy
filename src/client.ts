@@ -7,6 +7,7 @@ async function connectToServer() {
     const transport = new StdioClientTransport({
       command:"node",
       args: ["dist/index.js"],
+      env: process.env,
     });
     await mcp.connect(transport);
 
