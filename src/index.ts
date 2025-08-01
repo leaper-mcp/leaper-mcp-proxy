@@ -22,18 +22,20 @@ export default function main() {
       properties[propertieName] = z[propertie.type]().describe(propertie.description)
     }
     server.tool(methods.name, methods.description, properties ,async (params) => {
+      let mcpSseReader: McpSseReader;
       try {
         // 每次调用重开会话
-        const mcpSseReader = new McpSseReader(mcpProxySseUrl);
+        mcpSseReader = new McpSseReader(mcpProxySseUrl);
         mcpSseReader.timeout = 30000;
         const res =  await mcpSseReader.callMethod(methods.name, params);
-        mcpSseReader.close();
         return res;
       } catch (error) {
         console.error(error);
         return {
           content: [{ type: "text", text: error.message }],
         };
+      } finally {
+        mcpSseReader.close();
       }
       
     });
