@@ -1,0 +1,2686 @@
+{
+  "tools": [
+    {
+      "name": "ILRegion_XOR",
+      "description": "将当前ROI区域与输入的区域进行异或操作，生成一个新的ROI区域, P' = P XOR other.\r\n新的区域仅包含属于当前区域但不属于输入区域或属于输入区域但不属于当前区域的部分。 一个空区域与任何其他区域进行异或操作，获得一个空区域对象。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILRegion_XOR",
+        "description": "将当前ROI区域与输入的区域进行异或操作，生成一个新的ROI区域, P' = P XOR other.\r\n新的区域仅包含属于当前区域但不属于输入区域或属于输入区域但不属于当前区域的部分。 一个空区域与任何其他区域进行异或操作，获得一个空区域对象。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "regionClassObjDescriptionJson": {
+            "description": "原始的Roi区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          },
+          "otherRegionClassObjDescriptionJson": {
+            "description": "输入用于异或操作的ROI区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "regionClassObjDescriptionJson",
+          "otherRegionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILImageFilter_SetKernelSigma",
+      "description": "设置图像滤波工具所使用的滤波核的平滑程度和锐化工具的锐化强度 ,并返回设置完成的图像滤波工具的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具的功能调用的对象名称，目前名称应为：ILImageFilter (图像滤波工具的功能相关对象);\r\nInputParameterFile 表示图像滤波工具的功能调用的对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "ILImageFilter_SetKernelSigma",
+        "description": "设置图像滤波工具所使用的滤波核的平滑程度和锐化工具的锐化强度 ,并返回设置完成的图像滤波工具的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具的功能调用的对象名称，目前名称应为：ILImageFilter (图像滤波工具的功能相关对象);\r\nInputParameterFile 表示图像滤波工具的功能调用的对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {
+          "kSigma": {
+            "description": "滤波核的平滑程度，传入类型为double类型，对于 HighPass()，Gaussian() 和 Sharpen() 方法，若设置为 0（默认），则由核尺寸自动计算为：1/6。\r\n若核尺寸设置为 0，则由 Sigma 值自动计算合适的核尺寸，约为 6 × kSigma。\r\n对于 EdgePreserveDenoise()， EdgePreserveTextureEnhance()，若设置为 0，则不做额外的平滑处理 。 \r\n",
+            "type": "number"
+          },
+          "kGain": {
+            "description": "锐化强度,传入类型为double类型，默认值为1.0，对于 Sharpen()，kGain 用于控制锐化效果的强度。  \r\n",
+            "type": "number"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kSigma",
+          "kGain",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchNew",
+      "description": "提供了模板匹配的功能。创建一个模板匹配的功能对象。\r\n 如果别的工具需要模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "PatMatchNew",
+        "description": "提供了模板匹配的功能。创建一个模板匹配的功能对象。\r\n 如果别的工具需要模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "ILImageOp_Split",
+      "description": "这个是按网格拆分一个图像的工具。为若干个小图 。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Split",
+        "description": "这个是按网格拆分一个图像的工具。为若干个小图 。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "xCount": {
+            "description": "指定水平方向的拆分数量，传入类型为int类型。",
+            "type": "integer"
+          },
+          "xStep": {
+            "description": "单次拆分的水平方向的步长，传入类型为int类型。对于非循环模式，其通常等于结果图像的宽和高。而对于循环模式，这表示每次拆分所收集的行列数，多次拆分组合为最终结果。",
+            "type": "integer"
+          },
+          "xSpace": {
+            "description": "拆分的水平方向的间隔，传入类型为int类型。",
+            "type": "integer"
+          },
+          "yCount": {
+            "description": "指定垂直方向的拆分数量，传入类型为int类型。",
+            "type": "integer"
+          },
+          "yStep": {
+            "description": "单次拆分的垂直方向的步长，传入类型为int类型。",
+            "type": "integer"
+          },
+          "ySpace": {
+            "description": "拆分的垂直方向的间隔，传入类型为int类型。",
+            "type": "integer"
+          },
+          "cyclicMode": {
+            "description": "是否启用循环拆分，传入类型为bool类型。默认启用。循环模型将循环重复拆分整张图像，再合并单次拆分的若干列为一张图像，作为最终结果。",
+            "type": "boolean"
+          },
+          "sameSize": {
+            "description": "输出的结果图像图像队列，传入类型为bool类型。从上到下。",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "xCount",
+          "xStep",
+          "xSpace",
+          "yCount",
+          "yStep",
+          "ySpace",
+          "cyclicMode",
+          "sameSize"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchLearnWithShapeImage",
+      "description": "提供了训练模板匹配的功能。并返回使用输入的图像训练后的模板匹配的功能对象。\r\n 特征点通过给定的形状图像提取提取模板的形状和极性，不受 DetailLevel 参数的影响。\r\n如果别的工具需要训练后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "PatMatchLearnWithShapeImage",
+        "description": "提供了训练模板匹配的功能。并返回使用输入的图像训练后的模板匹配的功能对象。\r\n 特征点通过给定的形状图像提取提取模板的形状和极性，不受 DetailLevel 参数的影响。\r\n如果别的工具需要训练后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          },
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到需要输入的图像。\r\n需提醒用户先设置 GrayValueWeight 并不启用任何灰度特征权重。\r\n可为空，但当其为空时，请直接传入 \"null\"。 ",
+            "type": "string"
+          },
+          "regionClassObjDescriptionJson": {
+            "description": "输入的Roi区域，用于限定模板在输入图像中的位置，并用于剔除形状中超出区域的部分。如果用户没有指定该Roi区域，请直接传入 \"null\"。 \r\n如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          },
+          "shapeImgUrl": {
+            "description": "图片的url地址，通过这个地址获取到需要输入的形状图像。\r\n该图像的尺寸需与 imageUrl图像的参数相同,如果用户不认可结果，可以提醒用户尺寸问题。 \r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson",
+          "imageUrl",
+          "regionClassObjDescriptionJson",
+          "shapeImgUrl"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Rotate",
+      "description": "这个是顺时针旋转输入图像的工具。输出一个新图像，使用图像中心作为旋转中心。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Rotate",
+        "description": "这个是顺时针旋转输入图像的工具。输出一个新图像，使用图像中心作为旋转中心。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "angle": {
+            "description": "旋转角度，传入类型为double类型。",
+            "type": "number"
+          },
+          "interMethod": {
+            "description": "插值方法，传入类型为LPVInterpolationMethod类型。",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "angle",
+          "interMethod"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_AddScalar",
+      "description": "这个是将输入图像和一个标量逐像素相加的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_AddScalar",
+        "description": "这个是将输入图像和一个标量逐像素相加的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "scalar": {
+            "description": "输入的标量，传入类型为double类型。",
+            "type": "number"
+          },
+          "scalar2": {
+            "description": "用于为彩色图像指定第二个通道使用的标量值，传入类型为double类型，若 scalar2 和 scalar3 都设置为 0（默认值），则对所有通道均使用 scalar 数值。",
+            "type": "number"
+          },
+          "scalar3": {
+            "description": "用于为彩色图像指定第三个通道使用的标量值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "scalar",
+          "scalar2",
+          "scalar3"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_BitAndScalar",
+      "description": "这个是将输入图像和一个标量逐像素进行位操作与的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_BitAndScalar",
+        "description": "这个是将输入图像和一个标量逐像素进行位操作与的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "scalar": {
+            "description": "输入的标量，传入类型为double类型。",
+            "type": "number"
+          },
+          "scalar2": {
+            "description": "用于为彩色图像指定第二个通道使用的标量值，传入类型为double类型，若 scalar2 和 scalar3 都设置为 0（默认值），则对所有通道均使用 scalar 数值。",
+            "type": "number"
+          },
+          "scalar3": {
+            "description": "用于为彩色图像指定第三个通道使用的标量值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "scalar",
+          "scalar2",
+          "scalar3"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_BitOrScalar",
+      "description": "这个是将输入图像和一个标量逐像素进行位操作或的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_BitOrScalar",
+        "description": "这个是将输入图像和一个标量逐像素进行位操作或的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "scalar": {
+            "description": "输入的标量，传入类型为double类型。",
+            "type": "number"
+          },
+          "scalar2": {
+            "description": "用于为彩色图像指定第二个通道使用的标量值，传入类型为double类型，若 scalar2 和 scalar3 都设置为 0（默认值），则对所有通道均使用 scalar 数值。",
+            "type": "number"
+          },
+          "scalar3": {
+            "description": "用于为彩色图像指定第三个通道使用的标量值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "scalar",
+          "scalar2",
+          "scalar3"
+        ]
+      }
+    },
+    {
+      "name": "DisplayBlobAnalysis",
+      "description": "这个是针对斑点的图像的交互工具，并返回标记斑点后的图片。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是标记输入图像斑点标记后的图片URL地址\r\n",
+      "inputSchema": {
+        "title": "DisplayBlobAnalysis",
+        "description": "这个是针对斑点的图像的交互工具，并返回标记斑点后的图片。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是标记输入图像斑点标记后的图片URL地址\r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "blobAnalysisClassObjDescriptionJson": {
+            "description": "传入一个序列化的JSON字符串,使ILBlobAnalysis类型的描述JSON\r\n属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从MCP工具[斑点分析工具]返回的数据的返回值中获取。\r\nLpvClassName 表示要调用的Region接口名称，这里理论上只能是 ILBlobAnalysis (用于创建斑点分析工具的实例)\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          },
+          "regionClassObjDescriptionJson": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "blobAnalysisClassObjDescriptionJson",
+          "regionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Transform",
+      "description": "这个是应用指定的变换矩阵到输入图像的工具。得到一个新的图像。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Transform",
+        "description": "这个是应用指定的变换矩阵到输入图像的工具。得到一个新的图像。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "tf": {
+            "description": "变换矩阵，传入类型为ILTransform类型。",
+            "type": "object"
+          },
+          "interMethod": {
+            "description": "插值方法，传入类型为LPVInterpolationMethod类型。",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "tf",
+          "interMethod"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_TileX",
+      "description": "这个是将水平平铺一组图像，合成一张大尺寸图像的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_TileX",
+        "description": "这个是将水平平铺一组图像，合成一张大尺寸图像的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrlList": {
+            "description": "图片的url地址队列，通过这个地址获取到图片",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "columnCount": {
+            "description": "每行的图像个数，传入类型为int类型。若队列中的图像总数不被整除，则最后一行的剩余像素将被填充为背景色。传入 0 或负数，用于生成单行的合成图像。",
+            "type": "integer"
+          },
+          "compactMode": {
+            "description": "紧凑模式开关，传入类型为bool类型。在紧凑模式下（True），一行中的图像被紧密地连续排布。否则（False），结果图像的尺寸由输入图像中的最大长宽决定，其中较小的图像将被放置在对应行列的中心。",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "imageUrlList",
+          "columnCount",
+          "compactMode"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Diff",
+      "description": "这个是将两个图像逐像素差值的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Diff",
+        "description": "这个是将两个图像逐像素差值的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ILImageThreshold_SetThresholdAdaptLocal",
+      "description": "这个是 设置并使用局部自适应阈值 工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;",
+      "inputSchema": {
+        "title": "ILImageThreshold_SetThresholdAdaptLocal",
+        "description": "这个是 设置并使用局部自适应阈值 工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;",
+        "type": "object",
+        "properties": {
+          "blockWidth": {
+            "description": "局部区域的宽度，需要是一个奇数",
+            "type": "integer"
+          },
+          "blockHeight": {
+            "description": "局部区域的高度，需要是一个奇数",
+            "type": "integer"
+          },
+          "lbBias": {
+            "description": "基于局部自适应阈值的下限修正值",
+            "type": "integer"
+          },
+          "ubBias": {
+            "description": "基于局部自适应阈值的上限修正值",
+            "type": "integer"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageThreshold 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageThreshold 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "blockWidth",
+          "blockHeight",
+          "lbBias",
+          "ubBias",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_ProjectX",
+      "description": "这个是水平投影图像的工具。聚合每一行上的像素。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_ProjectX",
+        "description": "这个是水平投影图像的工具。聚合每一行上的像素。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "aggType": {
+            "description": "投影时所使用的聚合方式，传入类型为LPVAggregation类型。有效的类型为：0：LPVAggAvg（均值：降低图像噪声，在光照条件不佳、亮度不断变化的场景下，获得更稳定的图像质量。）、1：LPVAggDev（标准差：结果图像中的较亮像素表示在多帧图像中该位置的像素值变化较大。）、2：LPVAggVar（方差）、3：LPVAggMin（最小值：减少亮部区域，例如，用于减少过曝区域。）、4：LPVAggMax（最大值：减少暗部区域，减少阴影。）、5：LPVAggMajor（主要成分均值）、6：LPVAggSum（所有值的和）",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "aggType"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchGetPatShape",
+      "description": "获取当前模板匹配的功能对象 的模板形状线。返回一个多边形数组。\r\n 返回结构是一个序列化的JSON字符串，jSON是一个数组，数组中的对象属性包括：\r\nClosed(多边形是否闭合) 和 Count(多边形点位数量) 和 Item(多边形点的位置的数组，数组中的对象包含X,Y属性分别代表x和y的坐标) 。\r\n",
+      "inputSchema": {
+        "title": "PatMatchGetPatShape",
+        "description": "获取当前模板匹配的功能对象 的模板形状线。返回一个多边形数组。\r\n 返回结构是一个序列化的JSON字符串，jSON是一个数组，数组中的对象属性包括：\r\nClosed(多边形是否闭合) 和 Count(多边形点位数量) 和 Item(多边形点的位置的数组，数组中的对象包含X,Y属性分别代表x和y的坐标) 。\r\n",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          },
+          "level": {
+            "description": "指定获取特征的层级。可能的取值有：-1 表示所有层级，0（默认值）表示原始尺度的 0 层特征，1 表示缩小尺度的 1 层特征 。\r\n",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson",
+          "level"
+        ]
+      }
+    },
+    {
+      "name": "ILImageThreshold_SetThresholdAdaptGlobald",
+      "description": "这个是 设置并使用全局自适应阈值 工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;",
+      "inputSchema": {
+        "title": "ILImageThreshold_SetThresholdAdaptGlobald",
+        "description": "这个是 设置并使用全局自适应阈值 工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;",
+        "type": "object",
+        "properties": {
+          "lbBias": {
+            "description": "基于全局自适应阈值的下限修正值",
+            "type": "integer"
+          },
+          "ubBias": {
+            "description": "基于全局自适应阈值的上限修正值",
+            "type": "integer"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageThreshold 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageThreshold 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "lbBias",
+          "ubBias",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ILRegion_Subtract",
+      "description": "从当前ROI区域中减去输入的ROI区域，生成一个新的ROI区域，P' = P - other.\r\n一个非空区域减去空区域，获得该区域对象的拷贝。一个空区域减去一个非空区域，获得后者的取反区域 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILRegion_Subtract",
+        "description": "从当前ROI区域中减去输入的ROI区域，生成一个新的ROI区域，P' = P - other.\r\n一个非空区域减去空区域，获得该区域对象的拷贝。一个空区域减去一个非空区域，获得后者的取反区域 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "regionClassObjDescriptionJson": {
+            "description": "原始的Roi区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          },
+          "otherRegionClassObjDescriptionJson": {
+            "description": "输入用于减去的ROI区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "regionClassObjDescriptionJson",
+          "otherRegionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Blend",
+      "description": "这个是将多帧图像融合用于将多张同一场景的图像融合为一张的工具。在不同的场景，通过使用不同的聚合方式达到不同目的。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Blend",
+        "description": "这个是将多帧图像融合用于将多张同一场景的图像融合为一张的工具。在不同的场景，通过使用不同的聚合方式达到不同目的。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrlList": {
+            "description": "图片的url地址队列，通过这个地址获取到图片",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "aggType": {
+            "description": "融合方式，传入类型为LPVAggregation类型。有效的类型为：0：LPVAggAvg（均值：降低图像噪声，在光照条件不佳、亮度不断变化的场景下，获得更稳定的图像质量。）、1：LPVAggDev（标准差：结果图像中的较亮像素表示在多帧图像中该位置的像素值变化较大。）3：LPVAggMin（最小值：减少亮部区域，例如，用于减少过曝区域。）、4：LPVAggMax（最大值：减少暗部区域，减少阴影。）",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrlList",
+          "aggType"
+        ]
+      }
+    },
+    {
+      "name": "ILImageThreshold_Binarize",
+      "description": "这个是二值化图像工具。二值化输入图像并输出结果图像。如果用户同时设置了阈值，要先执行设置阈值工具，然后再执行此工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;result 属性是输入图像二值化结果的图片地址",
+      "inputSchema": {
+        "title": "ILImageThreshold_Binarize",
+        "description": "这个是二值化图像工具。二值化输入图像并输出结果图像。如果用户同时设置了阈值，要先执行设置阈值工具，然后再执行此工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;result 属性是输入图像二值化结果的图片地址",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageThreshold 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageThreshold 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_SubScalar",
+      "description": "这个是将输入图像和一个标量逐像素相减的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_SubScalar",
+        "description": "这个是将输入图像和一个标量逐像素相减的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "scalar": {
+            "description": "输入的标量，传入类型为double类型。",
+            "type": "number"
+          },
+          "scalar2": {
+            "description": "用于为彩色图像指定第二个通道使用的标量值，传入类型为double类型，若 scalar2 和 scalar3 都设置为 0（默认值），则对所有通道均使用 scalar 数值。",
+            "type": "number"
+          },
+          "scalar3": {
+            "description": "用于为彩色图像指定第三个通道使用的标量值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "scalar",
+          "scalar2",
+          "scalar3"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_BitOr",
+      "description": "这个是将两个图像逐像素进行位操作或的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_BitOr",
+        "description": "这个是将两个图像逐像素进行位操作或的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "EdgeFilterGradientV",
+      "description": "提供了图像边缘增强的功能，在垂直梯度，垂直边缘在输出图像中表现为较亮的像素。 \r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址",
+      "inputSchema": {
+        "title": "EdgeFilterGradientV",
+        "description": "提供了图像边缘增强的功能，在垂直梯度，垂直边缘在输出图像中表现为较亮的像素。 \r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "edgeFilterClassObjDescriptionJson": {
+            "description": "用于图像边缘增强的功能调用的对象。如果用户没有指定图像边缘增强的功能相关对象，请创建一个图像边缘增强的功能调用的对象后传入。\r\n如果用户指定图像边缘增强的功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "edgeFilterClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILMaskRegion",
+      "description": "这个是ILMaskRegion类型(蒙版ROI区域对象)的描述生成工具并返回生成后的ILMaskRegion类型的描述JSON。\r\n其中ILMaskRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILMaskRegion",
+        "description": "这个是ILMaskRegion类型(蒙版ROI区域对象)的描述生成工具并返回生成后的ILMaskRegion类型的描述JSON。\r\n其中ILMaskRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "maskImageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入蒙版图像",
+            "type": "string"
+          },
+          "tlx": {
+            "description": "蒙版区域的左上角点 x 坐标 (double类型)",
+            "type": "number"
+          },
+          "tly": {
+            "description": "蒙版区域的左上角点 y 坐标 (double类型)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "maskImageUrl",
+          "tlx",
+          "tly"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_SplitX",
+      "description": "这个是水平拆分一个图像的工具。为若干个小图 。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_SplitX",
+        "description": "这个是水平拆分一个图像的工具。为若干个小图 。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "count": {
+            "description": "指定拆分数量，传入类型为int类型。",
+            "type": "integer"
+          },
+          "step": {
+            "description": "单次拆分的步长，传入类型为int类型。对于非循环模式，其通常等于结果图像的宽。而对于循环模式，这表示每次拆分所收集的列数，多次拆分组合为最终结果。",
+            "type": "integer"
+          },
+          "space": {
+            "description": "拆分的间隔，传入类型为int类型。",
+            "type": "integer"
+          },
+          "cyclicMode": {
+            "description": "是否启用循环拆分，传入类型为bool类型。默认启用。循环模型将循环重复拆分整张图像，再合并单次拆分的若干列为一张图像，作为最终结果。",
+            "type": "boolean"
+          },
+          "sameSize": {
+            "description": "输出的结果图像图像队列，传入类型为bool类型。从上到下。",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "count",
+          "step",
+          "space",
+          "cyclicMode",
+          "sameSize"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Invert",
+      "description": "这个是反转图像的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Invert",
+        "description": "这个是反转图像的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchLearnWithShape",
+      "description": "提供了训练模板匹配的功能。并返回使用输入的图像训练后的模板匹配的功能对象。\r\n 模板的形状和极性通过输入的形状区域来定义，添加区域（Add）生成黑色背景上的白色形状；减去区域（Subtract）生产白色背景上的黑色形状。\r\n特征点通过给定的形状区域提取，不受 DetailLevel 参数的影响。\r\n如果别的工具需要训练后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "PatMatchLearnWithShape",
+        "description": "提供了训练模板匹配的功能。并返回使用输入的图像训练后的模板匹配的功能对象。\r\n 模板的形状和极性通过输入的形状区域来定义，添加区域（Add）生成黑色背景上的白色形状；减去区域（Subtract）生产白色背景上的黑色形状。\r\n特征点通过给定的形状区域提取，不受 DetailLevel 参数的影响。\r\n如果别的工具需要训练后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          },
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到需要输入的图像。\r\n需提醒用户先设置 GrayValueWeight 并不启用任何灰度特征权重。\r\n可为空，但当其为空时，请直接传入 \"null\"。 ",
+            "type": "string"
+          },
+          "regionClassObjDescriptionJson": {
+            "description": "输入的Roi区域，用于限定模板在输入图像中的位置，并用于剔除形状中超出区域的部分。如果用户没有指定该Roi区域，请直接传入 \"null\"。 \r\n如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          },
+          "shapeRegionClassObjDescriptionJson": {
+            "description": "输入的Roi区域，用于生成模板形状。 \r\n如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson",
+          "imageUrl",
+          "regionClassObjDescriptionJson",
+          "shapeRegionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_GainOffset",
+      "description": "这个是图像增益和偏移的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_GainOffset",
+        "description": "这个是图像增益和偏移的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "gain": {
+            "description": "增益值，传入类型为double类型。",
+            "type": "number"
+          },
+          "offset": {
+            "description": "偏移值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "gain",
+          "offset"
+        ]
+      }
+    },
+    {
+      "name": "ILImageThreshold_SetThreshold",
+      "description": "这个是 设置前景像素的固定阈值范围 工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;",
+      "inputSchema": {
+        "title": "ILImageThreshold_SetThreshold",
+        "description": "这个是 设置前景像素的固定阈值范围 工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;",
+        "type": "object",
+        "properties": {
+          "lb": {
+            "description": "阈值范围下限",
+            "type": "integer"
+          },
+          "ub": {
+            "description": "阈值范围上限",
+            "type": "integer"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageThreshold 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageThreshold 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "lb",
+          "ub",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ILAnnulusSectorRegion",
+      "description": "这个是ILAnnulusSectorRegion类型(环状扇形ROI区域对象)的描述生成工具并返回生成后的ILAnnulusSectorRegion类型的描述JSON。\r\n其中ILAnnulusSectorRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILAnnulusSectorRegion",
+        "description": "这个是ILAnnulusSectorRegion类型(环状扇形ROI区域对象)的描述生成工具并返回生成后的ILAnnulusSectorRegion类型的描述JSON。\r\n其中ILAnnulusSectorRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "cenx": {
+            "description": "环状扇形区域所在圆中心点的 x 坐标 (double类型)",
+            "type": "number"
+          },
+          "ceny": {
+            "description": "环状扇形区域所在圆中心点的 y 坐标 (double类型)",
+            "type": "number"
+          },
+          "rInner": {
+            "description": "环状扇形区域的内侧半径 (double类型)",
+            "type": "number"
+          },
+          "rOuter": {
+            "description": "环状扇形区域的外侧半径 (double类型)",
+            "type": "number"
+          },
+          "aStart": {
+            "description": "环状扇形区域的起始角度 (double类型)",
+            "type": "number"
+          },
+          "aEnd": {
+            "description": "环状扇形区域的结束角度 (double类型)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "cenx",
+          "ceny",
+          "rInner",
+          "rOuter",
+          "aStart",
+          "aEnd"
+        ]
+      }
+    },
+    {
+      "name": "EdgeFilterGradientH",
+      "description": "提供了图像边缘增强的功能，在水平梯度，水平边缘在输出图像中表现为较亮的像素。 \r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址",
+      "inputSchema": {
+        "title": "EdgeFilterGradientH",
+        "description": "提供了图像边缘增强的功能，在水平梯度，水平边缘在输出图像中表现为较亮的像素。 \r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "edgeFilterClassObjDescriptionJson": {
+            "description": "用于图像边缘增强的功能调用的对象。如果用户没有指定图像边缘增强的功能相关对象，请创建一个图像边缘增强的功能调用的对象后传入。\r\n如果用户指定图像边缘增强的功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "edgeFilterClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILImageThreshold",
+      "description": "这个是图片阈值相关的初始化工具。是所有以 \"ILImageThreshold_\" 开头的MCP工具的初始化工具，在这些工具调用之前，都需要保证前处理调用过有且仅有一次此初始化工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示 ILImageThreshold 类初始化文件名称;",
+      "inputSchema": {
+        "title": "ILImageThreshold",
+        "description": "这个是图片阈值相关的初始化工具。是所有以 \"ILImageThreshold_\" 开头的MCP工具的初始化工具，在这些工具调用之前，都需要保证前处理调用过有且仅有一次此初始化工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示 ILImageThreshold 类初始化文件名称;",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "ILImageFilter_LinearFilter",
+      "description": "这个是线性滤波工具，基于自定义核，对输入图像进行线性滤波。超出深度范围的结果像素值将被截断，例如，对于 8 位图像，截断到 0 ~ 255 的数值范围。 \r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageFilter_LinearFilter",
+        "description": "这个是线性滤波工具，基于自定义核，对输入图像进行线性滤波。超出深度范围的结果像素值将被截断，例如，对于 8 位图像，截断到 0 ~ 255 的数值范围。 \r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "kWidth": {
+            "description": "滤波核的宽度，传入类型为int类型,自定义核的宽度，取值范围为 1 ~ 9999。\r\n",
+            "type": "integer"
+          },
+          "kHeight": {
+            "description": "滤波核的高度，传入类型为int类型，自定义核的高度，取值范围为 1 ~ 9999。\r\n",
+            "type": "integer"
+          },
+          "kMat": {
+            "description": "滤波核的高度，传入类型为Array<double>类型，自定义核的数据，这是一组浮点数值 。\r\n",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "kWidth",
+          "kHeight",
+          "kMat",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ILRotRectRegion",
+      "description": "这个是ILRotRectRegion类型(旋转矩形ROI区域对象)的描述生成工具并返回生成后的ILRotRectRegion类型的描述JSON。\r\n其中ILRotRectRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILRotRectRegion",
+        "description": "这个是ILRotRectRegion类型(旋转矩形ROI区域对象)的描述生成工具并返回生成后的ILRotRectRegion类型的描述JSON。\r\n其中ILRotRectRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "cenx": {
+            "description": "旋转矩形区域的中心 x 坐标 (double类型)",
+            "type": "number"
+          },
+          "ceny": {
+            "description": "旋转矩形区域的中心 y 坐标 (double类型)",
+            "type": "number"
+          },
+          "w": {
+            "description": "旋转矩形区域的宽度 (double类型)",
+            "type": "number"
+          },
+          "h": {
+            "description": "旋转矩形区域的高度 (double类型)",
+            "type": "number"
+          },
+          "a": {
+            "description": "旋转矩形区域的角度 (double类型)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "cenx",
+          "ceny",
+          "w",
+          "h",
+          "a"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Max",
+      "description": "这个是将两个图像逐像素比较，取其最大值的工具。输出一个新图像，两个输入图像需尺寸相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Max",
+        "description": "这个是将两个图像逐像素比较，取其最大值的工具。输出一个新图像，两个输入图像需尺寸相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ILImageFilter_EdgePreserveTextureEnhance",
+      "description": "这个是增强图像纹理并保留边缘工具。\r\n用户没有指定滤波相关参数时，必须设置默认参数：平滑度0.01，加速算法运行的系数4。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageFilter_EdgePreserveTextureEnhance",
+        "description": "这个是增强图像纹理并保留边缘工具。\r\n用户没有指定滤波相关参数时，必须设置默认参数：平滑度0.01，加速算法运行的系数4。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "speedupFactor": {
+            "description": "加速算法运行的系数，传入类型为int类型，用于加速算法运行的系数，推荐使用核尺寸的因数",
+            "type": "integer"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          },
+          "refImageUrl": {
+            "description": "边缘信息图片的url地址，通过这个地址获取到图片，如果用户没有指定图像，请直接传入 \"null\" 。用于为增强过程提供需要保留边缘的大致位置和强度。该图像尺寸需与输入图像相同。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "speedupFactor",
+          "InputParameterFile",
+          "refImageUrl"
+        ]
+      }
+    },
+    {
+      "name": "ILRegion_Add",
+      "description": "将当前ROI区域和输入的ROI区域相加，生成一个新的ROI区域，P' = P + other.\r\n与 Union() 相同，新的区域包含当前区域和输入区域中所包含的所有部分。 一个非空区域与空区域相加，获得该区域对象的拷贝。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILRegion_Add",
+        "description": "将当前ROI区域和输入的ROI区域相加，生成一个新的ROI区域，P' = P + other.\r\n与 Union() 相同，新的区域包含当前区域和输入区域中所包含的所有部分。 一个非空区域与空区域相加，获得该区域对象的拷贝。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "regionClassObjDescriptionJson": {
+            "description": "原始的Roi区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          },
+          "otherRegionClassObjDescriptionJson": {
+            "description": "输入用于相加的ROI区域。，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "regionClassObjDescriptionJson",
+          "otherRegionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILCircleRegion",
+      "description": "这个是ILCircleRegion类型(圆形ROI区域对象)的描述生成工具并返回生成后的ILCircleRegion类型的描述JSON。\r\n其中ILCircleRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILCircleRegion",
+        "description": "这个是ILCircleRegion类型(圆形ROI区域对象)的描述生成工具并返回生成后的ILCircleRegion类型的描述JSON。\r\n其中ILCircleRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "cenx": {
+            "description": "圆形区域的 x 坐标 (double类型)",
+            "type": "number"
+          },
+          "ceny": {
+            "description": "圆形区域的 y 坐标 (double类型)",
+            "type": "number"
+          },
+          "r": {
+            "description": "圆形区域的半径 (double类型)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "cenx",
+          "ceny",
+          "r"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Min",
+      "description": "这个是将两个图像逐像素比较，取其最小值的工具。输出一个新图像，两个输入图像需尺寸相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Min",
+        "description": "这个是将两个图像逐像素比较，取其最小值的工具。输出一个新图像，两个输入图像需尺寸相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_ScaleRotate",
+      "description": "这个是缩放和旋转输入图像的工具。使用用户指定的锚点。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_ScaleRotate",
+        "description": "这个是缩放和旋转输入图像的工具。使用用户指定的锚点。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "angle": {
+            "description": "顺时针旋转角度，传入类型为double类型。",
+            "type": "number"
+          },
+          "zoomX": {
+            "description": "x 方向的缩放比例，传入类型为double类型。",
+            "type": "number"
+          },
+          "zoomY": {
+            "description": "y 方向的缩放比例，传入类型为double类型。",
+            "type": "number"
+          },
+          "pivotImgX": {
+            "description": "输入图像上的锚点的 x 坐标。该锚点将作为缩放和旋转的中心，传入类型为double类型。",
+            "type": "number"
+          },
+          "pivotImgY": {
+            "description": "输入图像上的锚点的 y 坐标，传入类型为double类型。",
+            "type": "number"
+          },
+          "pivotResultX": {
+            "description": "结果图像上的锚点的 x 坐标。该锚点位置上的像素与输入图像锚点位置上的像素为“同一个”，传入类型为double类型。",
+            "type": "number"
+          },
+          "pivotResultY": {
+            "description": "结果图像上的锚点的 y 坐标，传入类型为double类型。",
+            "type": "number"
+          },
+          "interMethod": {
+            "description": "插值方法，传入类型为LPVInterpolationMethod类型。",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "angle",
+          "zoomX",
+          "zoomY",
+          "pivotImgX",
+          "pivotImgY",
+          "pivotResultX",
+          "pivotResultY",
+          "interMethod"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Pow",
+      "description": "这个是将对输入图像进行逐像素幂运算的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Pow",
+        "description": "这个是将对输入图像进行逐像素幂运算的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "power": {
+            "description": "输入的指数，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "power"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Sub",
+      "description": "这个是将两个图像逐像素相减的工具。输出一个新图像，两个输入图像需尺寸相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Sub",
+        "description": "这个是将两个图像逐像素相减的工具。输出一个新图像，两个输入图像需尺寸相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Log",
+      "description": "这个是对输入图像进行逐像素对数运算的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Log",
+        "description": "这个是对输入图像进行逐像素对数运算的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "baseValue": {
+            "description": "输入的底数，必须为一个正数，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "baseValue"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_BitNot",
+      "description": "这个是将输入图像逐像素进行位操作取非的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_BitNot",
+        "description": "这个是将输入图像逐像素进行位操作取非的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_TileY",
+      "description": "这个是将垂直平铺一组图像，合成一张大尺寸图像的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_TileY",
+        "description": "这个是将垂直平铺一组图像，合成一张大尺寸图像的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrlList": {
+            "description": "图片的url地址队列，通过这个地址获取到图片",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "columnCount": {
+            "description": "每列的图像个数，传入类型为int类型。若队列中的图像总数不被整除，则最后一列的剩余像素将被填充为背景色。传入 0 或负数，用于生成单列的合成图像。",
+            "type": "integer"
+          },
+          "compactMode": {
+            "description": "紧凑模式开关，传入类型为bool类型。在紧凑模式下（True），一行中的图像被紧密地连续排布。否则（False），结果图像的尺寸由输入图像中的最大长宽决定，其中较小的图像将被放置在对应行列的中心。",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "imageUrlList",
+          "columnCount",
+          "compactMode"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Normalize",
+      "description": "这个是归一化输入图像，拉伸指定的最小最大值范围内的像素到目标数值范围的工具。不改变图像位深，归一化后的结果图像与输入位深相同、通道数相同。对于彩色的多通道图像，输出也是彩色多通道图像，每个通道分别独立进行归一化。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nbelowMask属性是入图图像中超出感兴趣数值范围的像素的蒙版地址。白色像素表示这些位置的数值小于 fromMinValue 或者大于 fromMaxValue 。可基于该蒙版，将这些位置的数值设置为统一个黑色或目标的最小最大值，或调用 FillHole() 进行修补。\r\naboveMask属性是入图图像中超出感兴趣数值范围的像素的蒙版地址。白色像素表示这些位置的数值小于 fromMinValue 或者大于 fromMaxValue 。可基于该蒙版，将这些位置的数值设置为统一个黑色或目标的最小最大值，或调用 FillHole() 进行修补。 ",
+      "inputSchema": {
+        "title": "ILImageOp_Normalize",
+        "description": "这个是归一化输入图像，拉伸指定的最小最大值范围内的像素到目标数值范围的工具。不改变图像位深，归一化后的结果图像与输入位深相同、通道数相同。对于彩色的多通道图像，输出也是彩色多通道图像，每个通道分别独立进行归一化。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nbelowMask属性是入图图像中超出感兴趣数值范围的像素的蒙版地址。白色像素表示这些位置的数值小于 fromMinValue 或者大于 fromMaxValue 。可基于该蒙版，将这些位置的数值设置为统一个黑色或目标的最小最大值，或调用 FillHole() 进行修补。\r\naboveMask属性是入图图像中超出感兴趣数值范围的像素的蒙版地址。白色像素表示这些位置的数值小于 fromMinValue 或者大于 fromMaxValue 。可基于该蒙版，将这些位置的数值设置为统一个黑色或目标的最小最大值，或调用 FillHole() 进行修补。 ",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "fromMinValue": {
+            "description": "指定感兴趣的数值范围，传入类型为double类型。表示使用当前图像的最小值。",
+            "type": "number"
+          },
+          "fromMaxValue": {
+            "description": "指定感兴趣的数值范围，传入类型为double类型。表示使用当前图像的最大值。",
+            "type": "number"
+          },
+          "toMinValue": {
+            "description": "指定目标的数值范围，传入类型为double类型。表示使用图像位深的理论数值范围的最小值，对于 8 位图使用 0 ~ 255，对于 16 位图使用 0 ~ 65535 ",
+            "type": "number"
+          },
+          "toMaxValue": {
+            "description": "指定目标的数值范围，传入类型为double类型。表示使用图像位深的理论数值范围的最大值，对于 8 位图使用 0 ~ 255，对于 16 位图使用 0 ~ 65535 ",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "fromMinValue",
+          "fromMaxValue",
+          "toMinValue",
+          "toMaxValue"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_ProjectY",
+      "description": "这个是垂直投影图像的工具。聚合每一列上的像素。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_ProjectY",
+        "description": "这个是垂直投影图像的工具。聚合每一列上的像素。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "aggType": {
+            "description": "投影时所使用的聚合方式，传入类型为LPVAggregation类型。有效的类型为：0：LPVAggAvg（均值：降低图像噪声，在光照条件不佳、亮度不断变化的场景下，获得更稳定的图像质量。）、1：LPVAggDev（标准差：结果图像中的较亮像素表示在多帧图像中该位置的像素值变化较大。）、2：LPVAggVar（方差）、3：LPVAggMin（最小值：减少亮部区域，例如，用于减少过曝区域。）、4：LPVAggMax（最大值：减少暗部区域，减少阴影。）、5：LPVAggMajor（主要成分均值）、6：LPVAggSum（所有值的和）",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "aggType"
+        ]
+      }
+    },
+    {
+      "name": "ILImageFilter_Equalize",
+      "description": "这个是均衡化工具。该工具将归一化亮度，增加图像对比度。 均衡化工具不是一个线性滤波器，因此不需要指定滤波核尺寸。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageFilter_Equalize",
+        "description": "这个是均衡化工具。该工具将归一化亮度，增加图像对比度。 均衡化工具不是一个线性滤波器，因此不需要指定滤波核尺寸。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_MaxScalar",
+      "description": "这个是将输入图像和一个标量逐像素比较，取其最大值的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_MaxScalar",
+        "description": "这个是将输入图像和一个标量逐像素比较，取其最大值的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "scalar": {
+            "description": "输入的标量，传入类型为double类型。",
+            "type": "number"
+          },
+          "scalar2": {
+            "description": "用于为彩色图像指定第二个通道使用的标量值，传入类型为double类型，若 scalar2 和 scalar3 都设置为 0（默认值），则对所有通道均使用 scalar 数值。",
+            "type": "number"
+          },
+          "scalar3": {
+            "description": "用于为彩色图像指定第三个通道使用的标量值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "scalar",
+          "scalar2",
+          "scalar3"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_SplitY",
+      "description": "这个是垂直拆分一个图像的工具。为若干个小图 。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_SplitY",
+        "description": "这个是垂直拆分一个图像的工具。为若干个小图 。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "count": {
+            "description": "指定拆分数量，传入类型为int类型。",
+            "type": "integer"
+          },
+          "step": {
+            "description": "单次拆分的步长，传入类型为int类型。对于非循环模式，其通常等于结果图像的高。而对于循环模式，这表示每次拆分所收集的行数，多次拆分组合为最终结果。",
+            "type": "integer"
+          },
+          "space": {
+            "description": "拆分的间隔，传入类型为int类型。",
+            "type": "integer"
+          },
+          "cyclicMode": {
+            "description": "是否启用循环拆分，传入类型为bool类型。默认启用。循环模型将循环重复拆分整张图像，再合并单次拆分的若干行为一张图像，作为最终结果。",
+            "type": "boolean"
+          },
+          "sameSize": {
+            "description": "输出的结果图像图像队列，传入类型为bool类型。从上到下。",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "count",
+          "step",
+          "space",
+          "cyclicMode",
+          "sameSize"
+        ]
+      }
+    },
+    {
+      "name": "ILPolyRegion",
+      "description": "这个是ILPolyRegion类型(多边形ROI区域对象)的描述生成工具并返回生成后的ILPolyRegion类型的描述JSON。\r\n其中ILPolyRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILPolyRegion",
+        "description": "这个是ILPolyRegion类型(多边形ROI区域对象)的描述生成工具并返回生成后的ILPolyRegion类型的描述JSON。\r\n其中ILPolyRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "xs": {
+            "description": "多边形区域顶点 x 坐标数组 (Array<double>类型)",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "ys": {
+            "description": "多边形区域顶点 y 坐标数组 (Array<double>类型)",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": [
+          "xs",
+          "ys"
+        ]
+      }
+    },
+    {
+      "name": "ILRegion_Invert",
+      "description": "取反当前ROI区域，生成一个新的ROI区域 , P' = P ∩ other.\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILRegion_Invert",
+        "description": "取反当前ROI区域，生成一个新的ROI区域 , P' = P ∩ other.\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "regionClassObjDescriptionJson": {
+            "description": "原始的Roi区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "regionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILEllipseRegion",
+      "description": "这个是ILEllipseRegion类型(椭圆ROI区域对象)的描述生成工具并返回生成后的ILEllipseRegion类型的描述JSON。\r\n其中ILEllipseRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILEllipseRegion",
+        "description": "这个是ILEllipseRegion类型(椭圆ROI区域对象)的描述生成工具并返回生成后的ILEllipseRegion类型的描述JSON。\r\n其中ILEllipseRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "cenx": {
+            "description": "椭圆区域中心点的 x 坐标 (double类型)",
+            "type": "number"
+          },
+          "ceny": {
+            "description": "椭圆区域中心点的 y 坐标 (double类型)",
+            "type": "number"
+          },
+          "w": {
+            "description": "椭圆区域的宽度 (主轴长度) (double类型)",
+            "type": "number"
+          },
+          "h": {
+            "description": "椭圆区域的高度 (短轴长度) (double类型)",
+            "type": "number"
+          },
+          "a": {
+            "description": "椭圆区域的旋转角度 (主轴方向) (double类型)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "cenx",
+          "ceny",
+          "w",
+          "h",
+          "a"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_DivideScalar",
+      "description": "这个是将输入图像逐像素除以一个标量的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_DivideScalar",
+        "description": "这个是将输入图像逐像素除以一个标量的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "scalar": {
+            "description": "输入的标量，传入类型为double类型。",
+            "type": "number"
+          },
+          "scalar2": {
+            "description": "用于为彩色图像指定第二个通道使用的标量值，传入类型为double类型，若 scalar2 和 scalar3 都设置为 0（默认值），则对所有通道均使用 scalar 数值。",
+            "type": "number"
+          },
+          "scalar3": {
+            "description": "用于为彩色图像指定第三个通道使用的标量值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "scalar",
+          "scalar2",
+          "scalar3"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_ResizeTo",
+      "description": "这个是缩放输入图像到指定的尺寸的工具。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_ResizeTo",
+        "description": "这个是缩放输入图像到指定的尺寸的工具。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "w": {
+            "description": "输出图像的宽度，传入类型为int类型。",
+            "type": "integer"
+          },
+          "h": {
+            "description": "输出图像的高度，传入类型为int类型。",
+            "type": "integer"
+          },
+          "interMethod": {
+            "description": "插值方法，传入类型为LPVInterpolationMethod类型。",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "w",
+          "h",
+          "interMethod"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Multiply",
+      "description": "这个是将两个图像逐像素相乘的工具。输出一个新图像，两个输入图像需尺寸相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Multiply",
+        "description": "这个是将两个图像逐像素相乘的工具。输出一个新图像，两个输入图像需尺寸相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Resize",
+      "description": "这个是缩放输入图像的工具。按照给定的缩放比例。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Resize",
+        "description": "这个是缩放输入图像的工具。按照给定的缩放比例。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "zoomX": {
+            "description": "x 方向的缩放比例，传入类型为double类型。",
+            "type": "number"
+          },
+          "zoomY": {
+            "description": "y 方向的缩放比例，传入类型为double类型。",
+            "type": "number"
+          },
+          "interMethod": {
+            "description": "插值方法，传入类型为LPVInterpolationMethod类型。",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "zoomX",
+          "zoomY",
+          "interMethod"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_NormalizeMeanStdDev",
+      "description": "这个是归一化输入图像，以当前图像的均值和标准差计算感兴趣的数值范围，拉伸到目标数值范围的工具。不改变图像位深，归一化后的结果图像与输入位深相同、通道数相同。对于彩色的多通道图像，输出也是彩色多通道图像，每个通道分别独立进行归一化。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nbelowMask属性是入图图像中超出感兴趣数值范围的像素的蒙版地址。白色像素表示这些位置的数值小于 fromMinValue 或者大于 fromMaxValue 。可基于该蒙版，将这些位置的数值设置为统一个黑色或目标的最小最大值，或调用 FillHole() 进行修补。\r\naboveMask属性是入图图像中超出感兴趣数值范围的像素的蒙版地址。白色像素表示这些位置的数值小于 fromMinValue 或者大于 fromMaxValue 。可基于该蒙版，将这些位置的数值设置为统一个黑色或目标的最小最大值，或调用 FillHole() 进行修补。 ",
+      "inputSchema": {
+        "title": "ILImageOp_NormalizeMeanStdDev",
+        "description": "这个是归一化输入图像，以当前图像的均值和标准差计算感兴趣的数值范围，拉伸到目标数值范围的工具。不改变图像位深，归一化后的结果图像与输入位深相同、通道数相同。对于彩色的多通道图像，输出也是彩色多通道图像，每个通道分别独立进行归一化。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nbelowMask属性是入图图像中超出感兴趣数值范围的像素的蒙版地址。白色像素表示这些位置的数值小于 fromMinValue 或者大于 fromMaxValue 。可基于该蒙版，将这些位置的数值设置为统一个黑色或目标的最小最大值，或调用 FillHole() 进行修补。\r\naboveMask属性是入图图像中超出感兴趣数值范围的像素的蒙版地址。白色像素表示这些位置的数值小于 fromMinValue 或者大于 fromMaxValue 。可基于该蒙版，将这些位置的数值设置为统一个黑色或目标的最小最大值，或调用 FillHole() 进行修补。 ",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "k1": {
+            "description": "计算数值下限时使用的标准差系数，传入类型为double类型。",
+            "type": "number"
+          },
+          "k2": {
+            "description": "计算数值上限时使用的标准差系数，负数表示使用与 k1 相同的系数，传入类型为double类型。",
+            "type": "number"
+          },
+          "toMinValue": {
+            "description": "指定目标的数值范围，传入类型为double类型。表示使用图像位深的理论数值范围的最小值，对于 8 位图使用 0 ~ 255，对于 16 位图使用 0 ~ 65535 ",
+            "type": "number"
+          },
+          "toMaxValue": {
+            "description": "指定目标的数值范围，传入类型为double类型。表示使用图像位深的理论数值范围的最大值，对于 8 位图使用 0 ~ 255，对于 16 位图使用 0 ~ 65535 ",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "k1",
+          "k2",
+          "toMinValue",
+          "toMaxValue"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchGetPatCenter",
+      "description": "提供获取当前模板匹配的功能对象 配置的 模板中心 的功能 \r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\npatX 表示返回模板中心的 x 坐标,double类型。\r\npatY 表示返回模板中心的 y 坐标,double类型。\r\npatAngle 返回模板的 0° 角度 ,double类型。\r\n",
+      "inputSchema": {
+        "title": "PatMatchGetPatCenter",
+        "description": "提供获取当前模板匹配的功能对象 配置的 模板中心 的功能 \r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\npatX 表示返回模板中心的 x 坐标,double类型。\r\npatY 表示返回模板中心的 y 坐标,double类型。\r\npatAngle 返回模板的 0° 角度 ,double类型。\r\n",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILRegion_Intersect",
+      "description": "将当前ROI区域与输入的ROI区域进行并操作，生成一个新的ROI区域, P' = P ∩ other.\r\n新的区域仅包含两个区域同时覆盖的部分。 一个空区域与任何其他区域求交，获得一个空区域对象。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILRegion_Intersect",
+        "description": "将当前ROI区域与输入的ROI区域进行并操作，生成一个新的ROI区域, P' = P ∩ other.\r\n新的区域仅包含两个区域同时覆盖的部分。 一个空区域与任何其他区域求交，获得一个空区域对象。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "regionClassObjDescriptionJson": {
+            "description": "原始的Roi区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          },
+          "otherRegionClassObjDescriptionJson": {
+            "description": "输入用于并操作的ROI区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "regionClassObjDescriptionJson",
+          "otherRegionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchGetPatImage",
+      "description": "提供获取当前模板匹配的功能对象的模板图像。返回获取模板图像的图片。\r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是模板图像的图片URL地址\r\n",
+      "inputSchema": {
+        "title": "PatMatchGetPatImage",
+        "description": "提供获取当前模板匹配的功能对象的模板图像。返回获取模板图像的图片。\r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是模板图像的图片URL地址\r\n",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchGetPatPruneMask",
+      "description": "提供获取当前模板匹配的功能对象的特征点剔除蒙版图像。返回获取特征点剔除蒙版图像的图片。若当前模板没有进行特征点剔除，则返回一个空的图像。 \r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是特征点剔除蒙版图像的图片URL地址\r\n",
+      "inputSchema": {
+        "title": "PatMatchGetPatPruneMask",
+        "description": "提供获取当前模板匹配的功能对象的特征点剔除蒙版图像。返回获取特征点剔除蒙版图像的图片。若当前模板没有进行特征点剔除，则返回一个空的图像。 \r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是特征点剔除蒙版图像的图片URL地址\r\n",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILRegion_Union",
+      "description": "将当前ROI区域与输入的区域进行与操作，生成一个新的ROI区域， P' = P U other.\r\n与 Add() 相同，新的区域包含当前区域和输入区域中所包含的所有部分。 一个非空区域与空区域求与，获得该区域对象的拷贝。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILRegion_Union",
+        "description": "将当前ROI区域与输入的区域进行与操作，生成一个新的ROI区域， P' = P U other.\r\n与 Add() 相同，新的区域包含当前区域和输入区域中所包含的所有部分。 一个非空区域与空区域求与，获得该区域对象的拷贝。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "regionClassObjDescriptionJson": {
+            "description": "原始的Roi区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          },
+          "otherRegionClassObjDescriptionJson": {
+            "description": "输入用于与操作的ROI区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "regionClassObjDescriptionJson",
+          "otherRegionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchPrune",
+      "description": "提供了从已训练的模板特征中，剔除某些指定的特征的功能。输入区域对象外的特征将被删除，不参与匹配。\r\n 如果别的工具需要剔除某些指定的特征后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "PatMatchPrune",
+        "description": "提供了从已训练的模板特征中，剔除某些指定的特征的功能。输入区域对象外的特征将被删除，不参与匹配。\r\n 如果别的工具需要剔除某些指定的特征后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到需要输入的图像",
+            "type": "string"
+          },
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          },
+          "regionClassObjDescriptionJson": {
+            "description": "输入的Roi区域，输入Roi区域对象外的特征将被删除，不参与匹配。 \r\n如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "matchClassObjDescriptionJson",
+          "regionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "EdgeFilterNew",
+      "description": "提供了图像边缘增强的功能,创建一个图像边缘增强的功能调用的对象。\r\n 如果别的工具需要图像边缘增强的功能调用的对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能调用的对象);\r\nInputParameterFile 表示图像边缘增强的功能调用的对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "EdgeFilterNew",
+        "description": "提供了图像边缘增强的功能,创建一个图像边缘增强的功能调用的对象。\r\n 如果别的工具需要图像边缘增强的功能调用的对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能调用的对象);\r\nInputParameterFile 表示图像边缘增强的功能调用的对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "PatMatchSetPatCenter",
+      "description": "提供修改当前模板匹配的功能对象 配置的 模板中心 和 模板中心设置方式 的功能。默认设置为使用模板图像的中心作为匹配结果中心。返回修改后的模板匹配的功能对象。\r\n 如果别的工具需要修改后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "PatMatchSetPatCenter",
+        "description": "提供修改当前模板匹配的功能对象 配置的 模板中心 和 模板中心设置方式 的功能。默认设置为使用模板图像的中心作为匹配结果中心。返回修改后的模板匹配的功能对象。\r\n 如果别的工具需要修改后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          },
+          "centerMode": {
+            "description": "匹配结果中心的设置方式的字符串,有以下几种可能：\r\nLPVPatImageCenter  表示 使用模板图像的中心作为匹配结果的中心，其角度为 0°。 \r\nLPVPatTrainedCenter  表示 使用训练得到的中心作为匹配结果的中心，使用训练特征的包围旋转矩形的角度作为 0°。\r\nLPVPatCustomCenter   表示 使用自定义的位置作为匹配结果的中心，使用自定义的角度作为 0°。\r\n",
+            "type": "string"
+          },
+          "patX": {
+            "description": "若使用自定义位置，输入该位置的 x 坐标 duoble 数字类型，默认可传0 ，如使用默认值请告知用户。\r\n",
+            "type": "number"
+          },
+          "patY": {
+            "description": "若使用自定义位置，输入该位置的 y 坐标 duoble 数字类型，默认可传0 ，如使用默认值请告知用户。\r\n",
+            "type": "number"
+          },
+          "patAngle": {
+            "description": "若使用自定义位置，输入指定的角度作为 0°，默认可传0 ，如使用默认值请告知用户。\r\n",
+            "type": "number"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson",
+          "centerMode",
+          "patX",
+          "patY",
+          "patAngle"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Add",
+      "description": "这个是将两个图像逐像素相加的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Add",
+        "description": "这个是将两个图像逐像素相加的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_AddWeighted",
+      "description": "这个是将两个图像逐像素相加的工具。输出一个新图像，两个输入图像的尺寸需相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_AddWeighted",
+        "description": "这个是将两个图像逐像素相加的工具。输出一个新图像，两个输入图像的尺寸需相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          },
+          "alpha": {
+            "description": "第一个输入图像的权重 ，传入类型为double类型。",
+            "type": "number"
+          },
+          "beta": {
+            "description": "第二个输入图像的权重 ，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2",
+          "alpha",
+          "beta"
+        ]
+      }
+    },
+    {
+      "name": "EdgeFilterSetEdgePolarity",
+      "description": "提供了图像边缘增强的功能,设置滤波器的边缘极性，以获得感兴趣极性的边缘 ,并返回设置完成的图像边缘增强的功能调用的对象。\r\n 如果别的图像边缘增强的功能要依赖于当前图像边缘增强的功能调用对象来调用，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示图像边缘增强的功能调用的对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "EdgeFilterSetEdgePolarity",
+        "description": "提供了图像边缘增强的功能,设置滤波器的边缘极性，以获得感兴趣极性的边缘 ,并返回设置完成的图像边缘增强的功能调用的对象。\r\n 如果别的图像边缘增强的功能要依赖于当前图像边缘增强的功能调用对象来调用，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示图像边缘增强的功能调用的对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {
+          "xPolarityString": {
+            "description": "水平方向边缘的极性（以从左到右为方向）。默认设置为任意极性。 \r\n存在 LPVBlack2White , LPVWhite2Black , LPVPolarityEitherEdge , LPVBlackOnWhite , LPVWhiteOnBlack , LPVPolarityEitherObject , LPVPolarityEither 种类型 \r\n类型 LPVBlack2White 表示：沿着区域的扫描方向看，边处于从黑（暗）到白（亮）的边缘 \r\n类型 LPVWhite2Black 表示：沿着区域的扫描方向看，边处于从白（亮）到黑（暗）的边缘  \r\n类型 LPVPolarityEitherEdge 表示：接受任意一种边缘极性，白到黑，或者黑到白 \r\n类型 LPVBlackOnWhite 表示：黑色（暗）目标在白色（亮）背景上 \r\n类型 LPVWhiteOnBlack 表示：白色（亮）目标在黑色（暗）背景上 \r\n类型 LPVPolarityEitherObject 表示：接受任意一种目标极性，白物体黑背景，或者黑物体白背景 \r\n类型 LPVPolarityEither 表示：接受任意一种极性  \r\n传入类型字符串即可，如 \"LPVPolarityEither\" ",
+            "type": "string"
+          },
+          "yPolarityString": {
+            "description": "垂直方向边缘的极性（以从上到下为方向）。默认设置为任意极性。 \r\n存在 LPVBlack2White , LPVWhite2Black , LPVPolarityEitherEdge , LPVBlackOnWhite , LPVWhiteOnBlack , LPVPolarityEitherObject , LPVPolarityEither 种类型 \r\n类型 LPVBlack2White 表示：沿着区域的扫描方向看，边处于从黑（暗）到白（亮）的边缘 \r\n类型 LPVWhite2Black 表示：沿着区域的扫描方向看，边处于从白（亮）到黑（暗）的边缘  \r\n类型 LPVPolarityEitherEdge 表示：接受任意一种边缘极性，白到黑，或者黑到白 \r\n类型 LPVBlackOnWhite 表示：黑色（暗）目标在白色（亮）背景上 \r\n类型 LPVWhiteOnBlack 表示：白色（亮）目标在黑色（暗）背景上 \r\n类型 LPVPolarityEitherObject 表示：接受任意一种目标极性，白物体黑背景，或者黑物体白背景 \r\n类型 LPVPolarityEither 表示：接受任意一种极性  \r\n传入类型字符串即可，如 \"LPVPolarityEither\" ",
+            "type": "string"
+          },
+          "edgeFilterClassObjDescriptionJson": {
+            "description": "用于图像边缘增强的功能调用的对象。如果用户没有指定图像边缘增强的功能相关对象，请创建一个图像边缘增强的功能调用的对象后传入。\r\n如果用户指定图像边缘增强的功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "xPolarityString",
+          "yPolarityString",
+          "edgeFilterClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILImageFilter",
+      "description": "这个是个图像滤波相关的初始化工具，初始化创建一个图像滤波工具的功能调用的对象。\r\n 是所有图像滤波工具下的MCP工具的初始化工具，在这些工具调用之前，都需要保证前处理调用过有且仅有一次此初始化工具。返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示图像滤波工具的功能调用的对象名称，目前名称应为：ILImageFilter (图像滤波工具的功能调用的对象)。\r\nInputParameterFile 表示 ILImageFilter 类初始化文件名称。\r\n",
+      "inputSchema": {
+        "title": "ILImageFilter",
+        "description": "这个是个图像滤波相关的初始化工具，初始化创建一个图像滤波工具的功能调用的对象。\r\n 是所有图像滤波工具下的MCP工具的初始化工具，在这些工具调用之前，都需要保证前处理调用过有且仅有一次此初始化工具。返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示图像滤波工具的功能调用的对象名称，目前名称应为：ILImageFilter (图像滤波工具的功能调用的对象)。\r\nInputParameterFile 表示 ILImageFilter 类初始化文件名称。\r\n",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "PatMatchGetPatCenterMode",
+      "description": "获取当前模板匹配的功能对象 配置的 模板中心设置方式  \r\n 返回一个字符串，返回的字符串有以下几种可能：\r\nLPVPatImageCenter  表示 使用模板图像的中心作为匹配结果的中心，其角度为 0°。 \r\nLPVPatTrainedCenter  表示 使用训练得到的中心作为匹配结果的中心，使用训练特征的包围旋转矩形的角度作为 0°。\r\nLPVPatCustomCenter   表示 使用自定义的位置作为匹配结果的中心，使用自定义的角度作为 0°。\r\n",
+      "inputSchema": {
+        "title": "PatMatchGetPatCenterMode",
+        "description": "获取当前模板匹配的功能对象 配置的 模板中心设置方式  \r\n 返回一个字符串，返回的字符串有以下几种可能：\r\nLPVPatImageCenter  表示 使用模板图像的中心作为匹配结果的中心，其角度为 0°。 \r\nLPVPatTrainedCenter  表示 使用训练得到的中心作为匹配结果的中心，使用训练特征的包围旋转矩形的角度作为 0°。\r\nLPVPatCustomCenter   表示 使用自定义的位置作为匹配结果的中心，使用自定义的角度作为 0°。\r\n",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILBlobAnalysis",
+      "description": "这个是灰度斑点分析工具。用户指定灰度值范围的选择这个工具。返回结构是一个序列化的json，其中Preview属性是输入图像在当前斑点分析配置下的二值化蒙版的图片地址，Build 为斑点分析结果，其中的Count表示斑点的数量，Item是所有斑点的集合，每一个斑点的: GetCenter 表示斑点的重心坐标;CountContour 表示斑点的外轮廓个数；CountHole 表示斑点的孔洞个数；GetRect 表示斑点的包围矩形； GetRotRect 表示斑点的包围旋转矩形； GetFeature是斑点的其他属性，包括：LPVBlobArea表示斑点面积、LPVBlobCenterX和LPVBlobCenterY表示斑点中心点的坐标;ToRegion 表示根据该斑点的轮廓蒙版，生成一个蒙版区域对象；LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称",
+      "inputSchema": {
+        "title": "ILBlobAnalysis",
+        "description": "这个是灰度斑点分析工具。用户指定灰度值范围的选择这个工具。返回结构是一个序列化的json，其中Preview属性是输入图像在当前斑点分析配置下的二值化蒙版的图片地址，Build 为斑点分析结果，其中的Count表示斑点的数量，Item是所有斑点的集合，每一个斑点的: GetCenter 表示斑点的重心坐标;CountContour 表示斑点的外轮廓个数；CountHole 表示斑点的孔洞个数；GetRect 表示斑点的包围矩形； GetRotRect 表示斑点的包围旋转矩形； GetFeature是斑点的其他属性，包括：LPVBlobArea表示斑点面积、LPVBlobCenterX和LPVBlobCenterY表示斑点中心点的坐标;ToRegion 表示根据该斑点的轮廓蒙版，生成一个蒙版区域对象；LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "paramsInfo": {
+            "description": "工具的参数配置，传入一个序列化的json字符串，属性包括：AddBlobFilter（过滤器）、AddBlobRange（斑点对象的灰度值范围)AddBlobFilter 有一个属性：SetFilterFeature，过滤条件在这里设置，值为一个对象。SetFilterFeature 对象的键为 LPVBlobArea、LPVBlobPerimeter、LPVBlobWidth、LPVBlobHeight、LPVBlobCircularity、LPVBlobConvexity、LPVBlobInertia、LPVBlobAspectRatio、LPVBlobSharpness、LPVBlobLuminance、LPVBlobContrast、LPVBlobCenterX、LPVBlobCenterY、LPVBlobColorV0、LPVBlobColorV1、LPVBlobColorV2 其中的任意一个，每个键具体含义为：LPVBlobArea 斑点的面积，LPVBlobPerimeter 斑点外轮廓的周长，LPVBlobWidth 斑点的旋转包围盒的长轴长度 ，LPVBlobHeight 斑点的旋转包围盒的短轴长度，LPVBlobCircularity 斑点的圆度形状特征，LPVBlobConvexity 斑点的凸度形状属性，LPVBlobInertia 斑点轮廓的惯性矩，LPVBlobAspectRatio 斑点的包围旋转矩形的长宽比，LPVBlobSharpness 斑点内像素的清晰度，LPVBlobLuminance 斑点内像素的平均亮度，LPVBlobContrast 斑点内像素的平均对比度，LPVBlobCenterX 斑点中心点的 x 坐标 ，LPVBlobCenterY  斑点中心点的 y 坐标 ，LPVBlobColorV0 斑点内像素的平均 0 通道值，LPVBlobColorV1 斑点内像素的平均 1 通道值，LPVBlobColorV2 斑点内像素的平均 2 通道值。值全部都是 LowerBound 和 UpperBound，其中 LowerBound 为下限，UpperBound为上限，例如：周长最小2000，最大为6000，转换为：LPVBlobPerimete:{LowerBound:2000,UpperBound:6000}。AddBlobRange 有两个属性：grayLB (灰度值范围的下限) 和 grayUB (灰度值范围的上限)，值为0到255之间的整数举例：用户输入 “过滤面积最小为2000，最大为100000；周长最小2000，最大为6000；灰度值在2到44之间的”，需要转换为：{\"AddBlobFilter\":{\"SetFilterFeature\":{\"LPVBlobArea\":{\"LowerBound\":2000,\"UpperBound\":100000},\"LPVBlobPerimeter\":{\"LowerBound\":2000,\"UpperBound\":6000}}},\"AddBlobRange\":{\"grayLB\":2,\"grayUB\":44}}",
+            "type": "string"
+          },
+          "RoiILRegion": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "paramsInfo",
+          "RoiILRegion"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_BitXorScalar",
+      "description": "这个是将输入图像和一个标量逐像素进行位操作异或的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_BitXorScalar",
+        "description": "这个是将输入图像和一个标量逐像素进行位操作异或的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "scalar": {
+            "description": "输入的标量，传入类型为double类型。",
+            "type": "number"
+          },
+          "scalar2": {
+            "description": "用于为彩色图像指定第二个通道使用的标量值，传入类型为double类型，若 scalar2 和 scalar3 都设置为 0（默认值），则对所有通道均使用 scalar 数值。",
+            "type": "number"
+          },
+          "scalar3": {
+            "description": "用于为彩色图像指定第三个通道使用的标量值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "scalar",
+          "scalar2",
+          "scalar3"
+        ]
+      }
+    },
+    {
+      "name": "ILImageFilter_EdgePreserveDenoise",
+      "description": "这个是过滤图像噪声并保留边缘工具。\r\n用户没有指定滤波相关参数时，必须设置默认参数：平滑度0.01，加速算法运行的系数4。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageFilter_EdgePreserveDenoise",
+        "description": "这个是过滤图像噪声并保留边缘工具。\r\n用户没有指定滤波相关参数时，必须设置默认参数：平滑度0.01，加速算法运行的系数4。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "speedupFactor": {
+            "description": "加速算法运行的系数，传入类型为int类型，用于加速算法运行的系数，推荐使用核尺寸的因数",
+            "type": "integer"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          },
+          "refImageUrl": {
+            "description": "边缘信息图片的url地址，通过这个地址获取到图片，如果用户没有指定图像，请直接传入 \"null\" 。用于为降噪过程提供需要保留边缘的大致位置和强度。该图像尺寸需与输入图像相同。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "speedupFactor",
+          "InputParameterFile",
+          "refImageUrl"
+        ]
+      }
+    },
+    {
+      "name": "EdgeFilterSetEdgeKernel",
+      "description": "提供了图像边缘增强的功能,设置图像边缘滤波器所使用的滤波核类型核尺寸 ,并返回设置完成的图像边缘增强的功能调用的对象。\r\n 如果别的图像边缘增强的功能要依赖于当前图像边缘增强的功能调用对象来调用，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示图像边缘增强的功能调用的对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "EdgeFilterSetEdgeKernel",
+        "description": "提供了图像边缘增强的功能,设置图像边缘滤波器所使用的滤波核类型核尺寸 ,并返回设置完成的图像边缘增强的功能调用的对象。\r\n 如果别的图像边缘增强的功能要依赖于当前图像边缘增强的功能调用对象来调用，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示图像边缘增强的功能调用的对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {
+          "kTypeString": {
+            "description": "核类型，目前有三种核类型，LPVSobel , LPVPrewitt , LPVScharr 。传入类型为字符串类型\r\n其中LPVSobel表示：Sobel 核，该核结合了高斯模糊和差分的效果，因此对噪声的抗干扰性较强。\r\n其中LPVPrewitt表示：Prewitt 核，相较于Sobel算子的加权差分机制，Prewitt算子未引入中心像素权重，适用于边缘灰度对比明显且噪声较多的场景。\r\n其中LPVScharr表示：Scharr 核，其精度略差于 Sobel 核但更平滑。\r\n",
+            "type": "string"
+          },
+          "kWidth": {
+            "description": "滤波核的宽度,传入类型为int类型,需要是一个 3 ~ 31 之间的奇数，如 3, 5, 7 等。 若核尺寸设置为 1，将退化为 (-1, 1)，指定的核类型不起作用。 \r\n",
+            "type": "integer"
+          },
+          "kHeight": {
+            "description": "滤波核的高度,传入类型为int类型，需要是一个 3 ~ 31 之间的奇数，如 3, 5, 7 等。若设置为 0，则使用与宽度相同。  \r\n",
+            "type": "integer"
+          },
+          "edgeFilterClassObjDescriptionJson": {
+            "description": "用于图像边缘增强的功能调用的对象。如果用户没有指定图像边缘增强的功能相关对象，请创建一个图像边缘增强的功能调用的对象后传入。\r\n如果用户指定图像边缘增强的功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kTypeString",
+          "kWidth",
+          "kHeight",
+          "edgeFilterClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchGetPatMask",
+      "description": "提供获取当前模板匹配的功能对象的模板蒙版图像。返回获取模板蒙版图像的图片。若当前模板没有蒙版，则返回一个空的图像。 。\r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是模板蒙版图像的图片URL地址\r\n",
+      "inputSchema": {
+        "title": "PatMatchGetPatMask",
+        "description": "提供获取当前模板匹配的功能对象的模板蒙版图像。返回获取模板蒙版图像的图片。若当前模板没有蒙版，则返回一个空的图像。 。\r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是模板蒙版图像的图片URL地址\r\n",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILAnnulusRegion",
+      "description": "这个是ILAnnulusRegion类型(圆环ROI区域对象)的描述生成工具并返回生成后的ILAnnulusRegion类型的描述JSON。\r\n其中ILAnnulusRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILAnnulusRegion",
+        "description": "这个是ILAnnulusRegion类型(圆环ROI区域对象)的描述生成工具并返回生成后的ILAnnulusRegion类型的描述JSON。\r\n其中ILAnnulusRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "cenx": {
+            "description": "圆环区域中心的 x 坐标 (double类型)",
+            "type": "number"
+          },
+          "ceny": {
+            "description": "圆环区域中心的 y 坐标 (double类型)",
+            "type": "number"
+          },
+          "rInner": {
+            "description": "圆环区域的内半径 (double类型)",
+            "type": "number"
+          },
+          "rOuter": {
+            "description": "圆环区域的外半径 (double类型)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "cenx",
+          "ceny",
+          "rInner",
+          "rOuter"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Flip",
+      "description": "这个是水平或垂直翻转一个图像的工具。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Flip",
+        "description": "这个是水平或垂直翻转一个图像的工具。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "flipType": {
+            "description": "输入的标量，传入类型为LPVFlipType类型。",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "flipType"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_MinScalar",
+      "description": "这个是将输入图像和一个标量逐像素比较，取其最小值的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_MinScalar",
+        "description": "这个是将输入图像和一个标量逐像素比较，取其最小值的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "scalar": {
+            "description": "输入的标量，传入类型为double类型。",
+            "type": "number"
+          },
+          "scalar2": {
+            "description": "用于为彩色图像指定第二个通道使用的标量值，传入类型为double类型，若 scalar2 和 scalar3 都设置为 0（默认值），则对所有通道均使用 scalar 数值。",
+            "type": "number"
+          },
+          "scalar3": {
+            "description": "用于为彩色图像指定第三个通道使用的标量值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "scalar",
+          "scalar2",
+          "scalar3"
+        ]
+      }
+    },
+    {
+      "name": "ILRectRegion",
+      "description": "这个是ILRectRegion类型(矩形ROI区域对象)的描述生成工具并返回生成后的ILRectRegion类型的描述JSON。\r\n其中ILRectRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILRectRegion",
+        "description": "这个是ILRectRegion类型(矩形ROI区域对象)的描述生成工具并返回生成后的ILRectRegion类型的描述JSON。\r\n其中ILRectRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "TopLeftX": {
+            "description": "矩形区域左上角顶点的 x 坐标，即左边界 (double类型)",
+            "type": "number"
+          },
+          "TopLeftY": {
+            "description": "矩形区域左上角顶点的 y 坐标，即上边界 (double类型)",
+            "type": "number"
+          },
+          "Width": {
+            "description": "矩形区域的宽度 (double类型)",
+            "type": "number"
+          },
+          "Height": {
+            "description": "矩形区域的高度  (double类型)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "TopLeftX",
+          "TopLeftY",
+          "Width",
+          "Height"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_MultiplyScalar",
+      "description": "这个是将输入图像和一个标量逐像素相乘的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_MultiplyScalar",
+        "description": "这个是将输入图像和一个标量逐像素相乘的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "scalar": {
+            "description": "输入的标量，传入类型为double类型。",
+            "type": "number"
+          },
+          "scalar2": {
+            "description": "用于为彩色图像指定第二个通道使用的标量值，传入类型为double类型，若 scalar2 和 scalar3 都设置为 0（默认值），则对所有通道均使用 scalar 数值。",
+            "type": "number"
+          },
+          "scalar3": {
+            "description": "用于为彩色图像指定第三个通道使用的标量值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "scalar",
+          "scalar2",
+          "scalar3"
+        ]
+      }
+    },
+    {
+      "name": "ILBlobAnalysisColor",
+      "description": "这个是彩色斑点分析工具。用户指定彩色值范围的选择这个工具。返回结构是一个序列化的json，其中Preview属性是输入图像在当前斑点分析配置下的二值化蒙版的图片地址，Build 为斑点分析结果，其中的Count表示斑点的数量，Item是所有斑点的集合，每一个斑点的: GetCenter 表示斑点的重心坐标;CountContour 表示斑点的外轮廓个数；CountHole 表示斑点的孔洞个数；GetRect 表示斑点的包围矩形； GetRotRect 表示斑点的包围旋转矩形； GetFeature是斑点的其他属性，包括：LPVBlobArea表示斑点面积、LPVBlobCenterX和LPVBlobCenterY表示斑点中心点的坐标;ToRegion 表示根据该斑点的轮廓蒙版，生成一个蒙版区域对象；LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称",
+      "inputSchema": {
+        "title": "ILBlobAnalysisColor",
+        "description": "这个是彩色斑点分析工具。用户指定彩色值范围的选择这个工具。返回结构是一个序列化的json，其中Preview属性是输入图像在当前斑点分析配置下的二值化蒙版的图片地址，Build 为斑点分析结果，其中的Count表示斑点的数量，Item是所有斑点的集合，每一个斑点的: GetCenter 表示斑点的重心坐标;CountContour 表示斑点的外轮廓个数；CountHole 表示斑点的孔洞个数；GetRect 表示斑点的包围矩形； GetRotRect 表示斑点的包围旋转矩形； GetFeature是斑点的其他属性，包括：LPVBlobArea表示斑点面积、LPVBlobCenterX和LPVBlobCenterY表示斑点中心点的坐标;ToRegion 表示根据该斑点的轮廓蒙版，生成一个蒙版区域对象；LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "paramsInfo": {
+            "description": "工具的参数配置，传入一个序列化的json字符串，属性包括：AddBlobFilter（过滤器）、AddBlobRangeColor（斑点对象的彩色值范围)AddBlobFilter 有一个属性：SetFilterFeature，过滤条件在这里设置，值为一个对象。SetFilterFeature 对象的键为 LPVBlobArea、LPVBlobPerimeter、LPVBlobWidth、LPVBlobHeight、LPVBlobCircularity、LPVBlobConvexity、LPVBlobInertia、LPVBlobAspectRatio、LPVBlobSharpness、LPVBlobLuminance、LPVBlobContrast、LPVBlobCenterX、LPVBlobCenterY、LPVBlobColorV0、LPVBlobColorV1、LPVBlobColorV2 其中的任意一个，每个键具体含义为：LPVBlobArea 斑点的面积，LPVBlobPerimeter 斑点外轮廓的周长，LPVBlobWidth 斑点的旋转包围盒的长轴长度 ，LPVBlobHeight 斑点的旋转包围盒的短轴长度，LPVBlobCircularity 斑点的圆度形状特征，LPVBlobConvexity 斑点的凸度形状属性，LPVBlobInertia 斑点轮廓的惯性矩，LPVBlobAspectRatio 斑点的包围旋转矩形的长宽比，LPVBlobSharpness 斑点内像素的清晰度，LPVBlobLuminance 斑点内像素的平均亮度，LPVBlobContrast 斑点内像素的平均对比度，LPVBlobCenterX 斑点中心点的 x 坐标 ，LPVBlobCenterY  斑点中心点的 y 坐标 ，LPVBlobColorV0 斑点内像素的平均 0 通道值，LPVBlobColorV1 斑点内像素的平均 1 通道值，LPVBlobColorV2 斑点内像素的平均 2 通道值。值全部都是 LowerBound 和 UpperBound，其中 LowerBound 为下限，UpperBound为上限，例如：周长最小2000，最大为6000，转换为：LPVBlobPerimete:{LowerBound:2000,UpperBound:6000}。AddBlobRangeColor 有六个属性：分别对应红色、绿色、蓝色通道的最小值和最大值（RedMin, RedMax, GreenMin, GreenMax, BlueMin, BlueMax），值为0到255之间的整数举例：用户输入 “过滤面积最小为2000，最大为100000；周长最小2000，最大为6000；红色通道范围0到44，绿色2到44，蓝色0到44”，需要转换为：{\"AddBlobFilter\":{\"SetFilterFeature\":{\"LPVBlobArea\":{\"LowerBound\":2000,\"UpperBound\":100000},\"LPVBlobPerimeter\":{\"LowerBound\":2000,\"UpperBound\":6000}}},\"AddBlobRangeColor\":{\"RedMin\":0,\"RedMax\":44,\"GreenMin\":2,\"GreenMax\":44,\"BlueMin\":0,\"BlueMax\":44}}",
+            "type": "string"
+          },
+          "RoiILRegion": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "paramsInfo",
+          "RoiILRegion"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_BitXor",
+      "description": "这个是将两个图像逐像素进行位操作异或的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_BitXor",
+        "description": "这个是将两个图像逐像素进行位操作异或的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ILImageFilter_Gaussian",
+      "description": "这个是高斯滤波工具。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageFilter_Gaussian",
+        "description": "这个是高斯滤波工具。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ILImageThreshold_Stretch",
+      "description": "这个是拉伸图像工具。拉伸输入图像并输出结果图像。如果用户同时设置了阈值，要先执行设置阈值工具，然后再执行此工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;result 属性是输入图像拉伸结果的图片地址",
+      "inputSchema": {
+        "title": "ILImageThreshold_Stretch",
+        "description": "这个是拉伸图像工具。拉伸输入图像并输出结果图像。如果用户同时设置了阈值，要先执行设置阈值工具，然后再执行此工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;result 属性是输入图像拉伸结果的图片地址",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageThreshold 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageThreshold 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ILImageFilter_LocalMedian",
+      "description": "这个是中值滤波工具。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageFilter_LocalMedian",
+        "description": "这个是中值滤波工具。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "DisplayMatch",
+      "description": "这个是执行模板匹配的图像的交互工具，并返回标记斑点后的图片。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是标记输入图像斑点标记后的图片URL地址\r\n",
+      "inputSchema": {
+        "title": "DisplayMatch",
+        "description": "这个是执行模板匹配的图像的交互工具，并返回标记斑点后的图片。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是标记输入图像斑点标记后的图片URL地址\r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入的图像",
+            "type": "string"
+          },
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象壳用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请直接传入 \"null\" 。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          },
+          "regionClassObjDescriptionJson": {
+            "description": "用于限定模板匹配的Roi区域。如果用户没有指定区域，请提醒用户描述限定模板匹配的Roi区域。 限定模板匹配的Roi区域为一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "matchClassObjDescriptionJson",
+          "regionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_Divide",
+      "description": "这个是将第一个输入图像逐像素除以第二个输入图像的像素的工具。输出一个新图像，对于第二个图像中的 0 像素，输出结果为 0。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Divide",
+        "description": "这个是将第一个输入图像逐像素除以第二个输入图像的像素的工具。输出一个新图像，对于第二个图像中的 0 像素，输出结果为 0。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ILImageFilter_HighPass",
+      "description": "这个是高通滤波工具，相对于梯度更一致的区域，增强图像中的边。 \r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageFilter_HighPass",
+        "description": "这个是高通滤波工具，相对于梯度更一致的区域，增强图像中的边。 \r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_BitAnd",
+      "description": "这个是将两个图像逐像素相加的工具。输出一个新图像，两个输入图像的尺寸需相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_BitAnd",
+        "description": "这个是将两个图像逐像素相加的工具。输出一个新图像，两个输入图像的尺寸需相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_DiffScalar",
+      "description": "这个是计算输入图像和一个标量逐像素差值的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_DiffScalar",
+        "description": "这个是计算输入图像和一个标量逐像素差值的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "scalar": {
+            "description": "输入的标量，传入类型为double类型。",
+            "type": "number"
+          },
+          "scalar2": {
+            "description": "用于为彩色图像指定第二个通道使用的标量值，传入类型为double类型，若 scalar2 和 scalar3 都设置为 0（默认值），则对所有通道均使用 scalar 数值。",
+            "type": "number"
+          },
+          "scalar3": {
+            "description": "用于为彩色图像指定第三个通道使用的标量值，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "scalar",
+          "scalar2",
+          "scalar3"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchIsLearnt",
+      "description": "检查 当前模板匹配的功能对象 是否已训练。 \r\n布尔值(bool)类型  已训练，返回 true，否则返回 false ",
+      "inputSchema": {
+        "title": "PatMatchIsLearnt",
+        "description": "检查 当前模板匹配的功能对象 是否已训练。 \r\n布尔值(bool)类型  已训练，返回 true，否则返回 false ",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchLearn",
+      "description": "提供了训练模板匹配的功能。并返回使用输入的图像训练后的模板匹配的功能对象。\r\n 如果别的工具需要训练后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "PatMatchLearn",
+        "description": "提供了训练模板匹配的功能。并返回使用输入的图像训练后的模板匹配的功能对象。\r\n 如果别的工具需要训练后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到需要输入的图像",
+            "type": "string"
+          },
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          },
+          "regionClassObjDescriptionJson": {
+            "description": "输入的Roi区域，用于限定模板在输入图像中的位置。 \r\n如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "matchClassObjDescriptionJson",
+          "regionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILImageFilter_FillHole",
+      "description": "这个是修补输入图像中的孔洞工具，基于临近像素的数值重建孔洞中的缺失像素。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageFilter_FillHole",
+        "description": "这个是修补输入图像中的孔洞工具，基于临近像素的数值重建孔洞中的缺失像素。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "maskImageUrl": {
+            "description": "图片的url地址，孔洞的蒙版图像，与输入图像尺寸相同。白色像素表示孔洞。 ",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "maskImageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "PatMatchGetPatFeature",
+      "description": "获取当前模板匹配的功能对象 的特征点 。返回一组 位置点(Point) 的集合。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nCount(点位的数量) 和 Empty(是否为空，ture为空，false则不为空) 和 Item(点的位置的数组，数组中的对象包含X,Y属性分别代表x和y的坐标) 。\r\n",
+      "inputSchema": {
+        "title": "PatMatchGetPatFeature",
+        "description": "获取当前模板匹配的功能对象 的特征点 。返回一组 位置点(Point) 的集合。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nCount(点位的数量) 和 Empty(是否为空，ture为空，false则不为空) 和 Item(点的位置的数组，数组中的对象包含X,Y属性分别代表x和y的坐标) 。\r\n",
+        "type": "object",
+        "properties": {
+          "matchClassObjDescriptionJson": {
+            "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          },
+          "level": {
+            "description": "指定获取特征的层级。可能的取值有：-1 表示所有层级，0（默认值）表示原始尺度的 0 层特征，1 表示缩小尺度的 1 层特征 。\r\n",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "matchClassObjDescriptionJson",
+          "level"
+        ]
+      }
+    },
+    {
+      "name": "ILImageFilter_SetKernelSize",
+      "description": "设置图像滤波工具所使用的滤波核的核尺寸 ,并返回设置完成的图像滤波工具的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具的功能调用的对象名称，目前名称应为：ILImageFilter (图像滤波工具的功能相关对象);\r\nInputParameterFile 表示图像滤波工具的功能调用的对象的参数文件名称。\r\n",
+      "inputSchema": {
+        "title": "ILImageFilter_SetKernelSize",
+        "description": "设置图像滤波工具所使用的滤波核的核尺寸 ,并返回设置完成的图像滤波工具的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具的功能调用的对象名称，目前名称应为：ILImageFilter (图像滤波工具的功能相关对象);\r\nInputParameterFile 表示图像滤波工具的功能调用的对象的参数文件名称。\r\n",
+        "type": "object",
+        "properties": {
+          "kWidth": {
+            "description": "滤波核的宽度,传入类型为int类型,需要是一个 3 ~ 31 之间的奇数，如 3, 5, 7 等。\r\n",
+            "type": "integer"
+          },
+          "kHeight": {
+            "description": "滤波核的高度,传入类型为int类型，需要是一个 3 ~ 31 之间的奇数，如 3, 5, 7 等。若设置为 0，则使用与宽度相同。\r\n",
+            "type": "integer"
+          },
+          "InputParameterFile": {
+            "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kWidth",
+          "kHeight",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "EdgeFilterGradientFull",
+      "description": "提供了图像边缘增强的功能，在全梯度，水平和垂直边缘在输出图像中均表现为较亮的像素。\r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址",
+      "inputSchema": {
+        "title": "EdgeFilterGradientFull",
+        "description": "提供了图像边缘增强的功能，在全梯度，水平和垂直边缘在输出图像中均表现为较亮的像素。\r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "edgeFilterClassObjDescriptionJson": {
+            "description": "用于图像边缘增强的功能调用的对象。如果用户没有指定图像边缘增强的功能相关对象，请创建一个图像边缘增强的功能调用的对象后传入。\r\n如果用户指定图像边缘增强的功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "edgeFilterClassObjDescriptionJson"
+        ]
+      }
+    }
+  ]
+}
