@@ -13,8 +13,8 @@ COPY . .
 
 # Build the application
 RUN npm run build
-# generate json files
-RUN npm run gen-json
+# generate json files, make it manual
+# RUN npm run gen-json
 
 # Command will be provided by smithery.yaml
 CMD ["node", "dist/index.js"]
