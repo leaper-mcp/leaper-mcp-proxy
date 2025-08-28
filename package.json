@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "test": "npm run build && node dist/client.js",
-    "gen-json": "npm run build && node dist/gen.js"
+    "gen-json": "npm run build && node dist/gen.js",
+    "gen-method-dir": "npm run build && node dist/genMethodDir.js"
   },
   "keywords": [
     "mcp",
