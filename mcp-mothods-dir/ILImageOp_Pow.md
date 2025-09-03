@@ -1,0 +1,25 @@
+```json
+{
+    "name": "ILImageOp_Pow",
+    "description": "这个是将对输入图像进行逐像素幂运算的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "inputSchema": {
+        "title": "ILImageOp_Pow",
+        "description": "这个是将对输入图像进行逐像素幂运算的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+            "imageUrl": {
+                "description": "图片的url地址，通过这个地址获取到图片",
+                "type": "string"
+            },
+            "power": {
+                "description": "输入的指数，传入类型为double类型。",
+                "type": "number"
+            }
+        },
+        "required": [
+            "imageUrl",
+            "power"
+        ]
+    }
+}
+```
