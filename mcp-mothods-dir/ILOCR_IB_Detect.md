@@ -10,6 +10,11 @@
             "imageUrl": {
                 "description": "图片的url地址，通过这个地址获取到图片",
                 "type": "string"
+            },
+            "isGetShape": {
+                "description": "是否获取每个文字形状点位，默认为 false",
+                "type": "boolean",
+                "default": false
             }
         },
         "required": [
