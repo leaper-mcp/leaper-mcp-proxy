@@ -12,7 +12,7 @@
                 "type": "string"
             },
             "colorMapType": {
-                "description": "颜色映射表类型，例如：LPVColorMap.Jet",
+                "description": "颜色映射表类型，例如：LPVColorMapAutumn,LPVColorMapBone,LPVColorMapJet,LPVColorMapWinter,LPVColorMapRainbow,LPVColorMapOcean,LPVColorMapSummer,LPVColorMapSpring,LPVColorMapCool,LPVColorMapHSV,LPVColorMapPink,LPVColorMapHot,LPVColorMapParula,LPVColorMapMagma,LPVColorMapInferno,LPVColorMapPlasma,LPVColorMapViridis,LPVColorMapCividis,LPVColorMapTwilight,LPVColorMapTwilightShifted,LPVColorMapTurbo,LPVColorMapDeepgreen,LPVColorMapSemi,LPVColorMapRed,LPVColorMapGreen,LPVColorMapBlue",
                 "type": "string"
             },
             "inverse": {
