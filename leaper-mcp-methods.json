@@ -103,6 +103,29 @@
       }
     },
     {
+      "name": "Image_GetChannel",
+      "description": "BGR8 从彩色图像中提取某一个给定索引的通道图像。仅用于彩色图像。\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 给定索引的通道的图像结果\r\n",
+      "inputSchema": {
+        "title": "Image_GetChannel",
+        "description": "BGR8 从彩色图像中提取某一个给定索引的通道图像。仅用于彩色图像。\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 给定索引的通道的图像结果\r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "当前图像的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "channelIdx": {
+            "description": "输入的通道索引，可为 0，1 或 2 ",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "channelIdx"
+        ]
+      }
+    },
+    {
       "name": "ILBlobAnalysisColor",
       "description": "这个是彩色斑点分析工具。用户指定彩色值范围的选择这个工具。返回结构是一个序列化的json，其中Preview属性是输入图像在当前斑点分析配置下的二值化蒙版的图片地址，Build 为斑点分析结果，其中的Count表示斑点的数量，Item是所有斑点的集合，每一个斑点的: GetCenter 表示斑点的重心坐标;CountContour 表示斑点的外轮廓个数；CountHole 表示斑点的孔洞个数；GetRect 表示斑点的包围矩形； GetRotRect 表示斑点的包围旋转矩形； GetFeature是斑点的其他属性，包括：LPVBlobArea表示斑点面积、LPVBlobCenterX和LPVBlobCenterY表示斑点中心点的坐标;ToRegion 表示根据该斑点的轮廓蒙版，生成一个蒙版区域对象；LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称",
       "inputSchema": {
@@ -942,6 +965,44 @@
       }
     },
     {
+      "name": "Image_SetToColor",
+      "description": "将图像中给定区域内的像素设置为指定的 RGB 值。仅用于彩色图像。  \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置颜色后的图像结果 \r\n",
+      "inputSchema": {
+        "title": "Image_SetToColor",
+        "description": "将图像中给定区域内的像素设置为指定的 RGB 值。仅用于彩色图像。  \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置颜色后的图像结果 \r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "当前图像的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "blue": {
+            "description": "蓝色通道值，范围0-255",
+            "type": "integer"
+          },
+          "green": {
+            "description": "绿色通道值，范围0-255",
+            "type": "integer"
+          },
+          "red": {
+            "description": "红色通道值，范围0-255",
+            "type": "integer"
+          },
+          "regionJson": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "blue",
+          "green",
+          "red",
+          "regionJson"
+        ]
+      }
+    },
+    {
       "name": "ILCircleDetector_SetEdgeWidth",
       "description": "设置圆定位工具所使用的圆边缘的宽度，并返回设置完成的圆定位工具的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示圆定位工具的功能调用的对象名称，目前名称应为：ILCircleDetector (圆定位工具的功能相关对象);\r\nInputParameterFile 表示圆定位工具的功能调用的对象的参数文件名称。\r\n",
       "inputSchema": {
@@ -1254,7 +1315,7 @@
             "type": "string"
           },
           "colorMapType": {
-            "description": "颜色映射表类型，例如：LPVColorMap.Jet",
+            "description": "颜色映射表类型，例如：LPVColorMapAutumn,LPVColorMapBone,LPVColorMapJet,LPVColorMapWinter,LPVColorMapRainbow,LPVColorMapOcean,LPVColorMapSummer,LPVColorMapSpring,LPVColorMapCool,LPVColorMapHSV,LPVColorMapPink,LPVColorMapHot,LPVColorMapParula,LPVColorMapMagma,LPVColorMapInferno,LPVColorMapPlasma,LPVColorMapViridis,LPVColorMapCividis,LPVColorMapTwilight,LPVColorMapTwilightShifted,LPVColorMapTurbo,LPVColorMapDeepgreen,LPVColorMapSemi,LPVColorMapRed,LPVColorMapGreen,LPVColorMapBlue",
             "type": "string"
           },
           "inverse": {
@@ -1538,6 +1599,34 @@
           "imageUrl",
           "angle",
           "interMethod"
+        ]
+      }
+    },
+    {
+      "name": "Image_SetTo",
+      "description": "将图像中给定区域内的像素设置为指定的灰度值 。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置灰度后的图像结果 \r\n",
+      "inputSchema": {
+        "title": "Image_SetTo",
+        "description": "将图像中给定区域内的像素设置为指定的灰度值 。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置灰度后的图像结果 \r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "当前图像的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "grayValue": {
+            "description": "灰度值,取值范围0-255，越低则越黑，越高则越白，0则为黑色，255是白色",
+            "type": "integer"
+          },
+          "regionJson": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "grayValue",
+          "regionJson"
         ]
       }
     },
@@ -1958,6 +2047,62 @@
       }
     },
     {
+      "name": "Image_SetSize",
+      "description": "设置图像为指定尺寸。像素的数值为未定义的，可调用 SetTo() 或 SetToColor() 接口将其全部设置为 0 或其他数值。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置尺寸后的图像结果",
+      "inputSchema": {
+        "title": "Image_SetSize",
+        "description": "设置图像为指定尺寸。像素的数值为未定义的，可调用 SetTo() 或 SetToColor() 接口将其全部设置为 0 或其他数值。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置尺寸后的图像结果",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "当前图像的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "width": {
+            "description": "输入图像宽度",
+            "type": "integer"
+          },
+          "height": {
+            "description": "输入图像高度",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "width",
+          "height"
+        ]
+      }
+    },
+    {
+      "name": "Image_SetChannel",
+      "description": "设置彩色图像中某一个给定索引的通道图像。仅用于彩色图像。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置通道后的图像结果 \r\n",
+      "inputSchema": {
+        "title": "Image_SetChannel",
+        "description": "设置彩色图像中某一个给定索引的通道图像。仅用于彩色图像。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置通道后的图像结果 \r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "当前图像的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "channelIdx": {
+            "description": "输入的通道索引，可为 0，1 或 2 ",
+            "type": "integer"
+          },
+          "channelImageUrl": {
+            "description": "通道图像的url地址，通过这个地址获取到通道图像",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "channelIdx",
+          "channelImageUrl"
+        ]
+      }
+    },
+    {
       "name": "PatMatchGetPatCenterMode",
       "description": "获取当前模板匹配的功能对象 配置的 模板中心设置方式  \r\n 返回一个字符串，返回的字符串有以下几种可能：\r\nLPVPatImageCenter  表示 使用模板图像的中心作为匹配结果的中心，其角度为 0°。 \r\nLPVPatTrainedCenter  表示 使用训练得到的中心作为匹配结果的中心，使用训练特征的包围旋转矩形的角度作为 0°。\r\nLPVPatCustomCenter   表示 使用自定义的位置作为匹配结果的中心，使用自定义的角度作为 0°。\r\n",
       "inputSchema": {
@@ -2333,6 +2478,44 @@
         "required": [
           "imageUrl",
           "flipType"
+        ]
+      }
+    },
+    {
+      "name": "Image_CopyFrom",
+      "description": "复制输入图像的内容并覆盖当前图像的指定位置 。\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 复制输入图像的内容并覆盖当前图像的结果\r\n",
+      "inputSchema": {
+        "title": "Image_CopyFrom",
+        "description": "复制输入图像的内容并覆盖当前图像的指定位置 。\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 复制输入图像的内容并覆盖当前图像的结果\r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "当前图像的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "inputImageUrl": {
+            "description": "输入图像的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "regionJson": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          },
+          "panX": {
+            "description": "x 方向的平移量",
+            "type": "integer"
+          },
+          "panY": {
+            "description": "y 方向的平移量",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "inputImageUrl",
+          "regionJson",
+          "panX",
+          "panY"
         ]
       }
     },
@@ -2798,6 +2981,29 @@
       }
     },
     {
+      "name": "ILImageOp_Brightness",
+      "description": "这个是图片亮度调节工具，可以让图片变亮或者变暗。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageOp_Brightness",
+        "description": "这个是图片亮度调节工具，可以让图片变亮或者变暗。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "brightNum": {
+            "description": "亮度强度，数值负255到正255，越小越暗，越大越亮，图片亮度不变则为0",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "brightNum"
+        ]
+      }
+    },
+    {
       "name": "ImageConvert_BGRToGrayColor",
       "description": "将 BGR 颜色值转换为灰度值\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nGrayValue: 转换后的灰度值",
       "inputSchema": {
@@ -3059,7 +3265,7 @@
             "type": "string"
           },
           "colorMapType": {
-            "description": "颜色映射表类型，例如：LPVColorMap.Jet",
+            "description": "颜色映射表类型，例如：LPVColorMapAutumn,LPVColorMapBone,LPVColorMapJet,LPVColorMapWinter,LPVColorMapRainbow,LPVColorMapOcean,LPVColorMapSummer,LPVColorMapSpring,LPVColorMapCool,LPVColorMapHSV,LPVColorMapPink,LPVColorMapHot,LPVColorMapParula,LPVColorMapMagma,LPVColorMapInferno,LPVColorMapPlasma,LPVColorMapViridis,LPVColorMapCividis,LPVColorMapTwilight,LPVColorMapTwilightShifted,LPVColorMapTurbo,LPVColorMapDeepgreen,LPVColorMapSemi,LPVColorMapRed,LPVColorMapGreen,LPVColorMapBlue",
             "type": "string"
           },
           "inverse": {
