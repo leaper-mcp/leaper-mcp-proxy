@@ -3603,6 +3603,16 @@
       }
     },
     {
+      "name": "Image_New",
+      "description": "生成一张像素为1*1黑色的图像，如果后续需要修改大小可以调用Image_SetSize方法。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 生成的图像结果",
+      "inputSchema": {
+        "title": "Image_New",
+        "description": "生成一张像素为1*1黑色的图像，如果后续需要修改大小可以调用Image_SetSize方法。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 生成的图像结果",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
       "name": "PatMatchGetPatShape",
       "description": "获取当前模板匹配的功能对象 的模板形状线。返回一个多边形数组。\r\n 返回结构是一个序列化的JSON字符串，jSON是一个数组，数组中的对象属性包括：\r\nClosed(多边形是否闭合) 和 Count(多边形点位数量) 和 Item(多边形点的位置的数组，数组中的对象包含X,Y属性分别代表x和y的坐标) 。\r\n",
       "inputSchema": {
