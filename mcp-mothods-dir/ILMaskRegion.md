@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILMaskRegion",
-    "description": "这个是ILMaskRegion类型(蒙版ROI区域对象)的描述生成工具并返回生成后的ILMaskRegion类型的描述JSON。\r\n其中ILMaskRegion类型继承于ILRegion类型\r\n",
+    "description": "Create a mask region object. 创建一个蒙版ROI区域对象。\r\nMask region is defined by a binary image mask, where white pixels represent the region area. 蒙版区域由二值图像蒙版定义，其中白色像素表示区域范围。\r\nThe mask image determines the shape and extent of the region. 蒙版图像决定区域的形状和范围。\r\n并返回生成后的ILMaskRegion类型的描述JSON。\r\n其中ILMaskRegion类型继承于ILRegion类型\r\n",
     "inputSchema": {
         "title": "ILMaskRegion",
-        "description": "这个是ILMaskRegion类型(蒙版ROI区域对象)的描述生成工具并返回生成后的ILMaskRegion类型的描述JSON。\r\n其中ILMaskRegion类型继承于ILRegion类型\r\n",
+        "description": "Create a mask region object. 创建一个蒙版ROI区域对象。\r\nMask region is defined by a binary image mask, where white pixels represent the region area. 蒙版区域由二值图像蒙版定义，其中白色像素表示区域范围。\r\nThe mask image determines the shape and extent of the region. 蒙版图像决定区域的形状和范围。\r\n并返回生成后的ILMaskRegion类型的描述JSON。\r\n其中ILMaskRegion类型继承于ILRegion类型\r\n",
         "type": "object",
         "properties": {
             "maskImageUrl": {

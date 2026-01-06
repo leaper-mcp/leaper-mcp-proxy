@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILPolyRegion",
-    "description": "这个是ILPolyRegion类型(多边形ROI区域对象)的描述生成工具并返回生成后的ILPolyRegion类型的描述JSON。\r\n其中ILPolyRegion类型继承于ILRegion类型\r\n",
+    "description": "Create a polygon region object. 创建一个多边形ROI区域对象。\r\nPolygon region is defined by a set of vertices that form a closed polygon. 多边形区域由一组顶点定义，形成一个闭合多边形。\r\nThe region covers the area inside the polygon boundary. 该区域覆盖多边形边界内的区域。\r\n并返回生成后的ILPolyRegion类型的描述JSON。\r\n其中ILPolyRegion类型继承于ILRegion类型\r\n",
     "inputSchema": {
         "title": "ILPolyRegion",
-        "description": "这个是ILPolyRegion类型(多边形ROI区域对象)的描述生成工具并返回生成后的ILPolyRegion类型的描述JSON。\r\n其中ILPolyRegion类型继承于ILRegion类型\r\n",
+        "description": "Create a polygon region object. 创建一个多边形ROI区域对象。\r\nPolygon region is defined by a set of vertices that form a closed polygon. 多边形区域由一组顶点定义，形成一个闭合多边形。\r\nThe region covers the area inside the polygon boundary. 该区域覆盖多边形边界内的区域。\r\n并返回生成后的ILPolyRegion类型的描述JSON。\r\n其中ILPolyRegion类型继承于ILRegion类型\r\n",
         "type": "object",
         "properties": {
             "xs": {

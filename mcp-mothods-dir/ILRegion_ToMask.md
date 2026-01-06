@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRegion_ToMask",
-    "description": "为当前ROI区域生成一个蒙版图像，以指定的位置和尺寸。\r\n图像中的白像素表示该位置包含在当前区域中。 若指定的位置和尺寸均为空，即 x, y, w 和 h 均为 0，则蒙版图像基于区域的包围盒位置生成。 \r\n并输出生成的蒙版图像(ILImage类型)的描述JSON。\r\n",
+    "description": "Generate a mask image from a region. 为当前ROI区域生成一个蒙版图像，以指定的位置和尺寸。\r\nWhite pixels in the mask image represent areas within the region. 图像中的白像素表示该位置包含在当前区域中。\r\nIf position and size are not specified (x, y, w, h all 0), the mask is generated based on the region's bounding box. 若指定的位置和尺寸均为空，即 x, y, w 和 h 均为 0，则蒙版图像基于区域的包围盒位置生成。\r\n并输出生成的蒙版图像(ILImage类型)的描述JSON。\r\n",
     "inputSchema": {
         "title": "ILRegion_ToMask",
-        "description": "为当前ROI区域生成一个蒙版图像，以指定的位置和尺寸。\r\n图像中的白像素表示该位置包含在当前区域中。 若指定的位置和尺寸均为空，即 x, y, w 和 h 均为 0，则蒙版图像基于区域的包围盒位置生成。 \r\n并输出生成的蒙版图像(ILImage类型)的描述JSON。\r\n",
+        "description": "Generate a mask image from a region. 为当前ROI区域生成一个蒙版图像，以指定的位置和尺寸。\r\nWhite pixels in the mask image represent areas within the region. 图像中的白像素表示该位置包含在当前区域中。\r\nIf position and size are not specified (x, y, w, h all 0), the mask is generated based on the region's bounding box. 若指定的位置和尺寸均为空，即 x, y, w 和 h 均为 0，则蒙版图像基于区域的包围盒位置生成。\r\n并输出生成的蒙版图像(ILImage类型)的描述JSON。\r\n",
         "type": "object",
         "properties": {
             "regionClassObjDescriptionJson": {

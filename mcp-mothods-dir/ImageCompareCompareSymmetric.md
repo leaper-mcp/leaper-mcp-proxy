@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ImageCompareCompareSymmetric",
-    "description": "比较输入图像中的两个对称区域，生成差异图和蒙版图。\r\n 返回结构是一个序列化的json，其中：\r\nDiffResultImg属性是差异图像URL地址，\r\nMaskResultImg属性是差异蒙版图像URL地址",
+    "description": "比较输入图像中的两个对称区域，生成差异图和蒙版图。\r\n返回结构是一个序列化的json，其中：\r\nDiffResultImg属性是差异图像URL地址，\r\nMaskResultImg属性是差异蒙版图像URL地址",
     "inputSchema": {
         "title": "ImageCompareCompareSymmetric",
-        "description": "比较输入图像中的两个对称区域，生成差异图和蒙版图。\r\n 返回结构是一个序列化的json，其中：\r\nDiffResultImg属性是差异图像URL地址，\r\nMaskResultImg属性是差异蒙版图像URL地址",
+        "description": "比较输入图像中的两个对称区域，生成差异图和蒙版图。\r\n返回结构是一个序列化的json，其中：\r\nDiffResultImg属性是差异图像URL地址，\r\nMaskResultImg属性是差异蒙版图像URL地址",
         "type": "object",
         "properties": {
             "imageUrl": {
@@ -32,7 +32,7 @@
                 "type": "string"
             },
             "imageCompareClassObjDescriptionJson": {
-                "description": "用于图像比较功能调用的对象。\r\n在调用此工具前要保证前处理中一定要有且仅有一次的 ImageCompareNew 初始化工具调用。如果用户指定图像比较功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像比较功能调用的对象名称，目前名称应为：ILImageCompare (图像比较功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的.lcmp参数文件名称。\r\n",
+                "description": "用于图像比较功能调用的对象。在调用此工具前要保证前处理中一定要有且仅有一次的 ImageCompareNew 初始化工具调用。如果用户指定图像比较功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像比较功能调用的对象名称，目前名称应为：ILImageCompare (图像比较功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的.lcmp参数文件名称。",
                 "type": "string"
             }
         },

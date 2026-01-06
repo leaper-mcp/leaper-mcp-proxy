@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRegion_RotateAndTranslate",
-    "description": "基于锚点的位置和角度变化，生成一个旋转和平移后的ROI区域对象。\r\n区域对象和锚点的相对位置，在变换前后保持不变。 \r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
+    "description": "Rotate and translate a region based on anchor point transformation. 基于锚点的位置和角度变化，生成一个旋转和平移后的ROI区域对象。\r\nThe relative position between the region and the anchor point remains unchanged before and after transformation. 区域对象和锚点的相对位置，在变换前后保持不变。\r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
     "inputSchema": {
         "title": "ILRegion_RotateAndTranslate",
-        "description": "基于锚点的位置和角度变化，生成一个旋转和平移后的ROI区域对象。\r\n区域对象和锚点的相对位置，在变换前后保持不变。 \r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
+        "description": "Rotate and translate a region based on anchor point transformation. 基于锚点的位置和角度变化，生成一个旋转和平移后的ROI区域对象。\r\nThe relative position between the region and the anchor point remains unchanged before and after transformation. 区域对象和锚点的相对位置，在变换前后保持不变。\r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
         "type": "object",
         "properties": {
             "regionClassObjDescriptionJson": {

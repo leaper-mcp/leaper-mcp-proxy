@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILHistogram_Build_Items",
-    "description": "这个是输入图像和区域，生成直方图，输出直方图所有区域的像素总数的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "description": "Build histogram from input image and region, output the pixel count for each bin.\r\nCollects count of data in provided image into a set of predefined bins. Histogram is useful for analyzing and observing the frequency distributions of pixel intensity values.\r\n基于输入图像和区域，生成直方图，输出直方图所有区域的像素总数。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\nReturns a serialized JSON with ResultValues property containing the histogram bin values.",
     "inputSchema": {
         "title": "ILHistogram_Build_Items",
-        "description": "这个是输入图像和区域，生成直方图，输出直方图所有区域的像素总数的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "description": "Build histogram from input image and region, output the pixel count for each bin.\r\nCollects count of data in provided image into a set of predefined bins. Histogram is useful for analyzing and observing the frequency distributions of pixel intensity values.\r\n基于输入图像和区域，生成直方图，输出直方图所有区域的像素总数。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\nReturns a serialized JSON with ResultValues property containing the histogram bin values.",
         "type": "object",
         "properties": {
             "imageUrl": {

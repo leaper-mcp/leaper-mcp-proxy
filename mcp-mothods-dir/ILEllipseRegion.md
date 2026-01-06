@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILEllipseRegion",
-    "description": "这个是ILEllipseRegion类型(椭圆ROI区域对象)的描述生成工具并返回生成后的ILEllipseRegion类型的描述JSON。\r\n其中ILEllipseRegion类型继承于ILRegion类型\r\n",
+    "description": "Create an ellipse region object. 创建一个椭圆ROI区域对象。\r\nEllipse region is an elliptical area defined by a center point, major and minor axes, and rotation angle. 椭圆区域是由中心点、长短轴和旋转角度定义的椭圆区域。\r\nThe region covers the area inside the ellipse boundary. 该区域覆盖椭圆边界内的区域。\r\n并返回生成后的ILEllipseRegion类型的描述JSON。\r\n其中ILEllipseRegion类型继承于ILRegion类型\r\n",
     "inputSchema": {
         "title": "ILEllipseRegion",
-        "description": "这个是ILEllipseRegion类型(椭圆ROI区域对象)的描述生成工具并返回生成后的ILEllipseRegion类型的描述JSON。\r\n其中ILEllipseRegion类型继承于ILRegion类型\r\n",
+        "description": "Create an ellipse region object. 创建一个椭圆ROI区域对象。\r\nEllipse region is an elliptical area defined by a center point, major and minor axes, and rotation angle. 椭圆区域是由中心点、长短轴和旋转角度定义的椭圆区域。\r\nThe region covers the area inside the ellipse boundary. 该区域覆盖椭圆边界内的区域。\r\n并返回生成后的ILEllipseRegion类型的描述JSON。\r\n其中ILEllipseRegion类型继承于ILRegion类型\r\n",
         "type": "object",
         "properties": {
             "cenx": {

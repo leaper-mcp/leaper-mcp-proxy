@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRegion_Invert",
-    "description": "取反当前ROI区域，生成一个新的ROI区域 , P' = P ∩ other.\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+    "description": "Invert a region. 取反当前ROI区域。\r\nThe new region contains all areas outside the original region. 新的区域包含原始区域之外的所有区域。\r\nThis operation creates the complement of the original region. 此操作创建原始区域的补集。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
     "inputSchema": {
         "title": "ILRegion_Invert",
-        "description": "取反当前ROI区域，生成一个新的ROI区域 , P' = P ∩ other.\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "description": "Invert a region. 取反当前ROI区域。\r\nThe new region contains all areas outside the original region. 新的区域包含原始区域之外的所有区域。\r\nThis operation creates the complement of the original region. 此操作创建原始区域的补集。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
         "type": "object",
         "properties": {
             "regionClassObjDescriptionJson": {

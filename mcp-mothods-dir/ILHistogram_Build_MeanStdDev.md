@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILHistogram_Build_MeanStdDev",
-    "description": "基于输入图像和区域，生成直方图，输出直方图的均值和标准差的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\n返回结构是一个序列化的json，其中：\r\nMeanValue属性是均值，StdDevValue属性是标准差。",
+    "description": "Build histogram from input image and region, calculate mean and standard deviation.\r\nCalculate the mean and standard deviation of the histogram. The histogram collects count of data in provided image into a set of predefined bins.\r\n基于输入图像和区域，生成直方图，计算直方图的均值和标准差。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\nReturns a serialized JSON with MeanValue and StdDevValue properties.",
     "inputSchema": {
         "title": "ILHistogram_Build_MeanStdDev",
-        "description": "基于输入图像和区域，生成直方图，输出直方图的均值和标准差的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\n返回结构是一个序列化的json，其中：\r\nMeanValue属性是均值，StdDevValue属性是标准差。",
+        "description": "Build histogram from input image and region, calculate mean and standard deviation.\r\nCalculate the mean and standard deviation of the histogram. The histogram collects count of data in provided image into a set of predefined bins.\r\n基于输入图像和区域，生成直方图，计算直方图的均值和标准差。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\nReturns a serialized JSON with MeanValue and StdDevValue properties.",
         "type": "object",
         "properties": {
             "imageUrl": {

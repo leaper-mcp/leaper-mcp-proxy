@@ -1,10 +1,10 @@
 ```json
 {
     "name": "Image_CopyFrom",
-    "description": "复制输入图像的内容并覆盖当前图像的指定位置 。\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 复制输入图像的内容并覆盖当前图像的结果\r\n",
+    "description": "复制输入图像的内容并覆盖当前图像的指定位置。 \r\n若输入图像的尺寸过大或超出当前图像的范围，多余部分将被忽略。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 复制输入图像的内容并覆盖当前图像的结果 \r\nCopy the input image content and overlay it to the specified position of the current image. \r\nIf the input image is bigger or outside with the given x/y offset, the redundant part will be ignored. \r\nReturns a serialized JSON string containing the following fields: \r\nResultImg: The result of copying input image content and overlaying it to the current image",
     "inputSchema": {
         "title": "Image_CopyFrom",
-        "description": "复制输入图像的内容并覆盖当前图像的指定位置 。\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 复制输入图像的内容并覆盖当前图像的结果\r\n",
+        "description": "复制输入图像的内容并覆盖当前图像的指定位置。 \r\n若输入图像的尺寸过大或超出当前图像的范围，多余部分将被忽略。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 复制输入图像的内容并覆盖当前图像的结果 \r\nCopy the input image content and overlay it to the specified position of the current image. \r\nIf the input image is bigger or outside with the given x/y offset, the redundant part will be ignored. \r\nReturns a serialized JSON string containing the following fields: \r\nResultImg: The result of copying input image content and overlaying it to the current image",
         "type": "object",
         "properties": {
             "imageUrl": {

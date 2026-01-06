@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRegion_Subtract",
-    "description": "从当前ROI区域中减去输入的ROI区域，生成一个新的ROI区域，P' = P - other.\r\n一个非空区域减去空区域，获得该区域对象的拷贝。一个空区域减去一个非空区域，获得后者的取反区域 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+    "description": "Subtract one region from another. 从当前ROI区域中减去输入的ROI区域。\r\nThe new region contains the parts of the original region that are not in the other region. 新的区域包含原始区域中不在另一个区域中的部分。\r\nIf a non-empty region is subtracted by an empty region, a copy of the original region is returned. 一个非空区域减去空区域，获得该区域对象的拷贝。\r\nIf an empty region is subtracted by a non-empty region, the complement of the other region is returned. 一个空区域减去一个非空区域，获得后者的取反区域。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
     "inputSchema": {
         "title": "ILRegion_Subtract",
-        "description": "从当前ROI区域中减去输入的ROI区域，生成一个新的ROI区域，P' = P - other.\r\n一个非空区域减去空区域，获得该区域对象的拷贝。一个空区域减去一个非空区域，获得后者的取反区域 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "description": "Subtract one region from another. 从当前ROI区域中减去输入的ROI区域。\r\nThe new region contains the parts of the original region that are not in the other region. 新的区域包含原始区域中不在另一个区域中的部分。\r\nIf a non-empty region is subtracted by an empty region, a copy of the original region is returned. 一个非空区域减去空区域，获得该区域对象的拷贝。\r\nIf an empty region is subtracted by a non-empty region, the complement of the other region is returned. 一个空区域减去一个非空区域，获得后者的取反区域。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
         "type": "object",
         "properties": {
             "regionClassObjDescriptionJson": {

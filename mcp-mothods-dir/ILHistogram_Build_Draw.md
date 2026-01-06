@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILHistogram_Build_Draw",
-    "description": "基于输入图像和区域，生成直方图并输出的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "description": "Build histogram from input image and region, and draw as image.\r\nDraw the histogram as a data chart onto provide device context, using the index as x axis and the value as y axis.\r\n基于输入图像和区域，生成直方图，并将直方图绘制为图像输出。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。\r\nReturns a serialized JSON with ResultImg property containing the URL of the output histogram image.",
     "inputSchema": {
         "title": "ILHistogram_Build_Draw",
-        "description": "基于输入图像和区域，生成直方图并输出的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "description": "Build histogram from input image and region, and draw as image.\r\nDraw the histogram as a data chart onto provide device context, using the index as x axis and the value as y axis.\r\n基于输入图像和区域，生成直方图，并将直方图绘制为图像输出。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。\r\nReturns a serialized JSON with ResultImg property containing the URL of the output histogram image.",
         "type": "object",
         "properties": {
             "imageUrl": {

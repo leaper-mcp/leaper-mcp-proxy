@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ImageConvert_ConvertColor",
-    "description": "颜色空间转换\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nBlue: 转换后的蓝色通道值\r\nGreen: 转换后的绿色通道值\r\nRed: 转换后的红色通道值",
+    "description": "颜色空间转换\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nBlue: 转换后的蓝色通道值\r\nGreen: 转换后的绿色通道值\r\nRed: 转换后的红色通道值",
     "inputSchema": {
         "title": "ImageConvert_ConvertColor",
-        "description": "颜色空间转换\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nBlue: 转换后的蓝色通道值\r\nGreen: 转换后的绿色通道值\r\nRed: 转换后的红色通道值",
+        "description": "颜色空间转换\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nBlue: 转换后的蓝色通道值\r\nGreen: 转换后的绿色通道值\r\nRed: 转换后的红色通道值",
         "type": "object",
         "properties": {
             "fromColorSpace": {

@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILImageFilter_FillHole",
-    "description": "这个是修补输入图像中的孔洞工具，基于临近像素的数值重建孔洞中的缺失像素。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "description": "修补输入图像中的孔洞工具。\r\nFill holes in the input image by reconstructing missing pixels using nearby pixel values.\r\nA hole is defined as a region of black pixels in the mask image.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
     "inputSchema": {
         "title": "ILImageFilter_FillHole",
-        "description": "这个是修补输入图像中的孔洞工具，基于临近像素的数值重建孔洞中的缺失像素。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "description": "修补输入图像中的孔洞工具。\r\nFill holes in the input image by reconstructing missing pixels using nearby pixel values.\r\nA hole is defined as a region of black pixels in the mask image.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
         "type": "object",
         "properties": {
             "imageUrl": {

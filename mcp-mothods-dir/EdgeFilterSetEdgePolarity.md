@@ -1,10 +1,10 @@
 ```json
 {
     "name": "EdgeFilterSetEdgePolarity",
-    "description": "提供了图像边缘增强的功能,设置滤波器的边缘极性，以获得感兴趣极性的边缘 ,并返回设置完成的图像边缘增强的功能调用的对象。\r\n 如果别的图像边缘增强的功能要依赖于当前图像边缘增强的功能调用对象来调用，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示图像边缘增强的功能调用的对象的参数文件名称。\r\n",
+    "description": "Set the edge polarity of interest in edge filtering.\r\n设置滤波器的边缘极性，以获得感兴趣极性的边缘。\r\nSets the edge polarity of the filter to obtain edges of interest, and returns the configured edge filter object.\r\n提供了图像边缘增强的功能,设置滤波器的边缘极性，以获得感兴趣极性的边缘 ,并返回设置完成的图像边缘增强的功能调用的对象。\r\nIf other edge enhancement functions depend on this edge filter object, they can use the current object JSON.\r\n如果别的图像边缘增强的功能要依赖于当前图像边缘增强的功能调用对象来调用，可以使用当前对象Json。\r\nReturns a serialized JSON string with properties: LpvClassName (function name) and InputParameterFile (parameter file name).\r\n返回结构是一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName should be: ILEdgeFilter (edge enhancement function object).\r\nLpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile represents the parameter file name for the edge filter object.\r\nInputParameterFile 表示图像边缘增强的功能调用的对象的参数文件名称。",
     "inputSchema": {
         "title": "EdgeFilterSetEdgePolarity",
-        "description": "提供了图像边缘增强的功能,设置滤波器的边缘极性，以获得感兴趣极性的边缘 ,并返回设置完成的图像边缘增强的功能调用的对象。\r\n 如果别的图像边缘增强的功能要依赖于当前图像边缘增强的功能调用对象来调用，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示图像边缘增强的功能调用的对象的参数文件名称。\r\n",
+        "description": "Set the edge polarity of interest in edge filtering.\r\n设置滤波器的边缘极性，以获得感兴趣极性的边缘。\r\nSets the edge polarity of the filter to obtain edges of interest, and returns the configured edge filter object.\r\n提供了图像边缘增强的功能,设置滤波器的边缘极性，以获得感兴趣极性的边缘 ,并返回设置完成的图像边缘增强的功能调用的对象。\r\nIf other edge enhancement functions depend on this edge filter object, they can use the current object JSON.\r\n如果别的图像边缘增强的功能要依赖于当前图像边缘增强的功能调用对象来调用，可以使用当前对象Json。\r\nReturns a serialized JSON string with properties: LpvClassName (function name) and InputParameterFile (parameter file name).\r\n返回结构是一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName should be: ILEdgeFilter (edge enhancement function object).\r\nLpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile represents the parameter file name for the edge filter object.\r\nInputParameterFile 表示图像边缘增强的功能调用的对象的参数文件名称。",
         "type": "object",
         "properties": {
             "xPolarityString": {
@@ -16,7 +16,7 @@
                 "type": "string"
             },
             "edgeFilterClassObjDescriptionJson": {
-                "description": "用于图像边缘增强的功能调用的对象。如果用户没有指定图像边缘增强的功能相关对象，请调用EdgeFilterNew方法创建一个图像边缘增强的功能调用的对象后传入。\r\n如果用户指定图像边缘增强的功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+                "description": "用于图像边缘增强的功能调用的对象。如果用户没有指定图像边缘增强的功能相关对象，请调用EdgeFilterNew方法创建一个图像边缘增强的功能调用的对象后传入。\r\n如果用户指定图像边缘增强的功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像边缘增强的功能调用的对象名称，目前名称应为：ILEdgeFilter (图像边缘增强的功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。",
                 "type": "string"
             }
         },

@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ImageConvert_Convert",
-    "description": "对彩色图像进行颜色空间转换（如 BGR 到 HSV）\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
+    "description": "Convert the color image from one color space to another, for example, from BGR to HSV\r\n对彩色图像进行颜色空间转换，如，从 BGR 转到 HSV 空间\r\n- Convert the color image from one color space to another, for example, from BGR to HSV\r\n- Supported color spaces: BGR, HSV, HLS, YCrCb, YUV, XYZ, LAB, LUV\r\n- The output image will be a color image of the same size as the input\r\n- 对彩色图像进行颜色空间转换，如，从 BGR 转到 HSV 空间\r\n- 支持的颜色空间：BGR, HSV, HLS, YCrCb, YUV, XYZ, LAB, LUV\r\n- 输出图像将是彩色图像，尺寸与输入的彩色图像一致\r\n\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
     "inputSchema": {
         "title": "ImageConvert_Convert",
-        "description": "对彩色图像进行颜色空间转换（如 BGR 到 HSV）\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
+        "description": "Convert the color image from one color space to another, for example, from BGR to HSV\r\n对彩色图像进行颜色空间转换，如，从 BGR 转到 HSV 空间\r\n- Convert the color image from one color space to another, for example, from BGR to HSV\r\n- Supported color spaces: BGR, HSV, HLS, YCrCb, YUV, XYZ, LAB, LUV\r\n- The output image will be a color image of the same size as the input\r\n- 对彩色图像进行颜色空间转换，如，从 BGR 转到 HSV 空间\r\n- 支持的颜色空间：BGR, HSV, HLS, YCrCb, YUV, XYZ, LAB, LUV\r\n- 输出图像将是彩色图像，尺寸与输入的彩色图像一致\r\n\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
         "type": "object",
         "properties": {
             "imageUrl": {

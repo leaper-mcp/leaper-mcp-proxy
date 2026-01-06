@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ImageConvert_BGRMix",
-    "description": "根据指定的各通道权重，混合 BGR 彩色图像的三个通道\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
+    "description": "Mix the 3 channels in the input BGR color image using the specified weight for individual channel\r\n根据指定的各通道权重，混合 BGR 彩色图像的三个通道\r\n- Mix the 3 channels in the input BGR color image using the specified weight for individual channel\r\n- Formula: Gray = w0⋅B + w1⋅G + w2⋅R\r\n- Weight values should be in range -255 ~ 255\r\n- The output image will be a grayscale image of the same size as the input\r\n- 根据指定的各通道权重，混合 BGR 彩色图像的三个通道\r\n- 公式：Gray = w0⋅B + w1⋅G + w2⋅R\r\n- 权重值取值范围在 -255 ~ 255\r\n- 输出图像将是灰度图像，尺寸与输入的彩色图像一致\r\n\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
     "inputSchema": {
         "title": "ImageConvert_BGRMix",
-        "description": "根据指定的各通道权重，混合 BGR 彩色图像的三个通道\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
+        "description": "Mix the 3 channels in the input BGR color image using the specified weight for individual channel\r\n根据指定的各通道权重，混合 BGR 彩色图像的三个通道\r\n- Mix the 3 channels in the input BGR color image using the specified weight for individual channel\r\n- Formula: Gray = w0⋅B + w1⋅G + w2⋅R\r\n- Weight values should be in range -255 ~ 255\r\n- The output image will be a grayscale image of the same size as the input\r\n- 根据指定的各通道权重，混合 BGR 彩色图像的三个通道\r\n- 公式：Gray = w0⋅B + w1⋅G + w2⋅R\r\n- 权重值取值范围在 -255 ~ 255\r\n- 输出图像将是灰度图像，尺寸与输入的彩色图像一致\r\n\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
         "type": "object",
         "properties": {
             "imageUrl": {

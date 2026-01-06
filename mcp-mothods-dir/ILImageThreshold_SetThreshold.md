@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILImageThreshold_SetThreshold",
-    "description": "这个是 设置前景像素的固定阈值范围 工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;",
+    "description": "Use user-specified threshold value to set the fixed threshold range for foreground pixels. The lower bound of threshold range is in range of 0 ~ 255 for 8bit images, 0 ~ 65535 for 16bit images. The upper bound of threshold range is in range of 0 ~ 255 for 8bit images, 0 ~ 65535 for 16bit images. Returns a serialized JSON structure containing: LpvClassName indicating the function name; InputParameterFile representing the parameter file name;这个是 设置前景像素的固定阈值范围 工具。阈值范围下限对于 8 位图像数值在 0 ~ 255 范围内，对于 16 位图像数值在 0 ~ 65535 范围内。阈值范围上限对于 8 位图像数值在 0 ~ 255 范围内，对于 16 位图像数值在 0 ~ 65535 范围内。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;",
     "inputSchema": {
         "title": "ILImageThreshold_SetThreshold",
-        "description": "这个是 设置前景像素的固定阈值范围 工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;",
+        "description": "Use user-specified threshold value to set the fixed threshold range for foreground pixels. The lower bound of threshold range is in range of 0 ~ 255 for 8bit images, 0 ~ 65535 for 16bit images. The upper bound of threshold range is in range of 0 ~ 255 for 8bit images, 0 ~ 65535 for 16bit images. Returns a serialized JSON structure containing: LpvClassName indicating the function name; InputParameterFile representing the parameter file name;这个是 设置前景像素的固定阈值范围 工具。阈值范围下限对于 8 位图像数值在 0 ~ 255 范围内，对于 16 位图像数值在 0 ~ 65535 范围内。阈值范围上限对于 8 位图像数值在 0 ~ 255 范围内，对于 16 位图像数值在 0 ~ 65535 范围内。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示调用工具函数需要传入的参数文件名称;",
         "type": "object",
         "properties": {
             "lb": {

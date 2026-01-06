@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRegion_Scale",
-    "description": "缩放当前ROI区域，生成一个新的ROI区域对象，保持区域中心点不变。\r\n注意：对于 LCircleRegion 或 LAnnulusRegion 对象，不支持非等比缩放。 \r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
+    "description": "Scale a region while keeping the center point unchanged. 缩放当前ROI区域，生成一个新的ROI区域对象，保持区域中心点不变。\r\nThe region is scaled by the specified factors in X and Y directions. 区域按X和Y方向的指定比例进行缩放。\r\nNote: Non-uniform scaling is not supported for LCircleRegion or LAnnulusRegion objects. 注意：对于 LCircleRegion 或 LAnnulusRegion 对象，不支持非等比缩放。\r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
     "inputSchema": {
         "title": "ILRegion_Scale",
-        "description": "缩放当前ROI区域，生成一个新的ROI区域对象，保持区域中心点不变。\r\n注意：对于 LCircleRegion 或 LAnnulusRegion 对象，不支持非等比缩放。 \r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
+        "description": "Scale a region while keeping the center point unchanged. 缩放当前ROI区域，生成一个新的ROI区域对象，保持区域中心点不变。\r\nThe region is scaled by the specified factors in X and Y directions. 区域按X和Y方向的指定比例进行缩放。\r\nNote: Non-uniform scaling is not supported for LCircleRegion or LAnnulusRegion objects. 注意：对于 LCircleRegion 或 LAnnulusRegion 对象，不支持非等比缩放。\r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
         "type": "object",
         "properties": {
             "regionClassObjDescriptionJson": {

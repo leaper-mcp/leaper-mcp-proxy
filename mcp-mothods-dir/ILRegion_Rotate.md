@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRegion_Rotate",
-    "description": "以区域中心为旋转中心顺时针旋转当前ROI区域，生成一个新的ROI区域。\r\n注意：旋转后的 LRectRegion 或 LMaskRegion 对象可能比原始区域更大，因为旋转后的顶点的包围矩形组成了结果区域范围。 \r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
+    "description": "Rotate a region around its center. 以区域中心为旋转中心顺时针旋转当前ROI区域。\r\nThe region is rotated clockwise by the specified angle. 区域按指定角度顺时针旋转。\r\nNote: Rotated LRectRegion or LMaskRegion objects may become larger than the original, because the bounding rectangle of rotated vertices determines the result region. 注意：旋转后的 LRectRegion 或 LMaskRegion 对象可能比原始区域更大，因为旋转后的顶点的包围矩形组成了结果区域范围。\r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
     "inputSchema": {
         "title": "ILRegion_Rotate",
-        "description": "以区域中心为旋转中心顺时针旋转当前ROI区域，生成一个新的ROI区域。\r\n注意：旋转后的 LRectRegion 或 LMaskRegion 对象可能比原始区域更大，因为旋转后的顶点的包围矩形组成了结果区域范围。 \r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
+        "description": "Rotate a region around its center. 以区域中心为旋转中心顺时针旋转当前ROI区域。\r\nThe region is rotated clockwise by the specified angle. 区域按指定角度顺时针旋转。\r\nNote: Rotated LRectRegion or LMaskRegion objects may become larger than the original, because the bounding rectangle of rotated vertices determines the result region. 注意：旋转后的 LRectRegion 或 LMaskRegion 对象可能比原始区域更大，因为旋转后的顶点的包围矩形组成了结果区域范围。\r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
         "type": "object",
         "properties": {
             "regionClassObjDescriptionJson": {

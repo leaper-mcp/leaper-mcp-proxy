@@ -1,10 +1,10 @@
 ```json
 {
     "name": "Image_SetTo",
-    "description": "将图像中给定区域内的像素设置为指定的灰度值 。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置灰度后的图像结果 \r\n",
+    "description": "将图像中给定区域内的像素设置为指定的灰度值。 \r\n灰度值取值范围0-255，越低则越黑，越高则越白，0则为黑色，255是白色。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置灰度后的图像结果 \r\nSet the pixels in the given region of the image to the specified grayscale value. \r\nGray value range is 0-255, lower values are darker, higher values are lighter, \r\n0 is black, 255 is white. \r\nReturns a serialized JSON string containing the following fields: \r\nResultImg: The image result after setting grayscale",
     "inputSchema": {
         "title": "Image_SetTo",
-        "description": "将图像中给定区域内的像素设置为指定的灰度值 。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置灰度后的图像结果 \r\n",
+        "description": "将图像中给定区域内的像素设置为指定的灰度值。 \r\n灰度值取值范围0-255，越低则越黑，越高则越白，0则为黑色，255是白色。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置灰度后的图像结果 \r\nSet the pixels in the given region of the image to the specified grayscale value. \r\nGray value range is 0-255, lower values are darker, higher values are lighter, \r\n0 is black, 255 is white. \r\nReturns a serialized JSON string containing the following fields: \r\nResultImg: The image result after setting grayscale",
         "type": "object",
         "properties": {
             "imageUrl": {

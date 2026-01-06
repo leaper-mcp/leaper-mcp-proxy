@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ImageCompareSetBaseline",
-    "description": "设置比较的基准图像（和蒙版），并返回设置完成的图像比较功能调用的对象。\r\n 如果别的图像比较功能要依赖于当前图像比较功能调用对象来调用，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。LpvClassName 表示图像比较功能调用的对象名称，目前名称应为：ILImageCompare (图像比较功能相关对象);\r\nInputParameterFile 表示图像比较功能调用的对象的参数文件名称。\r\n",
+    "description": "Set the comparison baseline image (and mask).\r\n* @param[in] img The input image\r\n* @param[in] region The input region, to limit the region of the baseline template on the input image\r\n* and also exclude some not-care pixels.\r\n设置比较的基准图像（和蒙版）\r\n* @param[in] img 输入的图像\r\n* @param[in] region 输入的区域，用于限定基准图像在输入图像中的位置，和剔除无关像素\r\n设置比较的基准图像（和蒙版），并返回设置完成的图像比较功能调用的对象。\r\n如果别的图像比较功能要依赖于当前图像比较功能调用对象来调用，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。LpvClassName 表示图像比较功能调用的对象名称，目前名称应为：ILImageCompare (图像比较功能相关对象);\r\nInputParameterFile 表示图像比较功能调用的对象的参数文件名称。",
     "inputSchema": {
         "title": "ImageCompareSetBaseline",
-        "description": "设置比较的基准图像（和蒙版），并返回设置完成的图像比较功能调用的对象。\r\n 如果别的图像比较功能要依赖于当前图像比较功能调用对象来调用，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。LpvClassName 表示图像比较功能调用的对象名称，目前名称应为：ILImageCompare (图像比较功能相关对象);\r\nInputParameterFile 表示图像比较功能调用的对象的参数文件名称。\r\n",
+        "description": "Set the comparison baseline image (and mask).\r\n* @param[in] img The input image\r\n* @param[in] region The input region, to limit the region of the baseline template on the input image\r\n* and also exclude some not-care pixels.\r\n设置比较的基准图像（和蒙版）\r\n* @param[in] img 输入的图像\r\n* @param[in] region 输入的区域，用于限定基准图像在输入图像中的位置，和剔除无关像素\r\n设置比较的基准图像（和蒙版），并返回设置完成的图像比较功能调用的对象。\r\n如果别的图像比较功能要依赖于当前图像比较功能调用对象来调用，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。LpvClassName 表示图像比较功能调用的对象名称，目前名称应为：ILImageCompare (图像比较功能相关对象);\r\nInputParameterFile 表示图像比较功能调用的对象的参数文件名称。",
         "type": "object",
         "properties": {
             "imageUrl": {
@@ -16,7 +16,7 @@
                 "type": "string"
             },
             "imageCompareClassObjDescriptionJson": {
-                "description": "用于图像比较功能调用的对象。\r\n在调用此工具前要保证前处理中一定要有且仅有一次的 ImageCompareNew 初始化工具调用。如果用户指定图像比较功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像比较功能调用的对象名称，目前名称应为：ILImageCompare (图像比较功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的.lcmp参数文件名称。\r\n",
+                "description": "用于图像比较功能调用的对象。在调用此工具前要保证前处理中一定要有且仅有一次的 ImageCompareNew 初始化工具调用。如果用户指定图像比较功能相关对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像比较功能调用的对象名称，目前名称应为：ILImageCompare (图像比较功能相关对象);\r\nInputParameterFile 表示调用工具函数需要传入的.lcmp参数文件名称。",
                 "type": "string"
             }
         },

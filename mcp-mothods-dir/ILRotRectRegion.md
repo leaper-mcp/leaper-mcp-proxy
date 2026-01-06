@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRotRectRegion",
-    "description": "这个是ILRotRectRegion类型(旋转矩形ROI区域对象)的描述生成工具并返回生成后的ILRotRectRegion类型的描述JSON。\r\n其中ILRotRectRegion类型继承于ILRegion类型\r\n",
+    "description": "Create a rotated rectangle region object. 创建一个旋转矩形ROI区域对象。\r\nRotated rectangle region is a rectangular area that can be rotated by an arbitrary angle. 旋转矩形区域是一个可以任意角度旋转的矩形区域。\r\nThe region is defined by center coordinates, width, height, and rotation angle. 该区域由中心坐标、宽度、高度和旋转角度定义。\r\n并返回生成后的ILRotRectRegion类型的描述JSON。\r\n其中ILRotRectRegion类型继承于ILRegion类型\r\n",
     "inputSchema": {
         "title": "ILRotRectRegion",
-        "description": "这个是ILRotRectRegion类型(旋转矩形ROI区域对象)的描述生成工具并返回生成后的ILRotRectRegion类型的描述JSON。\r\n其中ILRotRectRegion类型继承于ILRegion类型\r\n",
+        "description": "Create a rotated rectangle region object. 创建一个旋转矩形ROI区域对象。\r\nRotated rectangle region is a rectangular area that can be rotated by an arbitrary angle. 旋转矩形区域是一个可以任意角度旋转的矩形区域。\r\nThe region is defined by center coordinates, width, height, and rotation angle. 该区域由中心坐标、宽度、高度和旋转角度定义。\r\n并返回生成后的ILRotRectRegion类型的描述JSON。\r\n其中ILRotRectRegion类型继承于ILRegion类型\r\n",
         "type": "object",
         "properties": {
             "cenx": {

@@ -1,10 +1,10 @@
 ```json
 {
     "name": "Image_SetToColor",
-    "description": "将图像中给定区域内的像素设置为指定的 RGB 值。仅用于彩色图像。  \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置颜色后的图像结果 \r\n",
+    "description": "将图像中给定区域内的像素设置为指定的 RGB 值。仅用于彩色图像。 \r\n蓝色通道值范围0-255，绿色通道值范围0-255，红色通道值范围0-255。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置颜色后的图像结果 \r\nSet the pixels in the given region of the image to the specified RGB value. \r\nThis function is only for color images. \r\nBlue channel value range 0-255, green channel value range 0-255, red channel value range 0-255. \r\nReturns a serialized JSON string containing the following fields: \r\nResultImg: The image result after setting color",
     "inputSchema": {
         "title": "Image_SetToColor",
-        "description": "将图像中给定区域内的像素设置为指定的 RGB 值。仅用于彩色图像。  \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置颜色后的图像结果 \r\n",
+        "description": "将图像中给定区域内的像素设置为指定的 RGB 值。仅用于彩色图像。 \r\n蓝色通道值范围0-255，绿色通道值范围0-255，红色通道值范围0-255。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 设置颜色后的图像结果 \r\nSet the pixels in the given region of the image to the specified RGB value. \r\nThis function is only for color images. \r\nBlue channel value range 0-255, green channel value range 0-255, red channel value range 0-255. \r\nReturns a serialized JSON string containing the following fields: \r\nResultImg: The image result after setting color",
         "type": "object",
         "properties": {
             "imageUrl": {

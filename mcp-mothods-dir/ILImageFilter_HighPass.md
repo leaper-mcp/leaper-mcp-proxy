@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILImageFilter_HighPass",
-    "description": "这个是高通滤波工具，相对于梯度更一致的区域，增强图像中的边。 \r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "description": "高通滤波工具，相对于梯度更一致的区域，增强图像中的边。\r\nApply a high-pass filter to the input image to enhance edges.\r\nHigh-pass filter emphasizes regions with strong gradients and reduces consistent areas.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
     "inputSchema": {
         "title": "ILImageFilter_HighPass",
-        "description": "这个是高通滤波工具，相对于梯度更一致的区域，增强图像中的边。 \r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "description": "高通滤波工具，相对于梯度更一致的区域，增强图像中的边。\r\nApply a high-pass filter to the input image to enhance edges.\r\nHigh-pass filter emphasizes regions with strong gradients and reduces consistent areas.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
         "type": "object",
         "properties": {
             "imageUrl": {

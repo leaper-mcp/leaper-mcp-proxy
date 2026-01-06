@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRegion_Intersect",
-    "description": "将当前ROI区域与输入的ROI区域进行并操作，生成一个新的ROI区域, P' = P ∩ other.\r\n新的区域仅包含两个区域同时覆盖的部分。 一个空区域与任何其他区域求交，获得一个空区域对象。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+    "description": "Intersect two regions. 将当前ROI区域与输入的ROI区域进行并操作。\r\nThe new region contains only the overlapping parts of both regions. 新的区域仅包含两个区域同时覆盖的部分。\r\nIf an empty region is intersected with any other region, an empty region is returned. 一个空区域与任何其他区域求交，获得一个空区域对象。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
     "inputSchema": {
         "title": "ILRegion_Intersect",
-        "description": "将当前ROI区域与输入的ROI区域进行并操作，生成一个新的ROI区域, P' = P ∩ other.\r\n新的区域仅包含两个区域同时覆盖的部分。 一个空区域与任何其他区域求交，获得一个空区域对象。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "description": "Intersect two regions. 将当前ROI区域与输入的ROI区域进行并操作。\r\nThe new region contains only the overlapping parts of both regions. 新的区域仅包含两个区域同时覆盖的部分。\r\nIf an empty region is intersected with any other region, an empty region is returned. 一个空区域与任何其他区域求交，获得一个空区域对象。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
         "type": "object",
         "properties": {
             "regionClassObjDescriptionJson": {

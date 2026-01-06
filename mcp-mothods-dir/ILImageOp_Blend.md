@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILImageOp_Blend",
-    "description": "这个是将多帧图像融合用于将多张同一场景的图像融合为一张的工具。在不同的场景，通过使用不同的聚合方式达到不同目的。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "description": "这个是将多帧图像融合用于将多张同一场景的图像融合为一张的工具。在不同的场景，通过使用不同的聚合方式达到不同目的。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
     "inputSchema": {
         "title": "ILImageOp_Blend",
-        "description": "这个是将多帧图像融合用于将多张同一场景的图像融合为一张的工具。在不同的场景，通过使用不同的聚合方式达到不同目的。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "description": "这个是将多帧图像融合用于将多张同一场景的图像融合为一张的工具。在不同的场景，通过使用不同的聚合方式达到不同目的。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
         "type": "object",
         "properties": {
             "imageUrlList": {

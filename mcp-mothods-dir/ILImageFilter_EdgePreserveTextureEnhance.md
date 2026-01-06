@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILImageFilter_EdgePreserveTextureEnhance",
-    "description": "这个是增强图像纹理并保留边缘工具。\r\n用户没有指定滤波相关参数时，必须设置默认参数：平滑度0.01，加速算法运行的系数4。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "description": "增强图像纹理并保留边缘工具。\r\nEnhance the texture on image while retaining sharp edges.\r\nThe smoothness of the denoising process is controlled by kernel sigma value with recommended value in 0.01 ~ 0.1.\r\n用户没有指定滤波相关参数时，必须设置默认参数：平滑度0.01，加速算法运行的系数4。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
     "inputSchema": {
         "title": "ILImageFilter_EdgePreserveTextureEnhance",
-        "description": "这个是增强图像纹理并保留边缘工具。\r\n用户没有指定滤波相关参数时，必须设置默认参数：平滑度0.01，加速算法运行的系数4。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "description": "增强图像纹理并保留边缘工具。\r\nEnhance the texture on image while retaining sharp edges.\r\nThe smoothness of the denoising process is controlled by kernel sigma value with recommended value in 0.01 ~ 0.1.\r\n用户没有指定滤波相关参数时，必须设置默认参数：平滑度0.01，加速算法运行的系数4。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
         "type": "object",
         "properties": {
             "imageUrl": {

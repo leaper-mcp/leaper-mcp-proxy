@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILImageFilter_Gaussian",
-    "description": "这个是高斯滤波工具。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "description": "高斯滤波工具。\r\nApply a Gaussian filter to the input image.\r\nGaussian filter is a smoothing filter that reduces noise while preserving edges.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
     "inputSchema": {
         "title": "ILImageFilter_Gaussian",
-        "description": "这个是高斯滤波工具。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "description": "高斯滤波工具。\r\nApply a Gaussian filter to the input image.\r\nGaussian filter is a smoothing filter that reduces noise while preserving edges.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
         "type": "object",
         "properties": {
             "imageUrl": {

@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ImageConvert_NormalizeTo16",
-    "description": "归一化输入图像到 16 位图\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
+    "description": "归一化输入图像到 16 位图\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
     "inputSchema": {
         "title": "ImageConvert_NormalizeTo16",
-        "description": "归一化输入图像到 16 位图\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
+        "description": "归一化输入图像到 16 位图\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
         "type": "object",
         "properties": {
             "imageUrl": {

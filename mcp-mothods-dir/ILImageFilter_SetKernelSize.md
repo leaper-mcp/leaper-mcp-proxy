@@ -1,18 +1,18 @@
 ```json
 {
     "name": "ILImageFilter_SetKernelSize",
-    "description": "设置图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)所使用的滤波核的核尺寸 ,并返回设置完成的图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象名称，目前名称应为：ILImageFilter (图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能相关对象);\r\nInputParameterFile 表示图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象的参数文件名称。\r\n",
+    "description": "设置图像滤波工具的滤波核尺寸。\r\nChange kernel size used in the filter, by default it's a 3x3 kernel.\r\nLarge kernel size results usually in stronger filtering effect, but also slower.\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具的功能调用的对象名称，目前名称应为：ILImageFilter。\r\nInputParameterFile 表示图像滤波工具的功能调用的对象的参数文件名称。",
     "inputSchema": {
         "title": "ILImageFilter_SetKernelSize",
-        "description": "设置图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)所使用的滤波核的核尺寸 ,并返回设置完成的图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象名称，目前名称应为：ILImageFilter (图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能相关对象);\r\nInputParameterFile 表示图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象的参数文件名称。\r\n",
+        "description": "设置图像滤波工具的滤波核尺寸。\r\nChange kernel size used in the filter, by default it's a 3x3 kernel.\r\nLarge kernel size results usually in stronger filtering effect, but also slower.\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具的功能调用的对象名称，目前名称应为：ILImageFilter。\r\nInputParameterFile 表示图像滤波工具的功能调用的对象的参数文件名称。",
         "type": "object",
         "properties": {
             "kWidth": {
-                "description": "滤波核的宽度,传入类型为int类型,需要是一个 3 ~ 31 之间的奇数，如 3, 5, 7 等。\r\n",
+                "description": "滤波核的宽度,传入类型为int类型,需要是一个 3 ~ 31 之间的奇数，如 3, 5, 7 等。",
                 "type": "integer"
             },
             "kHeight": {
-                "description": "滤波核的高度,传入类型为int类型，需要是一个 3 ~ 31 之间的奇数，如 3, 5, 7 等。若设置为 0，则使用与宽度相同。\r\n",
+                "description": "滤波核的高度,传入类型为int类型，需要是一个 3 ~ 31 之间的奇数，如 3, 5, 7 等。若设置为 0，则使用与宽度相同。",
                 "type": "integer"
             },
             "InputParameterFile": {

@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILImageFilter_LinearFilter",
-    "description": "这个是线性滤波工具，基于自定义核，对输入图像进行线性滤波。超出深度范围的结果像素值将被截断，例如，对于 8 位图像，截断到 0 ~ 255 的数值范围。 \r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "description": "线性滤波工具，基于自定义核，对输入图像进行线性滤波。\r\nApply a linear filter to the input image using a custom kernel.\r\nResult pixel values beyond the depth range will be truncated, e.g., for 8-bit images, values are truncated to 0 ~ 255 range.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
     "inputSchema": {
         "title": "ILImageFilter_LinearFilter",
-        "description": "这个是线性滤波工具，基于自定义核，对输入图像进行线性滤波。超出深度范围的结果像素值将被截断，例如，对于 8 位图像，截断到 0 ~ 255 的数值范围。 \r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "description": "线性滤波工具，基于自定义核，对输入图像进行线性滤波。\r\nApply a linear filter to the input image using a custom kernel.\r\nResult pixel values beyond the depth range will be truncated, e.g., for 8-bit images, values are truncated to 0 ~ 255 range.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
         "type": "object",
         "properties": {
             "imageUrl": {
@@ -12,15 +12,15 @@
                 "type": "string"
             },
             "kWidth": {
-                "description": "滤波核的宽度，传入类型为int类型,自定义核的宽度，取值范围为 1 ~ 9999。\r\n",
+                "description": "滤波核的宽度，传入类型为int类型,自定义核的宽度，取值范围为 1 ~ 9999。",
                 "type": "integer"
             },
             "kHeight": {
-                "description": "滤波核的高度，传入类型为int类型，自定义核的高度，取值范围为 1 ~ 9999。\r\n",
+                "description": "滤波核的高度，传入类型为int类型，自定义核的高度，取值范围为 1 ~ 9999。",
                 "type": "integer"
             },
             "kMat": {
-                "description": "滤波核的高度，传入类型为Array<double>类型，自定义核的数据，这是一组浮点数值 。\r\n",
+                "description": "滤波核的高度，传入类型为Array<double>类型，自定义核的数据，这是一组浮点数值 。",
                 "type": "array",
                 "items": {
                     "type": "number"

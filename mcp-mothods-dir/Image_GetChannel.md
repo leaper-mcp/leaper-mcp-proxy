@@ -1,10 +1,10 @@
 ```json
 {
     "name": "Image_GetChannel",
-    "description": "BGR8 从彩色图像中提取某一个给定索引的通道图像。仅用于彩色图像。\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 给定索引的通道的图像结果\r\n",
+    "description": "BGR8 从彩色图像中提取某一个给定索引的通道图像。仅用于彩色图像。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 给定索引的通道的图像结果 \r\nExtract the channel of the given index from a color image. This function is only for a color image. \r\nReturns a serialized JSON string containing the following fields: \r\nResultImg: The channel image result of the given index",
     "inputSchema": {
         "title": "Image_GetChannel",
-        "description": "BGR8 从彩色图像中提取某一个给定索引的通道图像。仅用于彩色图像。\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 给定索引的通道的图像结果\r\n",
+        "description": "BGR8 从彩色图像中提取某一个给定索引的通道图像。仅用于彩色图像。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 给定索引的通道的图像结果 \r\nExtract the channel of the given index from a color image. This function is only for a color image. \r\nReturns a serialized JSON string containing the following fields: \r\nResultImg: The channel image result of the given index",
         "type": "object",
         "properties": {
             "imageUrl": {

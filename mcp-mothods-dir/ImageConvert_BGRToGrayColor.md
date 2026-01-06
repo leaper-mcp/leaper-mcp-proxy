@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ImageConvert_BGRToGrayColor",
-    "description": "将 BGR 颜色值转换为灰度值\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nGrayValue: 转换后的灰度值",
+    "description": "将 BGR 颜色值转换为灰度值\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nGrayValue: 转换后的灰度值",
     "inputSchema": {
         "title": "ImageConvert_BGRToGrayColor",
-        "description": "将 BGR 颜色值转换为灰度值\r\n 返回结构是一个序列化的JSON字符串，包含以下字段：\r\nGrayValue: 转换后的灰度值",
+        "description": "将 BGR 颜色值转换为灰度值\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nGrayValue: 转换后的灰度值",
         "type": "object",
         "properties": {
             "blue": {

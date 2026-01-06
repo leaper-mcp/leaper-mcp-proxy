@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRegion_Translate",
-    "description": "平移当前ROI区域，生成一个新的ROI区域对象，P' = P + offset. \r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
+    "description": "Translate a region by the specified offset. 平移当前ROI区域，生成一个新的ROI区域对象。\r\nThe region is moved by the specified X and Y offsets. 区域按指定的X和Y偏移量移动。\r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
     "inputSchema": {
         "title": "ILRegion_Translate",
-        "description": "平移当前ROI区域，生成一个新的ROI区域对象，P' = P + offset. \r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
+        "description": "Translate a region by the specified offset. 平移当前ROI区域，生成一个新的ROI区域对象。\r\nThe region is moved by the specified X and Y offsets. 区域按指定的X和Y偏移量移动。\r\n并输出一个新的ROI区域对象(ILRegion类型)的描述JSON。\r\n其中输出的ROI区域类型与输入区域相同\r\n",
         "type": "object",
         "properties": {
             "regionClassObjDescriptionJson": {

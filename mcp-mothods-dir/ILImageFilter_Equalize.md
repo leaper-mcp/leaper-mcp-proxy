@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILImageFilter_Equalize",
-    "description": "这个是均衡化工具。该工具将归一化亮度，增加图像对比度。 均衡化工具不是一个线性滤波器，因此不需要指定滤波核尺寸。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "description": "均衡化工具。该工具将归一化亮度，增加图像对比度。\r\nEqualizes the histogram of the input grayscale image. It will normalizes the brightness and increases the contrast of the image.\r\nThis operation is not a linear filter, thus does not use the kernel size.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
     "inputSchema": {
         "title": "ILImageFilter_Equalize",
-        "description": "这个是均衡化工具。该工具将归一化亮度，增加图像对比度。 均衡化工具不是一个线性滤波器，因此不需要指定滤波核尺寸。\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "description": "均衡化工具。该工具将归一化亮度，增加图像对比度。\r\nEqualizes the histogram of the input grayscale image. It will normalizes the brightness and increases the contrast of the image.\r\nThis operation is not a linear filter, thus does not use the kernel size.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
         "type": "object",
         "properties": {
             "imageUrl": {

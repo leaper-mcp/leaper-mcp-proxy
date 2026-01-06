@@ -1,10 +1,10 @@
 ```json
 {
     "name": "PatMatchIsLearnt",
-    "description": "检查 当前模板匹配的功能对象 是否已训练。 \r\n布尔值(bool)类型  已训练，返回 true，否则返回 false ",
+    "description": "Check whether the LMatch object is well-trained. 检查当前模板匹配的功能对象是否已训练。\r\nReturn True if it's trained, otherwise, return False. 若已训练，返回 true，否则返回 false。\r\n布尔值(bool)类型  已训练，返回 true，否则返回 fals",
     "inputSchema": {
         "title": "PatMatchIsLearnt",
-        "description": "检查 当前模板匹配的功能对象 是否已训练。 \r\n布尔值(bool)类型  已训练，返回 true，否则返回 false ",
+        "description": "Check whether the LMatch object is well-trained. 检查当前模板匹配的功能对象是否已训练。\r\nReturn True if it's trained, otherwise, return False. 若已训练，返回 true，否则返回 false。\r\n布尔值(bool)类型  已训练，返回 true，否则返回 fals",
         "type": "object",
         "properties": {
             "matchClassObjDescriptionJson": {

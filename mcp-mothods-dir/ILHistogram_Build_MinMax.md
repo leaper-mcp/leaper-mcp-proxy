@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILHistogram_Build_MinMax",
-    "description": "基于输入图像和区域，生成直方图，输出直方图的最小值和最大值的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\n返回结构是一个序列化的json，其中：\r\nMinIdx属性是最小值对应的索引，MinValue属性是最小值，MaxIdx属性是最大值对应的索引，MaxValue属性是最大值。",
+    "description": "Build histogram from input image and region, find minimum and maximum values.\r\nFind the bin of minimum or maximum value, report the value and bin index. If there's more than one bin with the same value, report the first one.\r\n基于输入图像和区域，生成直方图，查找直方图上的最大和最小值及其对应的索引。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\nReturns a serialized JSON with MinIdx, MinValue, MaxIdx, and MaxValue properties.",
     "inputSchema": {
         "title": "ILHistogram_Build_MinMax",
-        "description": "基于输入图像和区域，生成直方图，输出直方图的最小值和最大值的工具。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\n返回结构是一个序列化的json，其中：\r\nMinIdx属性是最小值对应的索引，MinValue属性是最小值，MaxIdx属性是最大值对应的索引，MaxValue属性是最大值。",
+        "description": "Build histogram from input image and region, find minimum and maximum values.\r\nFind the bin of minimum or maximum value, report the value and bin index. If there's more than one bin with the same value, report the first one.\r\n基于输入图像和区域，生成直方图，查找直方图上的最大和最小值及其对应的索引。\r\n工具不需要通过其它工具设置参数，不需要传入ILHistogram的对象。 \r\nReturns a serialized JSON with MinIdx, MinValue, MaxIdx, and MaxValue properties.",
         "type": "object",
         "properties": {
             "imageUrl": {

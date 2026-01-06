@@ -1,10 +1,10 @@
 ```json
 {
     "name": "PatMatchPrune",
-    "description": "提供了从已训练的模板特征中，剔除某些指定的特征的功能。输入区域对象外的特征将被删除，不参与匹配。\r\n 如果别的工具需要剔除某些指定的特征后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+    "description": "Prune the trained template features. 从已训练的模板特征中，剔除某些指定的特征。\r\nEliminate the features which are located outside of the given region or belong to the shape polylines of the given indexes. 输入区域对象外的特征将被删除，不参与匹配。\r\nPass in null region and empty shape indexes to restore the features to original. 传入空区域及 0 过滤阈值，可重置特征为训练后的原始特征。\r\nIt may fail if all the features are removed. 剔除过程可能失败，如所有有效特征均被剔除。\r\n如果别的工具需要剔除某些指定的特征后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。",
     "inputSchema": {
         "title": "PatMatchPrune",
-        "description": "提供了从已训练的模板特征中，剔除某些指定的特征的功能。输入区域对象外的特征将被删除，不参与匹配。\r\n 如果别的工具需要剔除某些指定的特征后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+        "description": "Prune the trained template features. 从已训练的模板特征中，剔除某些指定的特征。\r\nEliminate the features which are located outside of the given region or belong to the shape polylines of the given indexes. 输入区域对象外的特征将被删除，不参与匹配。\r\nPass in null region and empty shape indexes to restore the features to original. 传入空区域及 0 过滤阈值，可重置特征为训练后的原始特征。\r\nIt may fail if all the features are removed. 剔除过程可能失败，如所有有效特征均被剔除。\r\n如果别的工具需要剔除某些指定的特征后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。",
         "type": "object",
         "properties": {
             "imageUrl": {
@@ -12,7 +12,7 @@
                 "type": "string"
             },
             "matchClassObjDescriptionJson": {
-                "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+                "description": "模板匹配的功能对象用于训练模板匹配的功能。如果用户没有指定模板匹配的功能对象，请创建一个模板匹配的功能对象后传入。\r\n如果用户指定模板匹配的功能对象，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示模板匹配的功能对象名称，当前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。",
                 "type": "string"
             },
             "regionClassObjDescriptionJson": {

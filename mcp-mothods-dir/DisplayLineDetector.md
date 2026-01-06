@@ -1,10 +1,10 @@
 ```json
 {
     "name": "DisplayLineDetector",
-    "description": "这个是针对直线定位的图像的交互工具，并返回检测和定位直线后的图片。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是检测和定位直线后的图片URL地址\r\n",
+    "description": "Display the line detection results. 这个是针对直线定位的图像的交互工具，并返回检测和定位直线后的图片。\r\nThis interface provide functionalities of the display control. 该接口提供显示控件功能。\r\nUsually you add the display control via the Toolbox in Visual Studio. 通常可通过 Visual Studio 的工具箱，将显示控件加入到应用程序窗口中。\r\nThis interface helps you to manage the scene in the display control, for the image, regions, geometric primitives and algorithms' results to shown in the control. 该接口提供管理显示窗口内场景的功能，用于设置场景中的图像，增加删除场景中的 region、几何形状和算法结果等。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是检测和定位直线后的图片URL地址",
     "inputSchema": {
         "title": "DisplayLineDetector",
-        "description": "这个是针对直线定位的图像的交互工具，并返回检测和定位直线后的图片。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是检测和定位直线后的图片URL地址\r\n",
+        "description": "Display the line detection results. 这个是针对直线定位的图像的交互工具，并返回检测和定位直线后的图片。\r\nThis interface provide functionalities of the display control. 该接口提供显示控件功能。\r\nUsually you add the display control via the Toolbox in Visual Studio. 通常可通过 Visual Studio 的工具箱，将显示控件加入到应用程序窗口中。\r\nThis interface helps you to manage the scene in the display control, for the image, regions, geometric primitives and algorithms' results to shown in the control. 该接口提供管理显示窗口内场景的功能，用于设置场景中的图像，增加删除场景中的 region、几何形状和算法结果等。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是检测和定位直线后的图片URL地址",
         "type": "object",
         "properties": {
             "imageUrl": {

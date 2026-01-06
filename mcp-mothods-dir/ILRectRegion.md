@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRectRegion",
-    "description": "这个是ILRectRegion类型(矩形ROI区域对象)的描述生成工具并返回生成后的ILRectRegion类型的描述JSON。\r\n其中ILRectRegion类型继承于ILRegion类型\r\n",
+    "description": "Create a rectangle region object. 创建一个矩形ROI区域对象。\r\nRectangular region is a simple rectangular area with the given top-left corner (x, y) and size (width, height). 矩形区域是一个简单的矩形区域，由给定的左上角位置 (x, y) 和尺寸 (width, height) 定义。\r\nThis region is axis-aligned with the image coordinate system. 该区域与图像坐标系对齐。\r\n并返回生成后的ILRectRegion类型的描述JSON。\r\n其中ILRectRegion类型继承于ILRegion类型\r\n",
     "inputSchema": {
         "title": "ILRectRegion",
-        "description": "这个是ILRectRegion类型(矩形ROI区域对象)的描述生成工具并返回生成后的ILRectRegion类型的描述JSON。\r\n其中ILRectRegion类型继承于ILRegion类型\r\n",
+        "description": "Create a rectangle region object. 创建一个矩形ROI区域对象。\r\nRectangular region is a simple rectangular area with the given top-left corner (x, y) and size (width, height). 矩形区域是一个简单的矩形区域，由给定的左上角位置 (x, y) 和尺寸 (width, height) 定义。\r\nThis region is axis-aligned with the image coordinate system. 该区域与图像坐标系对齐。\r\n并返回生成后的ILRectRegion类型的描述JSON。\r\n其中ILRectRegion类型继承于ILRegion类型\r\n",
         "type": "object",
         "properties": {
             "TopLeftX": {

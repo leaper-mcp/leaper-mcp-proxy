@@ -1,10 +1,10 @@
 ```json
 {
     "name": "DisplayBlobAnalysis",
-    "description": "这个是针对斑点的图像的交互工具，并返回标记斑点后的图片。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是标记输入图像斑点标记后的图片URL地址\r\n",
+    "description": "Display the blob analysis results. 这是针对斑点的图像的交互工具，并返回标记斑点后的图片。\r\nThis interface provide functionalities of the display control. 该接口提供显示控件功能。\r\nUsually you add the display control via the Toolbox in Visual Studio. 通常可通过 Visual Studio 的工具箱，将显示控件加入到应用程序窗口中。\r\nThis interface helps you to manage the scene in the display control, for the image, regions, geometric primitives and algorithms' results to shown in the control. 该接口提供管理显示窗口内场景的功能，用于设置场景中的图像，增加删除场景中的 region、几何形状和算法结果等。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是标记输入图像斑点标记后的图片URL地址\r\n",
     "inputSchema": {
         "title": "DisplayBlobAnalysis",
-        "description": "这个是针对斑点的图像的交互工具，并返回标记斑点后的图片。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是标记输入图像斑点标记后的图片URL地址\r\n",
+        "description": "Display the blob analysis results. 这是针对斑点的图像的交互工具，并返回标记斑点后的图片。\r\nThis interface provide functionalities of the display control. 该接口提供显示控件功能。\r\nUsually you add the display control via the Toolbox in Visual Studio. 通常可通过 Visual Studio 的工具箱，将显示控件加入到应用程序窗口中。\r\nThis interface helps you to manage the scene in the display control, for the image, regions, geometric primitives and algorithms' results to shown in the control. 该接口提供管理显示窗口内场景的功能，用于设置场景中的图像，增加删除场景中的 region、几何形状和算法结果等。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是标记输入图像斑点标记后的图片URL地址\r\n",
         "type": "object",
         "properties": {
             "imageUrl": {
@@ -12,7 +12,7 @@
                 "type": "string"
             },
             "blobAnalysisClassObjDescriptionJson": {
-                "description": "传入一个序列化的JSON字符串,使ILBlobAnalysis类型的描述JSON\r\n属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从MCP工具[斑点分析工具]返回的数据的返回值中获取。\r\nLpvClassName 表示要调用的Region接口名称，这里理论上只能是 ILBlobAnalysis (用于创建斑点分析工具的实例)\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。\r\n",
+                "description": "传入一个序列化的JSON字符串,使ILBlobAnalysis类型的描述JSON\r\n属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从MCP工具[斑点分析工具]返回的数据的返回值中获取。\r\nLpvClassName 表示要调用的Region接口名称，这里理论上只能是 ILBlobAnalysis (用于创建斑点分析工具的实例)\r\nInputParameterFile 表示调用工具函数需要传入的参数文件名称。",
                 "type": "string"
             },
             "regionClassObjDescriptionJson": {

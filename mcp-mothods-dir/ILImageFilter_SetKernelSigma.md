@@ -1,18 +1,18 @@
 ```json
 {
     "name": "ILImageFilter_SetKernelSigma",
-    "description": "设置图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)所使用的滤波核的平滑程度和锐化工具的锐化强度 ,并返回设置完成的图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象名称，目前名称应为：ILImageFilter (图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能相关对象);\r\nInputParameterFile 表示图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象的参数文件名称。\r\n",
+    "description": "设置图像滤波工具的Sigma值和Gain值。\r\nChange the kernel using the specified sigma and gain value.\r\nSigma controls the filter kernel's smoothness, gain controls the overall strength of the sharpening effect.\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具的功能调用的对象名称，目前名称应为：ILImageFilter。\r\nInputParameterFile 表示图像滤波工具的功能调用的对象的参数文件名称。",
     "inputSchema": {
         "title": "ILImageFilter_SetKernelSigma",
-        "description": "设置图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)所使用的滤波核的平滑程度和锐化工具的锐化强度 ,并返回设置完成的图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象名称，目前名称应为：ILImageFilter (图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能相关对象);\r\nInputParameterFile 表示图像滤波工具(过滤图像噪声并保留边缘工具,高通滤波工具,增强图像纹理并保留边缘工具,均衡化工具,修补孔洞工具,高斯滤波工具,线性滤波工具,中值滤波工具)的功能调用的对象的参数文件名称。\r\n",
+        "description": "设置图像滤波工具的Sigma值和Gain值。\r\nChange the kernel using the specified sigma and gain value.\r\nSigma controls the filter kernel's smoothness, gain controls the overall strength of the sharpening effect.\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示图像滤波工具的功能调用的对象名称，目前名称应为：ILImageFilter。\r\nInputParameterFile 表示图像滤波工具的功能调用的对象的参数文件名称。",
         "type": "object",
         "properties": {
             "kSigma": {
-                "description": "滤波核的平滑程度，传入类型为double类型，对于 HighPass()，Gaussian() 和 Sharpen() 方法，若设置为 0（默认），则由核尺寸自动计算为：1/6。\r\n若核尺寸设置为 0，则由 Sigma 值自动计算合适的核尺寸，约为 6 × kSigma。\r\n对于 EdgePreserveDenoise()， EdgePreserveTextureEnhance()，若设置为 0，则不做额外的平滑处理 。 \r\n",
+                "description": "滤波核的平滑程度，传入类型为double类型，对于 HighPass()，Gaussian() 和 Sharpen() 方法，若设置为 0（默认），则由核尺寸自动计算为：1/6。\r\n若核尺寸设置为 0，则由 Sigma 值自动计算合适的核尺寸，约为 6 × kSigma。\r\n对于 EdgePreserveDenoise()， EdgePreserveTextureEnhance()，若设置为 0，则不做额外的平滑处理 。 ",
                 "type": "number"
             },
             "kGain": {
-                "description": "锐化强度,传入类型为double类型，默认值为1.0，对于 Sharpen()，kGain 用于控制锐化效果的强度。  \r\n",
+                "description": "锐化强度,传入类型为double类型，默认值为1.0，对于 Sharpen()，kGain 用于控制锐化效果的强度。  ",
                 "type": "number"
             },
             "InputParameterFile": {

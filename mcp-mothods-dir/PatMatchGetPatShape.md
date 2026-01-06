@@ -1,10 +1,10 @@
 ```json
 {
     "name": "PatMatchGetPatShape",
-    "description": "获取当前模板匹配的功能对象 的模板形状线。返回一个多边形数组。\r\n 返回结构是一个序列化的JSON字符串，jSON是一个数组，数组中的对象属性包括：\r\nClosed(多边形是否闭合) 和 Count(多边形点位数量) 和 Item(多边形点的位置的数组，数组中的对象包含X,Y属性分别代表x和y的坐标) 。\r\n",
+    "description": "Get the shape of trained pattern as polylines. 获取模板的形状线。\r\nThe shape is represented as polylines extracted from the trained pattern. 形状线是通过给定的形状区域提取的。\r\nLevel parameter specifies the level of required features: Level 0 (default) for level 0 of original size, 1 for level 1 in scaled size. 层级参数指定获取特征的层级：0（默认值）表示原始尺度的 0 层特征，1 表示缩小尺度的 1 层特征。\r\n返回结构是一个序列化的JSON字符串，jSON是一个数组，数组中的对象属性包括：\r\nClosed(多边形是否闭合) 和 Count(多边形点位数量) 和 Item(多边形点的位置的数组，数组中的对象包含X,Y属性分别代表x和y的坐标) 。",
     "inputSchema": {
         "title": "PatMatchGetPatShape",
-        "description": "获取当前模板匹配的功能对象 的模板形状线。返回一个多边形数组。\r\n 返回结构是一个序列化的JSON字符串，jSON是一个数组，数组中的对象属性包括：\r\nClosed(多边形是否闭合) 和 Count(多边形点位数量) 和 Item(多边形点的位置的数组，数组中的对象包含X,Y属性分别代表x和y的坐标) 。\r\n",
+        "description": "Get the shape of trained pattern as polylines. 获取模板的形状线。\r\nThe shape is represented as polylines extracted from the trained pattern. 形状线是通过给定的形状区域提取的。\r\nLevel parameter specifies the level of required features: Level 0 (default) for level 0 of original size, 1 for level 1 in scaled size. 层级参数指定获取特征的层级：0（默认值）表示原始尺度的 0 层特征，1 表示缩小尺度的 1 层特征。\r\n返回结构是一个序列化的JSON字符串，jSON是一个数组，数组中的对象属性包括：\r\nClosed(多边形是否闭合) 和 Count(多边形点位数量) 和 Item(多边形点的位置的数组，数组中的对象包含X,Y属性分别代表x和y的坐标) 。",
         "type": "object",
         "properties": {
             "matchClassObjDescriptionJson": {
@@ -12,7 +12,7 @@
                 "type": "string"
             },
             "level": {
-                "description": "指定获取特征的层级。可能的取值有：-1 表示所有层级，0（默认值）表示原始尺度的 0 层特征，1 表示缩小尺度的 1 层特征 。\r\n",
+                "description": "指定获取特征的层级。可能的取值有：-1 表示所有层级，0（默认值）表示原始尺度的 0 层特征，1 表示缩小尺度的 1 层特征 。",
                 "type": "integer"
             }
         },

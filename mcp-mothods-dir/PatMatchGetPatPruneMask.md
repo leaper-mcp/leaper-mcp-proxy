@@ -1,10 +1,10 @@
 ```json
 {
     "name": "PatMatchGetPatPruneMask",
-    "description": "提供获取当前模板匹配的功能对象的特征点剔除蒙版图像。返回获取特征点剔除蒙版图像的图片。若当前模板没有进行特征点剔除，则返回一个空的图像。 \r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是特征点剔除蒙版图像的图片URL地址\r\n",
+    "description": "Get the prune mask. 获取特征点剔除蒙版。\r\nThe prune mask shows which features have been excluded from the pattern. 特征点剔除蒙版显示哪些特征已被从模板中排除。\r\nIt will be an empty image, if the template has been pruned. 若当前模板没有进行特征点剔除，则返回一个空的图像。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是特征点剔除蒙版图像的图片URL地址",
     "inputSchema": {
         "title": "PatMatchGetPatPruneMask",
-        "description": "提供获取当前模板匹配的功能对象的特征点剔除蒙版图像。返回获取特征点剔除蒙版图像的图片。若当前模板没有进行特征点剔除，则返回一个空的图像。 \r\n 返回结构是一个序列化的json，其中：\r\nResultImg属性是特征点剔除蒙版图像的图片URL地址\r\n",
+        "description": "Get the prune mask. 获取特征点剔除蒙版。\r\nThe prune mask shows which features have been excluded from the pattern. 特征点剔除蒙版显示哪些特征已被从模板中排除。\r\nIt will be an empty image, if the template has been pruned. 若当前模板没有进行特征点剔除，则返回一个空的图像。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是特征点剔除蒙版图像的图片URL地址",
         "type": "object",
         "properties": {
             "matchClassObjDescriptionJson": {

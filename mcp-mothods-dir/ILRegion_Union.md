@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRegion_Union",
-    "description": "将当前ROI区域与输入的区域进行与操作，生成一个新的ROI区域， P' = P U other.\r\n与 Add() 相同，新的区域包含当前区域和输入区域中所包含的所有部分。 一个非空区域与空区域求与，获得该区域对象的拷贝。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+    "description": "Union two regions. 将当前ROI区域与输入的区域进行与操作。\r\nThe new region contains all parts from both input regions. 新的区域包含当前区域和输入区域中所包含的所有部分。\r\nThis operation is equivalent to the Add operation. 此操作与 Add() 操作相同。\r\nIf a non-empty region is unioned with an empty region, a copy of the original region is returned. 一个非空区域与空区域求与，获得该区域对象的拷贝。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
     "inputSchema": {
         "title": "ILRegion_Union",
-        "description": "将当前ROI区域与输入的区域进行与操作，生成一个新的ROI区域， P' = P U other.\r\n与 Add() 相同，新的区域包含当前区域和输入区域中所包含的所有部分。 一个非空区域与空区域求与，获得该区域对象的拷贝。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "description": "Union two regions. 将当前ROI区域与输入的区域进行与操作。\r\nThe new region contains all parts from both input regions. 新的区域包含当前区域和输入区域中所包含的所有部分。\r\nThis operation is equivalent to the Add operation. 此操作与 Add() 操作相同。\r\nIf a non-empty region is unioned with an empty region, a copy of the original region is returned. 一个非空区域与空区域求与，获得该区域对象的拷贝。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
         "type": "object",
         "properties": {
             "regionClassObjDescriptionJson": {

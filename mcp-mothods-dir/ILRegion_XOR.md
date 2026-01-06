@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILRegion_XOR",
-    "description": "将当前ROI区域与输入的区域进行异或操作，生成一个新的ROI区域, P' = P XOR other.\r\n新的区域仅包含属于当前区域但不属于输入区域或属于输入区域但不属于当前区域的部分。 一个空区域与任何其他区域进行异或操作，获得一个空区域对象。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+    "description": "XOR two regions. 将当前ROI区域与输入的区域进行异或操作。\r\nThe new region contains parts that are exclusively in one region but not both. 新的区域仅包含属于当前区域但不属于输入区域或属于输入区域但不属于当前区域的部分。\r\nIf an empty region is XORed with any other region, an empty region is returned. 一个空区域与任何其他区域进行异或操作，获得一个空区域对象。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
     "inputSchema": {
         "title": "ILRegion_XOR",
-        "description": "将当前ROI区域与输入的区域进行异或操作，生成一个新的ROI区域, P' = P XOR other.\r\n新的区域仅包含属于当前区域但不属于输入区域或属于输入区域但不属于当前区域的部分。 一个空区域与任何其他区域进行异或操作，获得一个空区域对象。 \r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "description": "XOR two regions. 将当前ROI区域与输入的区域进行异或操作。\r\nThe new region contains parts that are exclusively in one region but not both. 新的区域仅包含属于当前区域但不属于输入区域或属于输入区域但不属于当前区域的部分。\r\nIf an empty region is XORed with any other region, an empty region is returned. 一个空区域与任何其他区域进行异或操作，获得一个空区域对象。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
         "type": "object",
         "properties": {
             "regionClassObjDescriptionJson": {

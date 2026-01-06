@@ -1,10 +1,10 @@
 ```json
 {
     "name": "ILImageOp_Divide",
-    "description": "这个是将第一个输入图像逐像素除以第二个输入图像的像素的工具。输出一个新图像，对于第二个图像中的 0 像素，输出结果为 0。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "description": "这个是将第一个输入图像逐像素除以第二个输入图像的像素的工具。输出一个新图像，对于第二个图像中的 0 像素，输出结果为 0。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
     "inputSchema": {
         "title": "ILImageOp_Divide",
-        "description": "这个是将第一个输入图像逐像素除以第二个输入图像的像素的工具。输出一个新图像，对于第二个图像中的 0 像素，输出结果为 0。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "description": "这个是将第一个输入图像逐像素除以第二个输入图像的像素的工具。输出一个新图像，对于第二个图像中的 0 像素，输出结果为 0。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
         "type": "object",
         "properties": {
             "imageUrl1": {
