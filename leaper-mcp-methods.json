@@ -1,6 +1,29 @@
 {
   "tools": [
     {
+      "name": "ILImageMorph_BottomHat",
+      "description": "~english Bottom-hat operation tool. Erase small elements and details from given images. Bottom-hat operation is the equivalent of subtracting the input image from the result of performing a morphological closing operation on the input image.\r\nWhen the user does not specify morphological parameters, do not call the parameter setting plugin, as the ILImageMorph class file already has default morphological parameters set.\r\nThe return structure is a serialized JSON string where:\r\nResultImg property is the URL address of the output result image.\r\n\r\n@math_eq_full{I' = close( I, element ) - I}\r\n@math_image_center{bottomhat.png}\r\n~chinese 低帽工具。用于去除图像中的较小单元和细节。该工具等价于从闭操作的结果中减去原输入图像。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的JSON字符串，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageMorph_BottomHat",
+        "description": "~english Bottom-hat operation tool. Erase small elements and details from given images. Bottom-hat operation is the equivalent of subtracting the input image from the result of performing a morphological closing operation on the input image.\r\nWhen the user does not specify morphological parameters, do not call the parameter setting plugin, as the ILImageMorph class file already has default morphological parameters set.\r\nThe return structure is a serialized JSON string where:\r\nResultImg property is the URL address of the output result image.\r\n\r\n@math_eq_full{I' = close( I, element ) - I}\r\n@math_image_center{bottomhat.png}\r\n~chinese 低帽工具。用于去除图像中的较小单元和细节。该工具等价于从闭操作的结果中减去原输入图像。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的JSON字符串，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "~english The URL address of the image, through which the image is obtained.~chinese 图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "~english The file path of the specified ILImageMorph class, representing the parameter file name required for calling the tool function.Before calling this tool, ensure that the ILImageMorph initialization tool has been called exactly once in the preprocessing.The value of this property needs to be obtained from the InputParameterFile field of the preprocessing MCP tool's return value.~chinese 指定的 ILImageMorph 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageMorph 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
       "name": "ILRegion_XOR",
       "description": "XOR two regions. 将当前ROI区域与输入的区域进行异或操作。\r\nThe new region contains parts that are exclusively in one region but not both. 新的区域仅包含属于当前区域但不属于输入区域或属于输入区域但不属于当前区域的部分。\r\nIf an empty region is XORed with any other region, an empty region is returned. 一个空区域与任何其他区域进行异或操作，获得一个空区域对象。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
       "inputSchema": {
@@ -694,6 +717,29 @@
         "required": [
           "regionClassObjDescriptionJson",
           "otherRegionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
+      "name": "ILImageMorph_TopHat",
+      "description": "这个是高帽工具。用于从输入图像中提取较小单元和细节。该工具等价于从原输入图像中减去开操作结果。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageMorph_TopHat",
+        "description": "这个是高帽工具。用于从输入图像中提取较小单元和细节。该工具等价于从原输入图像中减去开操作结果。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "~english The URL address of the image, through which the image is obtained.~chinese 图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "~english The file path of the specified ILImageMorph class, representing the parameter file name required for calling the tool function.Before calling this tool, ensure that the ILImageMorph initialization tool has been called exactly once in the preprocessing.The value of this property needs to be obtained from the InputParameterFile field of the preprocessing MCP tool's return value.~chinese 指定的 ILImageMorph 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageMorph 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
         ]
       }
     },
@@ -1664,6 +1710,52 @@
       }
     },
     {
+      "name": "ILImageMorph_Gradient",
+      "description": "这个是梯度工具。输出形态学意义上的梯度图像。该工具等价于膨胀减去腐蚀的结果。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageMorph_Gradient",
+        "description": "这个是梯度工具。输出形态学意义上的梯度图像。该工具等价于膨胀减去腐蚀的结果。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "~english The URL address of the image, through which the image is obtained.~chinese 图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "~english The file path of the specified ILImageMorph class, representing the parameter file name required for calling the tool function.Before calling this tool, ensure that the ILImageMorph initialization tool has been called exactly once in the preprocessing.The value of this property needs to be obtained from the InputParameterFile field of the preprocessing MCP tool's return value.~chinese 指定的 ILImageMorph 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageMorph 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ILImageMorph_TopBottomHat",
+      "description": "这个是高低帽工具。每个像素输出高帽结果或低帽结果中的最大值。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageMorph_TopBottomHat",
+        "description": "这个是高低帽工具。每个像素输出高帽结果或低帽结果中的最大值。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "~english The URL address of the image, through which the image is obtained.~chinese 图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "~english The file path of the specified ILImageMorph class, representing the parameter file name required for calling the tool function.Before calling this tool, ensure that the ILImageMorph initialization tool has been called exactly once in the preprocessing.The value of this property needs to be obtained from the InputParameterFile field of the preprocessing MCP tool's return value.~chinese 指定的 ILImageMorph 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageMorph 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
       "name": "ILImageOp_Rotate",
       "description": "这个是顺时针旋转输入图像的工具。输出一个新图像，使用图像中心作为旋转中心。若指定的结果图像对象为空图像，则生成和输入图像尺寸相同的图像。否则，将保持结果图像的尺寸，超出图像范围的像素设为背景像素（默认为黑色）。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
       "inputSchema": {
@@ -1804,6 +1896,29 @@
       }
     },
     {
+      "name": "ILImageMorph_Dilate",
+      "description": "这个是膨胀工具。输出结果中的每个像素为其结构元范围内邻域像素的灰度值中的最大值。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageMorph_Dilate",
+        "description": "这个是膨胀工具。输出结果中的每个像素为其结构元范围内邻域像素的灰度值中的最大值。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "~english The URL address of the image, through which the image is obtained.~chinese 图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "~english The file path of the specified ILImageMorph class, representing the parameter file name required for calling the tool function.Before calling this tool, ensure that the ILImageMorph initialization tool has been called exactly once in the preprocessing.The value of this property needs to be obtained from the InputParameterFile field of the preprocessing MCP tool's return value.~chinese 指定的 ILImageMorph 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageMorph 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
       "name": "ImageConvert_GrayToBGR",
       "description": "Convert a grayscale image to a BGR color image\r\n将灰度图转换为 BGR 彩色图像\r\n- Convert a grayscale image to a BGR color image, all three channels are assigned to the same value\r\n- The output image will be a BGR color image of the same size as the input\r\n- Formula: B = Gray, G = Gray, R = Gray\r\n- 将灰度图转换为 BGR 彩色图像，所有三个通道都被赋予相同的值\r\n- 输出图像将是 BGR 彩色图像，尺寸与输入的彩色图像一致\r\n- 公式：B = Gray, G = Gray, R = Gray\r\n\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
       "inputSchema": {
@@ -1819,6 +1934,16 @@
         "required": [
           "imageUrl"
         ]
+      }
+    },
+    {
+      "name": "ILImageMorph",
+      "description": "~english Initialize a morphological operation tool object.\r\nThis is the initialization tool for all morphological operation MCP tools. Before calling any morphological tools, ensure that this initialization tool has been called exactly once in the preprocessing.\r\nThe return structure is a serialized JSON string with properties including:\r\nLpvClassName (the name of the function-calling object) and InputParameterFile (the parameter file name required for calling the tool function).\r\nLpvClassName represents the name of the morphological tool's function-calling object, currently should be: ILImageMorph (morphological tool function-calling object).\r\nInputParameterFile represents the initialization file name for the ILImageMorph class.\r\n~chinese 初始化一个形态学操作工具对象。\r\n这是所有形态学操作MCP工具的初始化工具。在调用任何形态学工具之前，确保在前处理中已经调用过此初始化工具且仅调用一次。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName（调用工具函数的名称）和 InputParameterFile（调用工具函数需要传入的参数文件名称）。\r\nLpvClassName 表示形态学工具的功能调用的对象名称，目前名称应为：ILImageMorph（形态学工具的功能调用的对象）。\r\nInputParameterFile 表示 ILImageMorph 类初始化文件名称。\r\n",
+      "inputSchema": {
+        "title": "ILImageMorph",
+        "description": "~english Initialize a morphological operation tool object.\r\nThis is the initialization tool for all morphological operation MCP tools. Before calling any morphological tools, ensure that this initialization tool has been called exactly once in the preprocessing.\r\nThe return structure is a serialized JSON string with properties including:\r\nLpvClassName (the name of the function-calling object) and InputParameterFile (the parameter file name required for calling the tool function).\r\nLpvClassName represents the name of the morphological tool's function-calling object, currently should be: ILImageMorph (morphological tool function-calling object).\r\nInputParameterFile represents the initialization file name for the ILImageMorph class.\r\n~chinese 初始化一个形态学操作工具对象。\r\n这是所有形态学操作MCP工具的初始化工具。在调用任何形态学工具之前，确保在前处理中已经调用过此初始化工具且仅调用一次。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName（调用工具函数的名称）和 InputParameterFile（调用工具函数需要传入的参数文件名称）。\r\nLpvClassName 表示形态学工具的功能调用的对象名称，目前名称应为：ILImageMorph（形态学工具的功能调用的对象）。\r\nInputParameterFile 表示 ILImageMorph 类初始化文件名称。\r\n",
+        "type": "object",
+        "properties": {}
       }
     },
     {
@@ -2943,6 +3068,29 @@
       }
     },
     {
+      "name": "ILImageMorph_Open",
+      "description": "这个是开操作工具。略微增强亮部区域，减少或消除输入图像中的面积较小的亮部，增强面积较大。开操作等价于先腐蚀再膨胀。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageMorph_Open",
+        "description": "这个是开操作工具。略微增强亮部区域，减少或消除输入图像中的面积较小的亮部，增强面积较大。开操作等价于先腐蚀再膨胀。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "~english The URL address of the image, through which the image is obtained.~chinese 图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "~english The file path of the specified ILImageMorph class, representing the parameter file name required for calling the tool function.Before calling this tool, ensure that the ILImageMorph initialization tool has been called exactly once in the preprocessing.The value of this property needs to be obtained from the InputParameterFile field of the preprocessing MCP tool's return value.~chinese 指定的 ILImageMorph 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageMorph 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
       "name": "ILImageFilter_HighPass",
       "description": "高通滤波工具，相对于梯度更一致的区域，增强图像中的边。\r\nApply a high-pass filter to the input image to enhance edges.\r\nHigh-pass filter emphasizes regions with strong gradients and reduces consistent areas.\r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
       "inputSchema": {
@@ -2985,6 +3133,29 @@
         "required": [
           "imageUrl1",
           "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ILImageMorph_Erode",
+      "description": "这个是腐蚀工具。输出结果中的每个像素为其结构元范围内邻域像素的灰度值中的最小值。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageMorph_Erode",
+        "description": "这个是腐蚀工具。输出结果中的每个像素为其结构元范围内邻域像素的灰度值中的最小值。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "~english The URL address of the image, through which the image is obtained.~chinese 图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "~english The file path of the specified ILImageMorph class, representing the parameter file name required for calling the tool function.Before calling this tool, ensure that the ILImageMorph initialization tool has been called exactly once in the preprocessing.The value of this property needs to be obtained from the InputParameterFile field of the preprocessing MCP tool's return value.~chinese 指定的 ILImageMorph 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageMorph 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
         ]
       }
     },
@@ -4089,6 +4260,29 @@
       }
     },
     {
+      "name": "ILImageMorph_Close",
+      "description": "这个是闭操作工具。减少或消除输入图像中的较暗区域。闭操作等价于先膨胀再腐蚀。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+      "inputSchema": {
+        "title": "ILImageMorph_Close",
+        "description": "这个是闭操作工具。减少或消除输入图像中的较暗区域。闭操作等价于先膨胀再腐蚀。\r\n用户没有指定形态学相关参数时，不要调用设置参数的插件，传入的 ILImageMorph 类的文件中已经设置了形态学相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "~english The URL address of the image, through which the image is obtained.~chinese 图片的url地址，通过这个地址获取到图片",
+            "type": "string"
+          },
+          "InputParameterFile": {
+            "description": "~english The file path of the specified ILImageMorph class, representing the parameter file name required for calling the tool function.Before calling this tool, ensure that the ILImageMorph initialization tool has been called exactly once in the preprocessing.The value of this property needs to be obtained from the InputParameterFile field of the preprocessing MCP tool's return value.~chinese 指定的 ILImageMorph 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageMorph 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "InputParameterFile"
+        ]
+      }
+    },
+    {
       "name": "ILImageThreshold",
       "description": "LPV Image Threshold initialization tool. This is the initialization tool for image threshold operations. It is the prerequisite for all MCP tools starting with \"ILImageThreshold_\". Before calling any of these tools, ensure that this initialization tool has been called exactly once in the preprocessing stage. Returns a serialized JSON structure containing: LpvClassName indicating the function name; InputParameterFile representing the ILImageThreshold class initialization file name;图片阈值相关的初始化工具。是所有以 \"ILImageThreshold_\" 开头的MCP工具的初始化工具，在这些工具调用之前，都需要保证前处理调用过有且仅有一次此初始化工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示 ILImageThreshold 类初始化文件名称;",
       "inputSchema": {
@@ -4096,6 +4290,39 @@
         "description": "LPV Image Threshold initialization tool. This is the initialization tool for image threshold operations. It is the prerequisite for all MCP tools starting with \"ILImageThreshold_\". Before calling any of these tools, ensure that this initialization tool has been called exactly once in the preprocessing stage. Returns a serialized JSON structure containing: LpvClassName indicating the function name; InputParameterFile representing the ILImageThreshold class initialization file name;图片阈值相关的初始化工具。是所有以 \"ILImageThreshold_\" 开头的MCP工具的初始化工具，在这些工具调用之前，都需要保证前处理调用过有且仅有一次此初始化工具。返回结构是一个序列化的json，其中LpvClassName 表示调用工具函数的名称；InputParameterFile 表示 ILImageThreshold 类初始化文件名称;",
         "type": "object",
         "properties": {}
+      }
+    },
+    {
+      "name": "ILImageMorph_SetMorphShape",
+      "description": "~english Set the structuring element used in morphology operations with specified shape and size. Returns the configured morphological tool object.\r\nThe return structure is a serialized JSON string with properties including:\r\nLpvClassName (the name of the function-calling object) and InputParameterFile (the parameter file name required for calling the tool function). The values of these properties can be obtained from the return value of preprocessing MCP tools.\r\nLpvClassName represents the name of the morphological tool's function-calling object, currently should be: ILImageMorph (morphological tool function-related object);\r\nInputParameterFile represents the parameter file name for the morphological tool's function-calling object.\r\n~chinese 设置形态学工具中所使用的结构元，可指定结构元的形状和尺寸。并返回设置完成的形态学工具的功能调用的对象。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName（调用工具函数的名称）和 InputParameterFile（调用工具函数需要传入的参数文件名称）。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示形态学工具的功能调用的对象名称，目前名称应为：ILImageMorph（形态学工具的功能相关对象）；\r\nInputParameterFile 表示形态学工具的功能调用的对象的参数文件名称。",
+      "inputSchema": {
+        "title": "ILImageMorph_SetMorphShape",
+        "description": "~english Set the structuring element used in morphology operations with specified shape and size. Returns the configured morphological tool object.\r\nThe return structure is a serialized JSON string with properties including:\r\nLpvClassName (the name of the function-calling object) and InputParameterFile (the parameter file name required for calling the tool function). The values of these properties can be obtained from the return value of preprocessing MCP tools.\r\nLpvClassName represents the name of the morphological tool's function-calling object, currently should be: ILImageMorph (morphological tool function-related object);\r\nInputParameterFile represents the parameter file name for the morphological tool's function-calling object.\r\n~chinese 设置形态学工具中所使用的结构元，可指定结构元的形状和尺寸。并返回设置完成的形态学工具的功能调用的对象。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName（调用工具函数的名称）和 InputParameterFile（调用工具函数需要传入的参数文件名称）。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示形态学工具的功能调用的对象名称，目前名称应为：ILImageMorph（形态学工具的功能相关对象）；\r\nInputParameterFile 表示形态学工具的功能调用的对象的参数文件名称。",
+        "type": "object",
+        "properties": {
+          "shapeTypeString": {
+            "description": "~english The shape of the structuring element, of type LPVMorphShape, describing the shape of the kernel used in morphological operations. Valid types are:\r\nLPVMorphRect (rectangular kernel), LPVMorphCross (cross-shaped kernel), LPVMorphEllipse (elliptical kernel)~chinese 结构元的形状，传入类型为LPVMorphShape类型，描述形态学工具中所使用的核的形状。(如: LPVMorphRect )有效的类型为：\r\nLPVMorphRect（矩形核）、LPVMorphCross（十字形核）、LPVMorphEllipse（椭圆形核）",
+            "type": "string"
+          },
+          "kWidth": {
+            "description": "~english The width of the structuring element, of type int, must be an odd number such as 3, 5, 7, etc.~chinese 结构元的宽度，传入类型为int类型，需要是一个奇数，如 3, 5, 7 等。",
+            "type": "integer"
+          },
+          "kHeight": {
+            "description": "~english The height of the structuring element, of type int, must be an odd number such as 3, 5, 7, etc. If set to 0, use the same value as width.~chinese 结构元的高度，传入类型为int类型，需要是一个奇数，如 3, 5, 7 等。若设置为 0，则使用与宽度相同。",
+            "type": "integer"
+          },
+          "InputParameterFile": {
+            "description": "~english The file path of the specified ILImageMorph class, representing the parameter file name required for calling the tool function.Before calling this tool, ensure that the ILImageMorph initialization tool has been called exactly once in the preprocessing.The value of this property needs to be obtained from the InputParameterFile field of the preprocessing MCP tool's return value.~chinese 指定的 ILImageMorph 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageMorph 初始化工具调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "shapeTypeString",
+          "kWidth",
+          "kHeight",
+          "InputParameterFile"
+        ]
       }
     },
     {
