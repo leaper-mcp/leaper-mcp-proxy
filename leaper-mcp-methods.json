@@ -481,6 +481,24 @@
       }
     },
     {
+      "name": "Image_Info",
+      "description": "获取输入图像的图片信息。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nBytesPerLine : 每行像素数据的字节数，包含行末用于对齐的字节。  \r\nHeight: 图像的高度，行的总数。  \r\nWidth: 图像的宽度，列的总数。 \r\nImageFormat: 图像类型(LPVImageFormatGrayscale8：该图像为 8 位灰度图。LPVImageFormatColor24 ：该图像为 24 位 BGR 彩色图，每个通道 8 位。LPVImageFormatGrayscale16:该图像为 16 位灰度图  ) \r\nGet the input image info.\r\nReturns a serialized JSON string containing the following fields: \r\nBytesPerLine : The number of bytes contained in a row, include the padding bytes.  \r\nHeight: The height of the image, number of rows.  \r\nWidth: The width of the image, number of columns.  \r\nImageFormat: The format of the image. (LPVImageFormatGrayscale8：The image is stored using an 8-bit grayscale format. LPVImageFormatColor24 ：The image is stored using a 24-bit BGR color format (8-8-8).LPVImageFormatGrayscale16:The image is stored using an 16-bit grayscale format. ) \r\n",
+      "inputSchema": {
+        "title": "Image_Info",
+        "description": "获取输入图像的图片信息。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nBytesPerLine : 每行像素数据的字节数，包含行末用于对齐的字节。  \r\nHeight: 图像的高度，行的总数。  \r\nWidth: 图像的宽度，列的总数。 \r\nImageFormat: 图像类型(LPVImageFormatGrayscale8：该图像为 8 位灰度图。LPVImageFormatColor24 ：该图像为 24 位 BGR 彩色图，每个通道 8 位。LPVImageFormatGrayscale16:该图像为 16 位灰度图  ) \r\nGet the input image info.\r\nReturns a serialized JSON string containing the following fields: \r\nBytesPerLine : The number of bytes contained in a row, include the padding bytes.  \r\nHeight: The height of the image, number of rows.  \r\nWidth: The width of the image, number of columns.  \r\nImageFormat: The format of the image. (LPVImageFormatGrayscale8：The image is stored using an 8-bit grayscale format. LPVImageFormatColor24 ：The image is stored using a 24-bit BGR color format (8-8-8).LPVImageFormatGrayscale16:The image is stored using an 16-bit grayscale format. ) \r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "当前图像的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl"
+        ]
+      }
+    },
+    {
       "name": "ILLineDetector_SetPolarity",
       "description": "设置直线定位工具所使用的检测的边缘极性，并返回设置完成的直线定位工具的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示直线定位工具的功能调用的对象名称，目前名称应为：ILLineDetector (直线定位工具的功能相关对象);\r\nInputParameterFile 表示直线定位工具的功能调用的对象的参数文件名称。\r\n",
       "inputSchema": {
@@ -523,34 +541,6 @@
         "required": [
           "imageUrl",
           "InputParameterFile"
-        ]
-      }
-    },
-    {
-      "name": "ImageConvert_NormalizeTo8",
-      "description": "归一化输入图像到 8 位图\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
-      "inputSchema": {
-        "title": "ImageConvert_NormalizeTo8",
-        "description": "归一化输入图像到 8 位图\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
-        "type": "object",
-        "properties": {
-          "imageUrl": {
-            "description": "图片的url地址，通过这个地址获取到输入图像",
-            "type": "string"
-          },
-          "minValue": {
-            "description": "最小值，传入0表示使用图像最小值",
-            "type": "number",
-            "default": 0
-          },
-          "maxValue": {
-            "description": "最大值，传入0表示使用图像最大值",
-            "type": "number",
-            "default": 0
-          }
-        },
-        "required": [
-          "imageUrl"
         ]
       }
     },
@@ -610,6 +600,34 @@
           "imageUrlList",
           "columnCount",
           "compactMode"
+        ]
+      }
+    },
+    {
+      "name": "ImageConvert_NormalizeTo8",
+      "description": "归一化输入图像到 8 位图\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
+      "inputSchema": {
+        "title": "ImageConvert_NormalizeTo8",
+        "description": "归一化输入图像到 8 位图\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "minValue": {
+            "description": "最小值，传入0表示使用图像最小值",
+            "type": "number",
+            "default": 0
+          },
+          "maxValue": {
+            "description": "最大值，传入0表示使用图像最大值",
+            "type": "number",
+            "default": 0
+          }
+        },
+        "required": [
+          "imageUrl"
         ]
       }
     },
@@ -688,16 +706,6 @@
       }
     },
     {
-      "name": "ILLineDetector",
-      "description": "这是一个直线定位相关的初始化工具，初始化创建一个直线定位工具的功能调用的对象。\r\n 是所有直线定位工具下的MCP工具的初始化工具，在这些工具调用之前，都需要保证前处理调用过有且仅有一次此初始化工具。返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示直线定位工具的功能调用的对象名称，目前名称应为：ILLineDetector (直线定位工具的功能调用的对象)。\r\nInputParameterFile 表示 ILLineDetector 类初始化文件名称。\r\n",
-      "inputSchema": {
-        "title": "ILLineDetector",
-        "description": "这是一个直线定位相关的初始化工具，初始化创建一个直线定位工具的功能调用的对象。\r\n 是所有直线定位工具下的MCP工具的初始化工具，在这些工具调用之前，都需要保证前处理调用过有且仅有一次此初始化工具。返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示直线定位工具的功能调用的对象名称，目前名称应为：ILLineDetector (直线定位工具的功能调用的对象)。\r\nInputParameterFile 表示 ILLineDetector 类初始化文件名称。\r\n",
-        "type": "object",
-        "properties": {}
-      }
-    },
-    {
       "name": "ILRegion_Subtract",
       "description": "Subtract one region from another. 从当前ROI区域中减去输入的ROI区域。\r\nThe new region contains the parts of the original region that are not in the other region. 新的区域包含原始区域中不在另一个区域中的部分。\r\nIf a non-empty region is subtracted by an empty region, a copy of the original region is returned. 一个非空区域减去空区域，获得该区域对象的拷贝。\r\nIf an empty region is subtracted by a non-empty region, the complement of the other region is returned. 一个空区域减去一个非空区域，获得后者的取反区域。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
       "inputSchema": {
@@ -718,6 +726,16 @@
           "regionClassObjDescriptionJson",
           "otherRegionClassObjDescriptionJson"
         ]
+      }
+    },
+    {
+      "name": "ILLineDetector",
+      "description": "这是一个直线定位相关的初始化工具，初始化创建一个直线定位工具的功能调用的对象。\r\n 是所有直线定位工具下的MCP工具的初始化工具，在这些工具调用之前，都需要保证前处理调用过有且仅有一次此初始化工具。返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示直线定位工具的功能调用的对象名称，目前名称应为：ILLineDetector (直线定位工具的功能调用的对象)。\r\nInputParameterFile 表示 ILLineDetector 类初始化文件名称。\r\n",
+      "inputSchema": {
+        "title": "ILLineDetector",
+        "description": "这是一个直线定位相关的初始化工具，初始化创建一个直线定位工具的功能调用的对象。\r\n 是所有直线定位工具下的MCP工具的初始化工具，在这些工具调用之前，都需要保证前处理调用过有且仅有一次此初始化工具。返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示直线定位工具的功能调用的对象名称，目前名称应为：ILLineDetector (直线定位工具的功能调用的对象)。\r\nInputParameterFile 表示 ILLineDetector 类初始化文件名称。\r\n",
+        "type": "object",
+        "properties": {}
       }
     },
     {
@@ -777,6 +795,24 @@
       }
     },
     {
+      "name": "ILRegion_Invert",
+      "description": "Invert a region. 取反当前ROI区域。\r\nThe new region contains all areas outside the original region. 新的区域包含原始区域之外的所有区域。\r\nThis operation creates the complement of the original region. 此操作创建原始区域的补集。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+      "inputSchema": {
+        "title": "ILRegion_Invert",
+        "description": "Invert a region. 取反当前ROI区域。\r\nThe new region contains all areas outside the original region. 新的区域包含原始区域之外的所有区域。\r\nThis operation creates the complement of the original region. 此操作创建原始区域的补集。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
+        "type": "object",
+        "properties": {
+          "regionClassObjDescriptionJson": {
+            "description": "原始的Roi区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "regionClassObjDescriptionJson"
+        ]
+      }
+    },
+    {
       "name": "ILLineDetector_SetNormScore",
       "description": "设置直线定位工具所使用的是否基于区域中的最大梯度值归一化直线分数，并返回设置完成的直线定位工具的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示直线定位工具的功能调用的对象名称，目前名称应为：ILLineDetector (直线定位工具的功能相关对象);\r\nInputParameterFile 表示直线定位工具的功能调用的对象的参数文件名称。\r\n",
       "inputSchema": {
@@ -796,24 +832,6 @@
         "required": [
           "normScore",
           "InputParameterFile"
-        ]
-      }
-    },
-    {
-      "name": "ILRegion_Invert",
-      "description": "Invert a region. 取反当前ROI区域。\r\nThe new region contains all areas outside the original region. 新的区域包含原始区域之外的所有区域。\r\nThis operation creates the complement of the original region. 此操作创建原始区域的补集。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
-      "inputSchema": {
-        "title": "ILRegion_Invert",
-        "description": "Invert a region. 取反当前ROI区域。\r\nThe new region contains all areas outside the original region. 新的区域包含原始区域之外的所有区域。\r\nThis operation creates the complement of the original region. 此操作创建原始区域的补集。\r\n并输出一个新的复合ROI区域对象(ILCompoundRegion类型)的描述JSON。\r\n其中ILCompoundRegion类型继承于ILRegion类型\r\n",
-        "type": "object",
-        "properties": {
-          "regionClassObjDescriptionJson": {
-            "description": "原始的Roi区域。传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
-            "type": "string"
-          }
-        },
-        "required": [
-          "regionClassObjDescriptionJson"
         ]
       }
     },
@@ -1303,6 +1321,59 @@
       }
     },
     {
+      "name": "ImageStatsCountPixelColor",
+      "description": "Count the pixels in the input image which is between or outside the given color bounds.\r\nFor all of the channels, the pixel value is within the color bounds, then it's a \"between\" color pixel.\r\nOtherwise, for any of the channel, the pixel value is smaller or greater than the lower/upper bound, then it's a \"outside\" color pixel.\r\n计算输入彩色图像中像素值在设置范围之内、之外的像素总数。\r\n对于每一个像素，若其所有通道的颜色值均在指定范围内，则该像素为范围内\"between\"像素。\r\n反之，若其任一通道的数值小于或大于指定颜色范围的下限或上限，则该像素为范围外\"outside\"像素。\r\nReturns a JSON string with the following fields:\r\nBetweenCount: The count of pixels within the bounds\r\nOutsideCount: The count of pixels out of the bounds\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nBetweenCount: 颜色值在颜色范围之间的像素总数\r\nOutsideCount: 颜色值在颜色范围以外的像素总数",
+      "inputSchema": {
+        "title": "ImageStatsCountPixelColor",
+        "description": "Count the pixels in the input image which is between or outside the given color bounds.\r\nFor all of the channels, the pixel value is within the color bounds, then it's a \"between\" color pixel.\r\nOtherwise, for any of the channel, the pixel value is smaller or greater than the lower/upper bound, then it's a \"outside\" color pixel.\r\n计算输入彩色图像中像素值在设置范围之内、之外的像素总数。\r\n对于每一个像素，若其所有通道的颜色值均在指定范围内，则该像素为范围内\"between\"像素。\r\n反之，若其任一通道的数值小于或大于指定颜色范围的下限或上限，则该像素为范围外\"outside\"像素。\r\nReturns a JSON string with the following fields:\r\nBetweenCount: The count of pixels within the bounds\r\nOutsideCount: The count of pixels out of the bounds\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nBetweenCount: 颜色值在颜色范围之间的像素总数\r\nOutsideCount: 颜色值在颜色范围以外的像素总数",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "regionJson": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          },
+          "lbBlue": {
+            "description": "颜色范围下限，所有通道的数值需均小于或等于上限，蓝色通道值，范围0-255",
+            "type": "integer"
+          },
+          "lbGreen": {
+            "description": "颜色范围下限，所有通道的数值需均小于或等于上限，绿色通道值，范围0-255",
+            "type": "integer"
+          },
+          "lbRed": {
+            "description": "颜色范围下限，所有通道的数值需均小于或等于上限，红色通道值，范围0-255",
+            "type": "integer"
+          },
+          "ubBlue": {
+            "description": "颜色范围上限，所有通道的数值需均大于或等于上限，蓝色通道值，范围0-255",
+            "type": "integer"
+          },
+          "ubGreen": {
+            "description": "颜色范围上限，所有通道的数值需均大于或等于上限，绿色通道值，范围0-255",
+            "type": "integer"
+          },
+          "ubRed": {
+            "description": "颜色范围上限，所有通道的数值需均大于或等于上限，红色通道值，范围0-255",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "regionJson",
+          "lbBlue",
+          "lbGreen",
+          "lbRed",
+          "ubBlue",
+          "ubGreen",
+          "ubRed"
+        ]
+      }
+    },
+    {
       "name": "ILImageFilter_EdgePreserveTextureEnhance",
       "description": "增强图像纹理并保留边缘工具。\r\nEnhance the texture on image while retaining sharp edges.\r\nThe smoothness of the denoising process is controlled by kernel sigma value with recommended value in 0.01 ~ 0.1.\r\n用户没有指定滤波相关参数时，必须设置默认参数：通过ILImageFilter_SetKernelSigma设置滤波核平滑度=0.01，加速算法运行的系数4。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
       "inputSchema": {
@@ -1434,6 +1505,39 @@
         "required": [
           "acceptScore",
           "InputParameterFile"
+        ]
+      }
+    },
+    {
+      "name": "ImageStatsCountPixel",
+      "description": "Count the pixels in the input image which is below, between or above the given threshold bounds.\r\n 计算输入图像中灰度值在设置范围之下、之内、之上的像素总数。\r\n Returns a JSON string with the following fields:\r\nBelowCount: The count of pixels below the lower bound of threshold range\r\nBetweenCount: The count of pixels in the threshold range\r\nAboveCount: The count of pixels above the upper bound of threshold range\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nBelowCount: 灰度值在阈值范围以下的像素总数\r\nBetweenCount: 灰度值在阈值范围之间的像素总数\r\nAboveCount: 灰度值在阈值范围以上的像素总数\r\n",
+      "inputSchema": {
+        "title": "ImageStatsCountPixel",
+        "description": "Count the pixels in the input image which is below, between or above the given threshold bounds.\r\n 计算输入图像中灰度值在设置范围之下、之内、之上的像素总数。\r\n Returns a JSON string with the following fields:\r\nBelowCount: The count of pixels below the lower bound of threshold range\r\nBetweenCount: The count of pixels in the threshold range\r\nAboveCount: The count of pixels above the upper bound of threshold range\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nBelowCount: 灰度值在阈值范围以下的像素总数\r\nBetweenCount: 灰度值在阈值范围之间的像素总数\r\nAboveCount: 灰度值在阈值范围以上的像素总数\r\n",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "regionJson": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          },
+          "lb": {
+            "description": "阈值范围下限，对于 8 位图像数值在 0 ~ 255 范围内，对于 16 位图像数值在 0 ~ 65535 范围内",
+            "type": "integer"
+          },
+          "ub": {
+            "description": "阈值范围上限，对于 8 位图像数值在 0 ~ 255 范围内，对于 16 位图像数值在 0 ~ 65535 范围内",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "regionJson",
+          "lb",
+          "ub"
         ]
       }
     },
@@ -1583,39 +1687,6 @@
       }
     },
     {
-      "name": "ILImageOp_AddWeighted",
-      "description": "这个是将两个图像逐像素相加的工具。输出一个新图像，两个输入图像的尺寸需相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\n\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
-      "inputSchema": {
-        "title": "ILImageOp_AddWeighted",
-        "description": "这个是将两个图像逐像素相加的工具。输出一个新图像，两个输入图像的尺寸需相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\n\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
-        "type": "object",
-        "properties": {
-          "imageUrl1": {
-            "description": "图片的url地址，通过这个地址获取到图片1",
-            "type": "string"
-          },
-          "imageUrl2": {
-            "description": "图片的url地址，通过这个地址获取到图片2",
-            "type": "string"
-          },
-          "alpha": {
-            "description": "第一个输入图像的权重 ，传入类型为double类型。",
-            "type": "number"
-          },
-          "beta": {
-            "description": "第二个输入图像的权重 ，传入类型为double类型。",
-            "type": "number"
-          }
-        },
-        "required": [
-          "imageUrl1",
-          "imageUrl2",
-          "alpha",
-          "beta"
-        ]
-      }
-    },
-    {
       "name": "PatMatchLearnWithShapeImage",
       "description": "Learn the pattern template features from the provided image. 训练模板，使用输入的图像。\r\nThe template center can be modified later. 模板中心可根据需求修改。\r\nThe shape and polarity of the template features are extracted from the shape image. 特征点通过给定的形状图像提取提取模板的形状和极性。\r\nThe feature points are extracted from the given shape image, thus not affected by DetailLevel. 特征点通过给定的形状图像提取，不受 DetailLevel 参数的影响。\r\nThe shape image should have the same size as the input image. 形状图像的尺寸需与输入图像相同。\r\n如果别的工具需要训练后的模板匹配的功能对象，可以使用当前对象Json。\r\n返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。",
       "inputSchema": {
@@ -1645,6 +1716,39 @@
           "imageUrl",
           "regionClassObjDescriptionJson",
           "shapeImgUrl"
+        ]
+      }
+    },
+    {
+      "name": "ILImageOp_AddWeighted",
+      "description": "这个是将两个图像逐像素相加的工具。输出一个新图像，两个输入图像的尺寸需相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\n\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
+      "inputSchema": {
+        "title": "ILImageOp_AddWeighted",
+        "description": "这个是将两个图像逐像素相加的工具。输出一个新图像，两个输入图像的尺寸需相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\n\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
+        "type": "object",
+        "properties": {
+          "imageUrl1": {
+            "description": "图片的url地址，通过这个地址获取到图片1",
+            "type": "string"
+          },
+          "imageUrl2": {
+            "description": "图片的url地址，通过这个地址获取到图片2",
+            "type": "string"
+          },
+          "alpha": {
+            "description": "第一个输入图像的权重 ，传入类型为double类型。",
+            "type": "number"
+          },
+          "beta": {
+            "description": "第二个输入图像的权重 ，传入类型为double类型。",
+            "type": "number"
+          }
+        },
+        "required": [
+          "imageUrl1",
+          "imageUrl2",
+          "alpha",
+          "beta"
         ]
       }
     },
@@ -2438,6 +2542,29 @@
           "space",
           "cyclicMode",
           "sameSize"
+        ]
+      }
+    },
+    {
+      "name": "ImageStatsSharpness",
+      "description": "Compute the relative sharpness of the input image, based on the edge gradients.\r\nIt's usually used to automate focusing a camera lens on a scene.\r\nNote that the score may be affected by the contrast, brightness and content of the scene, thus it's meaningless to compare the sharpness scores of different scenes.\r\n计算输入图像的相对清晰度，基于图像中总体的边缘强度。\r\n清晰度计算通常用于实现对静态场景的自动对焦。\r\n注意清晰度通常受到图像的对比度、亮度以及场景内容的影响，因此无法比较不同场景的清晰度数值。\r\nReturns a JSON string with the following fields:\r\nSharpness: The sharpness score\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nSharpness: 清晰度评价数值",
+      "inputSchema": {
+        "title": "ImageStatsSharpness",
+        "description": "Compute the relative sharpness of the input image, based on the edge gradients.\r\nIt's usually used to automate focusing a camera lens on a scene.\r\nNote that the score may be affected by the contrast, brightness and content of the scene, thus it's meaningless to compare the sharpness scores of different scenes.\r\n计算输入图像的相对清晰度，基于图像中总体的边缘强度。\r\n清晰度计算通常用于实现对静态场景的自动对焦。\r\n注意清晰度通常受到图像的对比度、亮度以及场景内容的影响，因此无法比较不同场景的清晰度数值。\r\nReturns a JSON string with the following fields:\r\nSharpness: The sharpness score\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nSharpness: 清晰度评价数值",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "regionJson": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "regionJson"
         ]
       }
     },
@@ -3516,6 +3643,29 @@
       }
     },
     {
+      "name": "ImageStatsMax",
+      "description": "Find the pixel of maximum value in the input image, report the value and pixel's position.\r\nIf there's more than one pixel with the same value, report the left-top one.\r\n查找输入图像中的最大灰度值像素，输出该灰度值和像素的位置。\r\n若存在多个像素拥有同一灰度值，输出最左上的像素。\r\nReturns a JSON string with the following fields:\r\nValue: The maximum value\r\nPosX: The x-coordinate of the pixel's position with maximum value\r\nPosY: The y-coordinate of the pixel's position with maximum value\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nValue: 最大灰度值\r\nPosX: 最大灰度值所在像素的x坐标\r\nPosY: 最大灰度值所在像素的y坐标",
+      "inputSchema": {
+        "title": "ImageStatsMax",
+        "description": "Find the pixel of maximum value in the input image, report the value and pixel's position.\r\nIf there's more than one pixel with the same value, report the left-top one.\r\n查找输入图像中的最大灰度值像素，输出该灰度值和像素的位置。\r\n若存在多个像素拥有同一灰度值，输出最左上的像素。\r\nReturns a JSON string with the following fields:\r\nValue: The maximum value\r\nPosX: The x-coordinate of the pixel's position with maximum value\r\nPosY: The y-coordinate of the pixel's position with maximum value\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nValue: 最大灰度值\r\nPosX: 最大灰度值所在像素的x坐标\r\nPosY: 最大灰度值所在像素的y坐标",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "regionJson": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "regionJson"
+        ]
+      }
+    },
+    {
       "name": "ILImageOp_BitOrScalar",
       "description": "这个是将输入图像和一个标量逐像素进行位操作或的工具。输出一个新图像。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
       "inputSchema": {
@@ -3826,6 +3976,29 @@
       }
     },
     {
+      "name": "ImageStatsMin",
+      "description": "Find the pixel of minimum value in the input image, report the value and pixel's position.\r\nIf there's more than one pixel with the same value, report the left-top one.\r\n查找输入图像中的最小灰度值像素，输出该灰度值和像素的位置。\r\n若存在多个像素拥有同一灰度值，输出最左上的像素。\r\nReturns a JSON string with the following fields:\r\nValue: The minimum value\r\nPosX: The x-coordinate of the pixel's position with minimum value\r\nPosY: The y-coordinate of the pixel's position with minimum value\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nValue: 最小灰度值\r\nPosX: 最小灰度值所在像素的x坐标\r\nPosY: 最小灰度值所在像素的y坐标",
+      "inputSchema": {
+        "title": "ImageStatsMin",
+        "description": "Find the pixel of minimum value in the input image, report the value and pixel's position.\r\nIf there's more than one pixel with the same value, report the left-top one.\r\n查找输入图像中的最小灰度值像素，输出该灰度值和像素的位置。\r\n若存在多个像素拥有同一灰度值，输出最左上的像素。\r\nReturns a JSON string with the following fields:\r\nValue: The minimum value\r\nPosX: The x-coordinate of the pixel's position with minimum value\r\nPosY: The y-coordinate of the pixel's position with minimum value\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nValue: 最小灰度值\r\nPosX: 最小灰度值所在像素的x坐标\r\nPosY: 最小灰度值所在像素的y坐标",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "regionJson": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "regionJson"
+        ]
+      }
+    },
+    {
       "name": "ILLineDetector_SetFindBy",
       "description": "设置直线定位工具所使用的检测的搜索策略，并返回设置完成的直线定位工具的功能调用的对象。\r\n 返回结构是一个序列化的JSON字符串，属性包括：\r\nLpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示直线定位工具的功能调用的对象名称，目前名称应为：ILLineDetector (直线定位工具的功能相关对象);\r\nInputParameterFile 表示直线定位工具的功能调用的对象的参数文件名称。\r\n",
       "inputSchema": {
@@ -3914,6 +4087,29 @@
         "description": "生成一张像素为1*1黑色的图像(单通道灰度图，如果要转换BGR彩色图，需调用灰度转彩色工具进行转换)，如果后续需要修改大小可以调用Image_SetSize方法。 \r\n返回结构是一个序列化的JSON字符串，包含以下字段： \r\nResultImg: 生成的图像结果 \r\nCreate a new empty image of 1x1 pixel with black pixels (single-channel grayscale). \r\nIf you want to convert to BGR color image, you need to call the grayscale to color conversion tool. \r\nIf you need to modify the size later, you can call the Image_SetSize method. \r\nReturns a serialized JSON string containing the following fields: \r\nResultImg: The generated image result",
         "type": "object",
         "properties": {}
+      }
+    },
+    {
+      "name": "ImageStatsMeanStdDev",
+      "description": "Calculate the mean and standard deviation of the input image.\r\n计算输入图像的灰度均值和标准差。\r\nReturns a JSON string with the following fields:\r\nMeanValue: The mean value\r\nStdDevValue: The standard deviation value\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nMeanValue: 灰度均值\r\nStdDevValue: 灰度标准差",
+      "inputSchema": {
+        "title": "ImageStatsMeanStdDev",
+        "description": "Calculate the mean and standard deviation of the input image.\r\n计算输入图像的灰度均值和标准差。\r\nReturns a JSON string with the following fields:\r\nMeanValue: The mean value\r\nStdDevValue: The standard deviation value\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nMeanValue: 灰度均值\r\nStdDevValue: 灰度标准差",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "regionJson": {
+            "description": "指定的Roi区域。如果用户没有指定区域，请直接传入 \"null\"。 如果用户指定区域，传入一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。这两个属性的值可以从前处理的MCP工具的返回值中获取。LpvClassName 表示要调用的Region接口名称，根据不同的区域类型有不同的接口名称，可选的名称有：ILAnnulusRegion (圆环区域对象)、ILAnnulusSectorRegion(环状扇形区域对象)、ILCircleRegion (圆形区域对象)、ILCompoundRegion (复合区域对象)、ILEllipseRegion (椭圆区域对象)、ILMaskRegion (蒙版区域对象)、ILPolyRegion (多边形区域对象)、ILRectRegion (矩形区域对象)、ILRotRectRegion (旋转矩形区域对象);InputParameterFile 表示调用工具函数需要传入的参数文件名称。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "imageUrl",
+          "regionJson"
+        ]
       }
     },
     {
@@ -4029,29 +4225,6 @@
       }
     },
     {
-      "name": "ImageConvert_Depth16To8",
-      "description": "Convert a 16bit image to 8bit depth, extracting the continues 8 bits from the specified index\r\n转换 16 位图像到 8 位图像，从指定索引开始提取连续 8 位\r\n- Convert a 16bit image to 8bit depth, extracting the continues 8 bits from the specified index\r\n- From Nth Bit usage: 0 (Extract High 8bit), 8 (Extract Low 8bit), 4 (Extract Middle 8bit)\r\n- fromNthBit range: -7 ~ 15 to ensure at least 1 valid bit\r\n- 转换 16 位图像到 8 位图像，从指定索引开始提取连续 8 位\r\n- 指定索引用途：0 (提取高 8 位), 8 (提取低 8 位), 4 (提取中 8 位)\r\n- fromNthBit 取值范围为 -7 ~ 15 以保证至少 1 位有效位\r\n\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
-      "inputSchema": {
-        "title": "ImageConvert_Depth16To8",
-        "description": "Convert a 16bit image to 8bit depth, extracting the continues 8 bits from the specified index\r\n转换 16 位图像到 8 位图像，从指定索引开始提取连续 8 位\r\n- Convert a 16bit image to 8bit depth, extracting the continues 8 bits from the specified index\r\n- From Nth Bit usage: 0 (Extract High 8bit), 8 (Extract Low 8bit), 4 (Extract Middle 8bit)\r\n- fromNthBit range: -7 ~ 15 to ensure at least 1 valid bit\r\n- 转换 16 位图像到 8 位图像，从指定索引开始提取连续 8 位\r\n- 指定索引用途：0 (提取高 8 位), 8 (提取低 8 位), 4 (提取中 8 位)\r\n- fromNthBit 取值范围为 -7 ~ 15 以保证至少 1 位有效位\r\n\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
-        "type": "object",
-        "properties": {
-          "imageUrl": {
-            "description": "图片的url地址，通过这个地址获取到输入图像",
-            "type": "string"
-          },
-          "fromNthBit": {
-            "description": "指定提取的开始索引，取值范围为 -7 ~ 15",
-            "type": "integer",
-            "default": 0
-          }
-        },
-        "required": [
-          "imageUrl"
-        ]
-      }
-    },
-    {
       "name": "ILImageOp_Min",
       "description": "这个是将两个图像逐像素比较，取其最小值的工具。输出一个新图像，两个输入图像需尺寸相同、类型相同。\r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
       "inputSchema": {
@@ -4071,6 +4244,29 @@
         "required": [
           "imageUrl1",
           "imageUrl2"
+        ]
+      }
+    },
+    {
+      "name": "ImageConvert_Depth16To8",
+      "description": "Convert a 16bit image to 8bit depth, extracting the continues 8 bits from the specified index\r\n转换 16 位图像到 8 位图像，从指定索引开始提取连续 8 位\r\n- Convert a 16bit image to 8bit depth, extracting the continues 8 bits from the specified index\r\n- From Nth Bit usage: 0 (Extract High 8bit), 8 (Extract Low 8bit), 4 (Extract Middle 8bit)\r\n- fromNthBit range: -7 ~ 15 to ensure at least 1 valid bit\r\n- 转换 16 位图像到 8 位图像，从指定索引开始提取连续 8 位\r\n- 指定索引用途：0 (提取高 8 位), 8 (提取低 8 位), 4 (提取中 8 位)\r\n- fromNthBit 取值范围为 -7 ~ 15 以保证至少 1 位有效位\r\n\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
+      "inputSchema": {
+        "title": "ImageConvert_Depth16To8",
+        "description": "Convert a 16bit image to 8bit depth, extracting the continues 8 bits from the specified index\r\n转换 16 位图像到 8 位图像，从指定索引开始提取连续 8 位\r\n- Convert a 16bit image to 8bit depth, extracting the continues 8 bits from the specified index\r\n- From Nth Bit usage: 0 (Extract High 8bit), 8 (Extract Low 8bit), 4 (Extract Middle 8bit)\r\n- fromNthBit range: -7 ~ 15 to ensure at least 1 valid bit\r\n- 转换 16 位图像到 8 位图像，从指定索引开始提取连续 8 位\r\n- 指定索引用途：0 (提取高 8 位), 8 (提取低 8 位), 4 (提取中 8 位)\r\n- fromNthBit 取值范围为 -7 ~ 15 以保证至少 1 位有效位\r\n\r\n返回结构是一个序列化的JSON字符串，包含以下字段：\r\nResultImg: 输出结果图像URL地址",
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "description": "图片的url地址，通过这个地址获取到输入图像",
+            "type": "string"
+          },
+          "fromNthBit": {
+            "description": "指定提取的开始索引，取值范围为 -7 ~ 15",
+            "type": "integer",
+            "default": 0
+          }
+        },
+        "required": [
+          "imageUrl"
         ]
       }
     },
