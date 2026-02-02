@@ -23,6 +23,12 @@ async function connectToServer() {
       "Connected to server with tools:",
       tools.map(({ name }) => name)
     );
+    const result = await mcp.callTool({
+        name: "EdgeFilterNew",
+        arguments: {}
+    });
+    console.log("Tool call result:", result);
+    await mcp.close();
   } catch (e) {
     console.log("Failed to connect to MCP server: ", e);
     throw e;

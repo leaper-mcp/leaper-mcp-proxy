@@ -13,7 +13,7 @@ export default function main() {
   let cli: Client;
   const methodsRes = JSON.parse(fs.readFileSync("./leaper-mcp-methods.json").toString());
   for(const  methods of methodsRes.tools) {
-      server.registerTool(methods.name,methods,async (params) => {
+      server.registerTool(methods.name,methods.inputSchema,async (params) => {
       try {
         cli = new Client({ name: "mcp-proxy-cli", version: "1.0.0" })
         await cli.connect(new SSEClientTransport(new URL(mcpProxySseUrl)))
