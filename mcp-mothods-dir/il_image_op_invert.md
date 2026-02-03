@@ -1,0 +1,21 @@
+```json
+{
+    "name": "il_image_op_invert",
+    "description": "这个是反转图像的工具。8 位图：I' = 255 - I，16 位图：I' = 65535 - I。 \r\n工具不需要通过其它工具设置参数，不需要传入ILImageOp的对象。 \r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。\r\nEnglish: The two input images should have the same size and format.\r\n中文: 两个输入图像需尺寸相同、类型相同。",
+    "inputSchema": {
+        "type": "object",
+        "properties": {
+            "imageUrl": {
+                "description": "图片的url地址，通过这个地址获取到图片",
+                "type": "string"
+            }
+        },
+        "required": [
+            "imageUrl"
+        ]
+    },
+    "execution": {
+        "taskSupport": "optional"
+    }
+}
+```

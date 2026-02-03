@@ -1,0 +1,13 @@
+```json
+{
+    "name": "pat_match_new",
+    "description": "Create a new pattern matching tool instance. 创建一个新的模板匹配工具实例。\r\n This interface provides functionalities of pattern matching. 该接口提供模板匹配的功能。\r\nPattern detector is designed to single or multiple instances of the trained pattern in the given image and region. 模板匹配用于在指定图像和区域中基于训练的模板，搜索和定位一个或多个匹配结果。\r\nThe algorithm is real-time and of sub-pixel accuracy. Detection is based mainly on shape information extracted from pattern template, with combination of the gray-scale features. 该算法具有高实时性和高亚像素角度的特点。匹配过程基于从模板图像中训练得到的形状特征，结合图像的灰度特征。\r\nIt's robust to translation, scale and rotation of the pattern objects, as well as the lightening or material changes in production line which results in intensity, contrast or blurring in input images. 可以定位目标物体的旋转、平移和缩放，可有效应对产线环境的光照变化、物体材质变化引起的明暗、对比度、模糊等现象。\r\nTo use this interface, you should create a LMatch object. 使用这个接口，需要创建一个 LMatch 对象。\r\n返回结构是一个序列化的JSON字符串，属性包括：LpvClassName(调用工具函数的名称) 和 InputParameterFile(调用工具函数需要传入的参数文件名称)。\r\nLpvClassName 表示模板匹配的功能对象名称，目前名称应为：ILMatch (模板匹配的功能对象);\r\nInputParameterFile 表示模板匹配的功能对象的参数文件名称。\r\n",
+    "inputSchema": {
+        "type": "object",
+        "properties": {}
+    },
+    "execution": {
+        "taskSupport": "optional"
+    }
+}
+```

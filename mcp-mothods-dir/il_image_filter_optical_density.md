@@ -1,0 +1,26 @@
+```json
+{
+    "name": "il_image_filter_optical_density",
+    "description": "光密度，通过度量其通光量显露在输入图像中物体或特征的密度。\r\n密度较高的物体或特征在输出图像中以较亮的像素表示。\r\nReveals the density of objects and features in the input image by measuring the amount of light that \r\npasses through them. Denser objects and features are represented by lighter pixels in the output image. \r\n用户没有指定滤波相关参数时，不要调用设置参数的插件，传入的ILImageFilter 类的文件中已经设置了滤波相关的默认参数。\r\n返回结构是一个序列化的json，其中：\r\nResultImg属性是输出结果图像URL地址。",
+    "inputSchema": {
+        "type": "object",
+        "properties": {
+            "imageUrl": {
+                "description": "图片的url地址，通过这个地址获取到图片",
+                "type": "string"
+            },
+            "InputParameterFile": {
+                "description": "指定的 ILImageFilter 类的文件地址，调用工具函数需要传入的参数文件名称。在调用此工具前要保证前处理中一定要有且仅有一次的 ILImageFilter 初始化工具的调用。这个属性的值需要从前处理的MCP工具的返回值 InputParameterFile 字段中获取。",
+                "type": "string"
+            }
+        },
+        "required": [
+            "imageUrl",
+            "InputParameterFile"
+        ]
+    },
+    "execution": {
+        "taskSupport": "optional"
+    }
+}
+```
